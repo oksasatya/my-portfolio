@@ -1,13 +1,5 @@
 /*
 * ----------------------------------------------------------------------------------------
-Author       : Tanvir Hossain
-Template Name: Nino - Premium Portfolio Template
-Version      : 1.0                                          
-* ----------------------------------------------------------------------------------------
-*/
-
-/*
-* ----------------------------------------------------------------------------------------
 * 01.GLOBAL CSS STYLE
 * 02.COMMON CSS STYLE
 * 03.MENU CSS STYLE
@@ -1322,24 +1314,47 @@ html {
 .hero-image {
     text-align: center;
     position: relative;
+    padding: 20px;
+}
+
+.hero-image::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(8deg);
+    width: calc(20rem + 10px);
+    height: calc(20rem + 10px);
+    background: linear-gradient(135deg, #8f9092 0%, #dddddd 100%);
+    border-radius: 50%; /* Circle gradient background */
+    z-index: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-image:hover::before {
+    transform: translate(-50%, -58%) rotate(0deg) scale(1.05);
 }
 
 .hero-image img {
-    width: 400px;
-    text-align: center;
-    border-radius: 20px;
-    border: 3px solid #fff;
-    margin-top: -100px;
-    rotate: 10deg;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
+    width: 20rem;
+    height: 20rem;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 50%; /* Perfect circle */
+    margin-top: -9px;
+    rotate: 8deg;
+    position: relative;
+    z-index: 1;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: brightness(1.05) contrast(1.1) saturate(1.1);
 }
 
 .hero-image img:hover {
     rotate: 0deg;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
+    transform: translateY(-8px) scale(1.05);
+    filter: brightness(1.1) contrast(1.15) saturate(1.15);
 }
+
 
 /*Clienti Reviews*/
 .clienti-reviews .clienti-profile {
