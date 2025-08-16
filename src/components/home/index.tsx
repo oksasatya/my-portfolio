@@ -10,7 +10,6 @@ import TestimonoalArea from './TestimonoalArea'
 import BlogArea from './BlogArea'
 import ContactArea from './ContactArea'
 import FooterOne from '@/layouts/footers/FooterOne'
-import type {Metadata} from "next";
 
 
 

@@ -1,17 +1,16 @@
-
 "use client"
 
 import { gsap } from 'gsap';
 import React, { useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation';
 import { animationCreate } from '@/utils/utils';
-import { scrollSmother } from "@/utils/scrollSmother";
 import ScrollToTop from '@/components/common/ScrollToTop';
 
 import {
   ScrollSmoother,
   ScrollTrigger,
 } from "@/plugins";
+
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger,);
 
 if (typeof window !== "undefined") {
@@ -21,6 +20,7 @@ if (typeof window !== "undefined") {
 export default function Wrapper({ children }: any) {
 
   const pathname = usePathname();
+  const smootherRef = useRef<any | null>(null);
 
   useEffect(() => {
     // animation
@@ -29,25 +29,35 @@ export default function Wrapper({ children }: any) {
     }, 100);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      ScrollSmoother.create({
-        smooth: 1.35,
+      // kill previous instance to avoid duplicates on route changes
+      smootherRef.current?.kill?.();
+      smootherRef.current = ScrollSmoother.create({
+        wrapper: '#smooth-wrapper',
+        content: '#smooth-content',
+        smooth: 1.2,
         effects: true,
-        smoothTouch: false,
+        smoothTouch: 0,
         normalizeScroll: false,
         ignoreMobileResize: true,
       });
     }
+
+    return () => {
+      smootherRef.current?.kill?.();
+      smootherRef.current = null;
+    };
   }, [pathname]);
 
   useEffect(() => {
-    scrollSmother();
-
+    if (typeof document !== 'undefined') {
+      document.dispatchEvent(new Event('preloader:start'));
+      console.log(document.getElementById('preloader'));
+    }
   }, [pathname]);
-
 
   // round cursor
   const cursorBallRef = useRef<HTMLDivElement | null>(null);
@@ -107,15 +117,10 @@ export default function Wrapper({ children }: any) {
     };
   }, []);
 
-
-
-
-
-
   return (
     <>
       <div id="magic-cursor">
-        <div id="ball" ref={cursorBallRef}></div>
+        <div id="ball" data-react-cursor ref={cursorBallRef}></div>
       </div>
       {children}
       <ScrollToTop />

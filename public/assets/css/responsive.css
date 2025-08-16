@@ -431,13 +431,20 @@ Version      : 1.0
         margin-bottom: 40px;
     }
 
-    .clienti-reviews .clienti-profile {
-        justify-content: center;
+    .clienti-reviews .clienti-profile li {
+        flex: 0 0 50px;
+        height: 50px;
+        width: 50px;
+        margin-left: -10px;
+    }
+
+    .clienti-reviews .reviews {
+        font-size: 18px;
+        margin-top: 20px;
     }
 
     .clienti-reviews .reviews p {
-        margin-top: 0px;
-
+        font-size: 14px;
     }
 
     .hero-content h2 {
@@ -796,6 +803,33 @@ Version      : 1.0
     }
 }
 
+@media (max-width: 480px) {
+    .preloader .preloader-heading .load-text {
+        font-size: 35px !important;
+        letter-spacing: 4px !important;
+    }
+
+    .progress-container {
+        width: 200px;
+    }
+
+    .grid-overlay {
+        background-size: 30px 30px;
+    }
+
+    .progress-number {
+        font-size: 20px;
+    }
+
+    .brand-text {
+        margin-bottom: 30px;
+    }
+
+    .loading-progress {
+        margin-bottom: 30px;
+    }
+}
+
 @media only screen and (max-width: 991px) {
     .author-date-share .text {
         margin-right: 30px;
@@ -915,6 +949,32 @@ Version      : 1.0
     }
 }
 
+/* Responsive Design */
+@media (max-width: 768px) {
+    .preloader .preloader-heading .load-text {
+        font-size: 45px !important;
+        letter-spacing: 8px !important;
+    }
+
+    .progress-container {
+        width: 250px;
+    }
+
+    .brand-text {
+        font-size: 12px;
+        letter-spacing: 4px;
+    }
+
+    .particle {
+        width: 1px;
+        height: 1px;
+    }
+
+    .grid-overlay {
+        background-size: 40px 40px;
+    }
+}
+
 @media only screen and (max-width: 375px) {
     .admin-comment .comment-body .author-thumb {
         max-width: 100px;
@@ -955,6 +1015,19 @@ Version      : 1.0
 @media only screen and (max-width: 767px) {
     .onepage-menu li .menu-item span {
         display: none;
+    }
+    .load-text {
+        font-size: 40px;
+        letter-spacing: 8px;
+    }
+
+    .progress-container {
+        width: 250px;
+    }
+
+    .brand-text {
+        font-size: 12px;
+        letter-spacing: 4px;
     }
 }
 

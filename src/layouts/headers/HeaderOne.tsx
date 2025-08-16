@@ -20,7 +20,7 @@ export default function HeaderOne() {
                 <div className="col-xl-2 col-lg-2 col-md-6 col-6 col-sm-3">
                   <div className="logo-area">
                     <div className="logo">
-                      <Link href="/"><img src="assets/images/logo.png" alt="" /></Link>
+                      <Link href="/"><img src="/assets/images/logo.png" alt="" /></Link>
                     </div>
                   </div>
                 </div>
