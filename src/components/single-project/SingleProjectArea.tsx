@@ -29,7 +29,8 @@ const portfolio_images = [
 export default function SingleProjectArea() {
 
   // photoIndex
-  const [photoIndex, setPhotoIndex] = useState(null);
+  const [photoIndex, setPhotoIndex] = useState(0);
+  
   // image open state
   const [isOpen, setIsOpen] = useState(false);
   // handleImagePopup
@@ -45,7 +46,7 @@ export default function SingleProjectArea() {
     <>
       <div className="single-project-page-design">
         <div className="single-project-image">
-          <img src="assets/images/projects/work2.jpg" alt="image" />
+          <img src="/assets/images/projects/work2.jpg" alt="image" />
         </div>
         <div className="container pt-60 pb-40">
           <div className="row">
