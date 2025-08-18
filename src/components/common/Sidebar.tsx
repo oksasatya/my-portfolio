@@ -1,4 +1,3 @@
-
 import MobileMenu from '@/layouts/headers/MobileMenu'
 import React from 'react'
 
@@ -13,14 +12,13 @@ export default function Sidebar({ open, setOpen }: any) {
             </button>
           </div>
           <div className="sidebar__content mt-50 mb-20">
-            <div className="mobile-menu fix mean-container">
+            <div className="react-mobile-menu">
               <MobileMenu />
             </div>
           </div>
         </div>
       </div>
       <div className={`body-overlay ${open ? 'opened' : ''}`} onClick={() => setOpen(false)}></div>
-
     </>
   )
 }

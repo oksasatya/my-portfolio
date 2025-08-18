@@ -1,4 +1,3 @@
-
 "use client"
 import React, { useState } from 'react'
 import menu_data from './menu_data'
@@ -21,22 +20,26 @@ export default function MobileMenu() {
   return (
     <>
 
-      <div className="mean-bar"> 
-        <nav className="mean-nav">
-          <ul>
+      <div className="react-menu-bar">
+        <nav className="react-menu-nav">
+          <ul className="react-menu-list">
             {menu_data.map((item, i) => (
-              <li key={i} className={`${item.has_dropdown && "has-dropdown"} ${navTitle === item.title ? "dropdown-opened" : ""}`}>
-                <Link href={item.link} className="linkstyle">{item.title}</Link>
+              <li key={i} className={`react-menu-item ${item.has_dropdown && "has-dropdown"} ${navTitle === item.title ? "dropdown-opened" : ""}`}>
+                <Link href={item.link} className="react-menu-link linkstyle">{item.title}</Link>
                 {item.has_dropdown &&
                   <>
-                    <ul className="sub-menu" style={{ display: navTitle === item.title ? "block" : "none" }}>
+                    <ul className="react-sub-menu" style={{ display: navTitle === item.title ? "block" : "none" }}>
                       {item.sub_menus?.map((sub_menu, index) => (
-                        <li key={index}><Link href={sub_menu.link}>{sub_menu.title}</Link></li>
+                        <li key={index} className="react-sub-menu-item">
+                          <Link href={sub_menu.link} className="react-sub-menu-link">{sub_menu.title}</Link>
+                        </li>
                       ))}
                     </ul>
-                    <a className={`mean-expand ${navTitle === item.title ? "mean-clicked" : ""}`}
+                    <a className={`react-menu-expand ${navTitle === item.title ? "expanded" : ""}`}
                       onClick={() => openMobileMenu(item.title)}
-                      style={{ fontSize: "18px", cursor: "pointer" }}><i className="fal fa-plus"></i></a>
+                      style={{ fontSize: "18px", cursor: "pointer" }}>
+                      <i className={`fal ${navTitle === item.title ? "fa-minus" : "fa-plus"}`}></i>
+                    </a>
                   </>
                 }
               </li>

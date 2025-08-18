@@ -1,0 +1,69 @@
+/* Mobile Header Logo and Hamburger Adjustments */
+
+/* Mobile responsive adjustments for logo positioning */
+@media only screen and (max-width: 991px) {
+    /* Ensure positioning context */
+    .header-inner .row {
+        display: block;
+    }
+
+    /* Center the logo block */
+    .logo-area {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-57%, -32%);
+        z-index: 10;
+        text-align: center;
+    }
+
+    /* Make logo a bit larger on mobile */
+    .logo {
+        width: 180px;
+        margin: 0 auto;
+    }
+    .logo img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Pin hamburger in the top-right corner */
+    .side-menu-icon {
+        position: absolute;
+        right: 12px;
+        top: 12px;
+        transform: none;
+        z-index: 11;
+    }
+
+    .header-upper,
+    .header-inner {
+        min-height: 70px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    /* Slightly adjust sizes for very small screens */
+    .logo {
+        width: 160px;
+    }
+
+    .side-menu-icon {
+        right: 10px;
+        top: 10px;
+        padding: 6px;
+    }
+
+    .sidebar-toggle-btn {
+        font-size: 20px;
+        color: var(--heading-color);
+        transition: color 0.3s ease;
+    }
+
+    .sidebar-toggle-btn:hover {
+        color: var(--primary-color);
+    }
+}

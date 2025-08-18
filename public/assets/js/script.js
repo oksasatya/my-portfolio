@@ -88,13 +88,14 @@ Version      : 1.0
      * ----------------------------------------------------------------------------------------
      */
 
-    $('#mobile-menu').meanmenu({
-        meanMenuContainer: '.mobile-menu',
-        meanScreenWidth: "991",
-        meanExpand: ['<i class="fal fa-plus"></i>'],
-    });
+    // Disable jQuery meanmenu to prevent conflict with React mobile menu
+    // $('#mobile-menu').meanmenu({
+    //     meanMenuContainer: '.mobile-menu',
+    //     meanScreenWidth: "991",
+    //     meanExpand: ['<i class="fal fa-plus"></i>'],
+    // });
 
-    $(".sidebar__close-btn ,.mobile-menu .onepage li a  > *:not(button)").on("click", function () {
+    $(".sidebar__close-btn ,.react-mobile-menu .react-menu-item .react-menu-link").on("click", function () {
         $(".sidebar__area").removeClass("sidebar-opened");
         $(".body-overlay").removeClass("opened");
     });

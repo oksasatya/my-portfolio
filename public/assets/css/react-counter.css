@@ -1,0 +1,215 @@
+/* React Counter Styles - Enhanced untuk tampilan yang lebih besar dan mencolok */
+.react-counter-wrap {
+    text-align: center;
+    padding: 15px 10px;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.react-count-text {
+    line-height: 1;
+    font-weight: 800;
+    color: var(--primary-color);
+    text-align: center;
+    font-size: 4.5rem; /* Lebih besar dari 50px sebelumnya */
+    display: inline-flex; /* Changed to inline-flex untuk alignment horizontal */
+    align-items: baseline; /* Align suffix dengan baseline angka */
+    justify-content: center;
+    margin-bottom: 10px;
+    font-family: var(--title-font);
+    text-shadow: 0 2px 8px rgba(244, 243, 237, 0.3);
+    transition: all 0.4s ease;
+    position: relative;
+    width: 100%; /* Ensure full width for centering */
+}
+
+/* Glow effect untuk angka */
+.react-count-text::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(244, 243, 237, 0.1) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.react-counter-wrap:hover .react-count-text::before {
+    opacity: 1;
+}
+
+/* Suffix styling - di sebelah kanan dengan ukuran yang lebih kecil */
+.react-count-text.plus::after {
+    content: '+';
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 0.7em; /* 70% dari ukuran angka utama */
+    margin-left: 0.1em; /* Sedikit spasi dari angka */
+    vertical-align: top; /* Align ke atas sedikit */
+    line-height: 0.8; /* Adjust line height */
+}
+
+.react-count-text.k-plus::after {
+    content: 'k+';
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 0.7em; /* 70% dari ukuran angka utama */
+    margin-left: 0.1em; /* Sedikit spasi dari angka */
+    vertical-align: top; /* Align ke atas sedikit */
+    line-height: 0.8; /* Adjust line height */
+}
+
+.react-count-text.percent::after {
+    content: '%';
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 0.7em; /* 70% dari ukuran angka utama */
+    margin-left: 0.1em; /* Sedikit spasi dari angka */
+    vertical-align: top; /* Align ke atas sedikit */
+    line-height: 0.8; /* Adjust line height */
+}
+
+/* Counter title styling yang lebih baik */
+.react-counter-wrap .counter-title {
+    display: block;
+    color: #E6EAEE;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 5px;
+    font-family: var(--text-font);
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+/* Hover effects yang lebih smooth */
+.react-counter-wrap:hover {
+    transform: translateY(-5px);
+}
+
+.react-counter-wrap:hover .react-count-text {
+    color: #fff;
+    text-shadow: 0 4px 20px rgba(244, 243, 237, 0.5);
+    transform: scale(1.05);
+}
+
+.react-counter-wrap:hover .counter-title {
+    color: var(--primary-color);
+    opacity: 1;
+}
+
+/* Separator line dibawah counter */
+.hero-counter-area {
+    position: relative;
+    padding: 30px 0;
+}
+
+.hero-counter-area::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    transform: translateX(-50%);
+}
+
+/* Responsive styling yang lebih baik */
+@media (max-width: 1200px) {
+    .react-count-text {
+        font-size: 3.8rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .react-count-text {
+        font-size: 3.5rem;
+    }
+
+    .hero-counter-area {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 15px;
+    }
+
+    .react-counter-wrap {
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .react-count-text {
+        font-size: 3rem;
+    }
+
+    .react-counter-wrap .counter-title {
+        font-size: 0.9rem;
+    }
+
+    .hero-counter-area {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+    }
+
+    .hero-counter-area .counter-item {
+        margin-bottom: 0;
+        padding: 20px 15px;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+}
+
+@media (max-width: 576px) {
+    .react-count-text {
+        font-size: 2.8rem;
+    }
+
+    .react-counter-wrap .counter-title {
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+    }
+
+    /* Adjust suffix size untuk mobile */
+    .react-count-text.plus::after,
+    .react-count-text.k-plus::after,
+    .react-count-text.percent::after {
+        font-size: 0.6em; /* Slightly smaller on mobile */
+    }
+}
+
+/* Animation untuk saat counter muncul */
+@keyframes counterSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.react-counter-wrap {
+    animation: counterSlideUp 0.6s ease forwards;
+}
+
+.react-counter-wrap:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.react-counter-wrap:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.react-counter-wrap:nth-child(3) {
+    animation-delay: 0.3s;
+}

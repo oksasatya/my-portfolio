@@ -20,13 +20,13 @@ export default function HeroArea() {
                 <div className="clienti-reviews">
                   <ul className="clienti-profile">
                     <li>
-                      <img className="img-fluid" src="/assets/images/stack/Java.png" alt="Java" />
+                      <img className="img-fluid" src="/assets/images/stack/java.png" alt="Java" />
                     </li>
                     <li>
                       <img className="img-fluid" src="/assets/images/stack/Go.png" alt="Go" />
                     </li>
                     <li>
-                      <img className="img-fluid" src="/assets/images/stack/Next-js.png" alt="Next.js" />
+                      <img className="img-fluid" src="/assets/images/stack/next-js.png" alt="Next.js" />
                     </li>
                   </ul>
                   <div className="reviews">

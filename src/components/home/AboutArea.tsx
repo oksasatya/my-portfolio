@@ -44,8 +44,8 @@ export default function AboutArea() {
 							</div>
 							<div className="hero-counter-area d-flex justify-content-between wow fadeInUp delay-0-4s">
 								{counter_data.map((item, i) => (
-									<div key={i} className="counter-item counter-text-wrap">
-                                        <span className={`count-text ${item.cls}`}>
+									<div key={i} className="counter-item react-counter-wrap">
+                                        <span className={`react-count-text ${item.cls}`}>
                                           <Count number={item.count}/>
                                         </span>
 										<span className="counter-title">{item.title}</span>
