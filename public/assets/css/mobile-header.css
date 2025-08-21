@@ -3,6 +3,15 @@
 /* Mobile responsive adjustments for logo positioning */
 @media only screen and (max-width: 991px) {
     /* Ensure positioning context */
+    .header-upper,
+    .header-inner {
+        position: relative;
+        min-height: 72px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
     .header-inner .row {
         display: block;
     }
@@ -12,19 +21,20 @@
         position: absolute;
         left: 50%;
         top: 50%;
-        transform: translate(-57%, -32%);
+        transform: translate(-50%, -50%);
         z-index: 10;
         text-align: center;
     }
 
     /* Make logo a bit larger on mobile */
     .logo {
-        width: 180px;
+        width: 200px;
         margin: 0 auto;
     }
     .logo img {
         width: 100%;
         height: auto;
+        display: block;
     }
 
     /* Pin hamburger in the top-right corner */
@@ -35,20 +45,12 @@
         transform: none;
         z-index: 11;
     }
-
-    .header-upper,
-    .header-inner {
-        min-height: 70px;
-        display: flex;
-        align-items: center;
-        width: 100%;
-    }
 }
 
 @media only screen and (max-width: 575px) {
     /* Slightly adjust sizes for very small screens */
     .logo {
-        width: 160px;
+        width: 170px;
     }
 
     .side-menu-icon {

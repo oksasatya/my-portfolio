@@ -5,6 +5,7 @@ import React, { useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation';
 import { animationCreate } from '@/utils/utils';
 import ScrollToTop from '@/components/common/ScrollToTop';
+import { pageview, GTM_ID } from '@/lib/gtag';
 
 import {
   ScrollSmoother,
@@ -21,6 +22,7 @@ export default function Wrapper({ children }: any) {
 
   const pathname = usePathname();
   const smootherRef = useRef<any | null>(null);
+  const hasTrackedInitialRef = useRef(false);
 
   useEffect(() => {
     // animation
@@ -29,6 +31,21 @@ export default function Wrapper({ children }: any) {
     }, 100);
 
     return () => clearTimeout(timer);
+  }, [pathname]);
+
+  // Fire GA4 page_view on route change; avoid duplicate initial when GTM is present
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const isInitial = !hasTrackedInitialRef.current;
+    if (isInitial) {
+      hasTrackedInitialRef.current = true;
+      // If using GTM, rely on its initial page_view; we'll handle only subsequent navigations
+      if (GTM_ID) return;
+    }
+
+    const url = window.location.pathname + window.location.search;
+    pageview(url, document.title);
   }, [pathname]);
 
   useEffect(() => {

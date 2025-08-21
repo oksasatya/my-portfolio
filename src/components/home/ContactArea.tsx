@@ -22,7 +22,7 @@ export default function ContactArea() {
         <div className="container">
           <div className="row">
             <div className="col-xl-12 col-lg-12">
-              <div className="section-title section-black-title wow fadeInUp delay-0-2s">
+              <div className="section-title text-white wow fadeInUp delay-0-2s">
                 <h2>Contact Me</h2>
               </div>
             </div>
@@ -36,7 +36,7 @@ export default function ContactArea() {
                     <i className="ri-map-pin-line"></i>
                   </span>
                   <h2>our office:</h2>
-                  <p>Jurain,Dhaka Bangladesh</p>
+                  <p>Dubai,United Emirates Arab</p>
                 </div>
 
 
@@ -45,7 +45,7 @@ export default function ContactArea() {
                     <i className="ri-headphone-line"></i>
                   </span>
                   <h2>contact number:</h2>
-                  <p>+1234321321</p>
+                  <p>+62818846228</p>
                 </div>
 
 
@@ -54,7 +54,7 @@ export default function ContactArea() {
                     <i className="ri-mail-line"></i>
                   </span>
                   <h2>Email us:</h2>
-                  <p>websitename@mail.com</p>
+                  <p>oksasatyaa@gmail.com</p>
                 </div>
 
 
@@ -62,10 +62,10 @@ export default function ContactArea() {
                   <h2>Socials</h2>
                   <div className="about-social">
                     <ul>
-                      <li><a target='_blank' href="https://facebook.com"><i className="ri-facebook-circle-fill"></i></a></li>
-                      <li><a target='_blank' href="https://twitter.com"><i className="ri-twitter-x-line"></i></a></li>
-                      <li><a target='_blank' href="https://linkedin.com"><i className="ri-linkedin-fill"></i></a></li>
-                      <li><a target='_blank' href="https://github.com/jamilrayhan10"><i className="ri-github-line"></i></a></li>
+                      <li><a target='_blank' href="https://www.facebook.com/oksastya/"><i className="ri-facebook-circle-fill"></i></a></li>
+                      {/*<li><a target='_blank' href="https://twitter.com"><i className="ri-twitter-x-line"></i></a></li>*/}
+                      <li><a target='_blank' href="https://www.linkedin.com/in/oksastya/"><i className="ri-linkedin-fill"></i></a></li>
+                      <li><a target='_blank' href="https://github.com/oksasatya"><i className="ri-github-line"></i></a></li>
                     </ul>
                   </div>
                 </div>

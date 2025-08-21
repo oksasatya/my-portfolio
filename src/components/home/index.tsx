@@ -1,13 +1,13 @@
 
 import React from 'react'
 import HeroArea from './HeroArea'
-import BrandArea from './BrandArea'
+// import BrandArea from './BrandArea'
 import AboutArea from './AboutArea'
 import ServiceArea from './ServiceArea'
 import HeaderOne from '@/layouts/headers/HeaderOne'
 import PortfolioArea from './PortfolioArea'
 import TestimonoalArea from './TestimonoalArea'
-import BlogArea from './BlogArea'
+// import BlogArea from './BlogArea'
 import ContactArea from './ContactArea'
 import FooterOne from '@/layouts/footers/FooterOne'
 
@@ -21,12 +21,12 @@ export default function Home() {
         <div id="smooth-content">
           <main>
             <HeroArea />
-            <BrandArea />
+            {/*<BrandArea />*/}
             <AboutArea />
             <ServiceArea />
             <PortfolioArea />
             <TestimonoalArea />
-            <BlogArea />
+            {/*<BlogArea />*/}
             <ContactArea />
           </main>
           <FooterOne />

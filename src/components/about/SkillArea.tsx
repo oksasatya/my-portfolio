@@ -20,50 +20,50 @@ export default function SkillArea() {
                   <div className="row">
                     <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                       <div className="skill-item wow fadeInUp delay-0-2s">
-                        <img src="assets/images/skills/skill1.png" alt="Skill" />
-                        <h5>Figma</h5>
+                        <img width="48" height="48" src="https://img.icons8.com/color/48/golang.png" alt="golang"/>
+                        <h5>GO</h5>
                       </div>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                       <div className="skill-item wow fadeInUp delay-0-3s">
-                        <img src="assets/images/skills/skill2.png" alt="Skill" />
-                        <h5>Tailwand</h5>
+                        <img width="50" height="50" src="https://img.icons8.com/color/50/java-coffee-cup-logo--v1.png" alt="java-coffee-cup-logo--v1"/>
+                        <h5>Java</h5>
                       </div>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                       <div className="skill-item wow fadeInUp delay-0-4s">
-                        <img src="assets/images/skills/skill3.png" alt="Skill" />
-                        <h5>Photoshop</h5>
+                        <img width="50" height="50" src="https://img.icons8.com/color/50/nextjs.png" alt="nextjs"/>
+                        <h5>Next Js</h5>
                       </div>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                       <div className="skill-item wow fadeInUp delay-0-5s">
-                        <img src="assets/images/skills/skill4.png" alt="Skill" />
-                        <h5>WordPress</h5>
+                        <img width="50" height="50" src="https://img.icons8.com/color/50/tailwind_css.png" alt="tailwind_css"/>
+                        <h5>Tailwind</h5>
                       </div>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                       <div className="skill-item wow fadeInUp delay-0-2s">
-                        <img src="assets/images/skills/skill5.png" alt="Skill" />
-                        <h5>Angular</h5>
+                        <img width="50" height="50" src="https://img.icons8.com/color/50/nuxt-jc.png" alt="nuxt-jc"/>
+                        <h5>Nuxt Js</h5>
                       </div>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                       <div className="skill-item wow fadeInUp delay-0-3s">
-                        <img src="assets/images/skills/skill6.png" alt="Skill" />
-                        <h5>Webflow</h5>
+                        <img width="50" height="50" src="https://img.icons8.com/windows/50/laravel.png" alt="laravel"/>
+                        <h5>Laravel</h5>
                       </div>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                       <div className="skill-item wow fadeInUp delay-0-4s">
-                        <img src="assets/images/skills/skill7.png" alt="Skill" />
+                        <img width="50" height="50" src="https://img.icons8.com/color/50/python--v1.png" alt="python--v1"/>
                         <h5>Python</h5>
                       </div>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                       <div className="skill-item wow fadeInUp delay-0-5s">
-                        <img src="assets/images/skills/skill8.png" alt="Skill" />
-                        <h5>Sketch</h5>
+                        <img width="48" height="48" src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/48/external-hypertext-preprocessor-a-widely-used-open-source-general-purpose-scripting-language-logo-color-tal-revivo.png" alt="external-hypertext-preprocessor-a-widely-used-open-source-general-purpose-scripting-language-logo-color-tal-revivo"/>
+                        <h5>Php</h5>
                       </div>
                     </div>
                   </div>
