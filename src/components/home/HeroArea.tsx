@@ -8,7 +8,7 @@ export default function HeroArea() {
           <div className="row">
             <div className="col-lg-12">
 
-              <div className="hero-content wow fadeInUp text-center delay-0-2s">
+              <div className="hero-content wow fadeInUp text-black text-center delay-0-2s">
                 <h1>Oksa Satya — Full-Stack Developer (Go, Java, Next.js)</h1>
               </div>
             </div>
