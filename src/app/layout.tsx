@@ -12,7 +12,10 @@ const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
 export const metadata: Metadata = {
     metadataBase: new URL(DOMAIN),
-    title: "Oksa Satya – Full Stack Developer (Golang, Laravel, Next.js)",
+    title: {
+        default: "Oksa Satya – Full Stack Developer (Golang, Laravel, Next.js)",
+        template: "%s – Oksa Satya",
+    },
     description:
         "Portfolio & resume of Oksa Satya, Full Stack Developer focused on backend (Golang, Laravel, Spring Boot, Next.js).",
     keywords: [
