@@ -1,4 +1,3 @@
-
 import React from 'react'
 
 export default function HeroArea() {
@@ -10,7 +9,7 @@ export default function HeroArea() {
             <div className="col-lg-12">
 
               <div className="hero-content wow fadeInUp text-center delay-0-2s">
-                <h2>Oksa Satya</h2>
+                <h1>Oksa Satya — Full-Stack Developer (Go, Java, Next.js)</h1>
               </div>
             </div>
           </div>
@@ -20,13 +19,13 @@ export default function HeroArea() {
                 <div className="clienti-reviews">
                   <ul className="clienti-profile">
                     <li>
-                      <img className="img-fluid" src="/assets/images/stack/java.png" alt="Java" />
+                      <img className="img-fluid" src="/assets/images/stack/java.png" alt="Java logo" />
                     </li>
                     <li>
-                      <img className="img-fluid" src="/assets/images/stack/Go.png" alt="Go" />
+                      <img className="img-fluid" src="/assets/images/stack/Go.png" alt="Go logo" />
                     </li>
                     <li>
-                      <img className="img-fluid" src="/assets/images/stack/next-js.png" alt="Next.js" />
+                      <img className="img-fluid" src="/assets/images/stack/next-js.png" alt="Next.js logo" />
                     </li>
                   </ul>
                   <div className="reviews">
@@ -38,7 +37,7 @@ export default function HeroArea() {
             </div>
             <div className="col-lg-6">
               <div className="hero-image">
-                <img src="/assets/images/about/me.jpg" alt="" />
+                <img src="/assets/images/about/me.jpg" alt="Oksa Satya profile" />
               </div>
 
             </div>
@@ -46,13 +45,13 @@ export default function HeroArea() {
               <div className="hero-content wow fadeInUp delay-0-4s">
                 <p>
                   I’m Oksa Satya — a Fullstack Developer with strong expertise in
-                  <strong>Java</strong>, <strong>Spring Boot</strong>, and backend development.
-                  I also actively work on projects using <strong>Go</strong> and modern
-                  frontend frameworks like <strong>Next.js</strong>.
-                  Currently, I’m building <strong>Nuvora</strong>, a SaaS project developed
+                  <strong> Java</strong>, <strong> Spring Boot</strong>, and backend development.
+                  I also actively work on projects using <strong> Go</strong> and modern
+                  frontend frameworks like <strong> Next.js</strong>.
+                  Currently, I’m building <strong> Nuvora</strong>, a SaaS project developed
                   with Go and Next.js, focused on delivering scalable and efficient web solutions.
                 </p>
-                <a className="theme-btn" href="">Get In Touch</a>
+                <a className="theme-btn" href="/contact">Get In Touch</a>
               </div>
             </div>
           </div>

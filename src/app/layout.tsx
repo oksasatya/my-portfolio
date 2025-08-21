@@ -11,98 +11,136 @@ const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID;
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
 export const metadata: Metadata = {
-    metadataBase: new URL(DOMAIN),
-    title: {
-        default: "Oksa Satya – Full Stack Developer (Golang, Laravel, Next.js)",
-        template: "%s – Oksa Satya",
+  metadataBase: new URL(DOMAIN),
+  title: {
+    default: "Oksa Satya – Full Stack Developer (Golang, Laravel, Next.js)",
+    template: "%s – Oksa Satya",
+  },
+  description:
+    "Portfolio & resume of Oksa Satya, Full Stack Developer focused on backend (Golang, Laravel, Spring Boot, Next.js).",
+  keywords: [
+    "Oksa Satya",
+    "Full Stack Developer",
+    "Backend Developer",
+    "Golang",
+    "Laravel",
+    "Spring Boot",
+    "Next.js",
+    "React",
+    "PostgreSQL",
+    "Docker",
+  ],
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/",
+      "id-ID": "/id",
     },
+  },
+  openGraph: {
+    title: "Oksa Satya – Full Stack Developer Portfolio",
     description:
-        "Portfolio & resume of Oksa Satya, Full Stack Developer focused on backend (Golang, Laravel, Spring Boot, Next.js).",
-    keywords: [
-        "Oksa Satya",
-        "Full Stack Developer",
-        "Backend Developer",
-        "Golang",
-        "Laravel",
-        "Spring Boot",
-        "Next.js",
-        "React",
-        "PostgreSQL",
-        "Docker",
-    ],
-    alternates: {
-        canonical: "/",
-        languages: {
-            "en-US": "/",
-            "id-ID": "/id",
-        },
-    },
-    openGraph: {
-        title: "Oksa Satya – Full Stack Developer Portfolio",
-        description:
-            "Explore projects, skills, and experience in Golang, Laravel, Spring Boot, and Next.js.",
-        url: DOMAIN,
-        siteName: "Oksa Satya Portfolio",
-        locale: "en_US",
-        type: "website",
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "Oksa Satya – Full Stack Developer Portfolio",
-        description:
-            "Backend-leaning full stack developer. Scalable APIs, microservices, clean architecture.",
-    },
+      "Explore projects, skills, and experience in Golang, Laravel, Spring Boot, and Next.js.",
+    url: DOMAIN,
+    siteName: "Oksa Satya Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Oksa Satya – Full Stack Developer Portfolio",
+    description:
+      "Backend-leaning full stack developer. Scalable APIs, microservices, clean architecture.",
+  },
 };
 
 export default function RootLayout({
-    children,
+  children,
 }: Readonly<{
-    children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-    return (
-        <html lang="en">
-        <head>
-            {/* Google Fonts */}
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" />
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Oksa Satya Portfolio",
+    url: DOMAIN,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${DOMAIN}/search?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  };
 
-            {/* Prefer GTM if provided; do not also load GA4 directly to avoid duplicate events */}
-            {GTM_ID && (
-                <Script id="gtm-base" strategy="afterInteractive">{`
+  const personLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Oksa Satya",
+    url: DOMAIN,
+    jobTitle: "Full Stack Developer",
+    sameAs: [
+      // add socials if available
+    ],
+  };
+
+  return (
+    <html lang="en">
+      <head>
+        {/* Google Fonts */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        />
+
+        {/* JSON-LD structured data */}
+        <Script
+          id="website-ld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <Script
+          id="person-ld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }}
+        />
+
+        {/* Prefer GTM if provided; do not also load GA4 directly to avoid duplicate events */}
+        {GTM_ID && (
+          <Script id="gtm-base" strategy="afterInteractive">{`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','${GTM_ID}');
           `}</Script>
-            )}
+        )}
 
-            {/* If no GTM, load GA4 directly and disable automatic page_view */}
-            {!GTM_ID && GA4_ID && (
-                <>
-                    <Script
-                        src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
-                        strategy="afterInteractive"
-                    />
-                    <Script id="gtag-init" strategy="afterInteractive">{`
+        {/* If no GTM, load GA4 directly and disable automatic page_view */}
+        {!GTM_ID && GA4_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="gtag-init" strategy="afterInteractive">{`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', '${GA4_ID}', { send_page_view: false });
             `}</Script>
-                </>
-            )}
-        </head>
-        <body>
+          </>
+        )}
+      </head>
+      <body>
         {/* GTM noscript iframe */}
         {GTM_ID && (
-            <noscript>
-                <iframe
-                    src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-                    height="0"
-                    width="0"
-                    style={{ display: 'none', visibility: 'hidden' }}
-                />
-            </noscript>
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+            />
+          </noscript>
         )}
 
         <Preloader />
@@ -130,7 +168,7 @@ export default function RootLayout({
 
         {/* finally call script.js via client component */}
         <TemplateScripts />
-        </body>
-        </html>
-    );
+      </body>
+    </html>
+  );
 }
