@@ -20,17 +20,17 @@ export default function TestimonialArea() {
 								<div className="author">
 									<img
 										src="/assets/images/testimonials/author.jpeg"
-										alt="Ahmad R."
+										alt="Rizky Aditya"
 									/>
 								</div>
 								<div className="text">
-									“Working with Oksa was seamless. He delivered a robust Java/Go backend,
-									clean documentation, and integrated third-party services flawlessly.
-									His calm problem-solving approach kept our timeline on track.”
+									"Saya sudah kerja sama Oksa buat project company profile kami. Hasilnya
+									melebihi ekspektasi — desainnya bersih, loadingnya cepat, dan beliau
+									responsif banget kalau ada revisi. Nggak perlu nunggu lama buat feedback."
 								</div>
 								<div className="testi-des">
-									<h5>Ahmad R.</h5>
-									<span>Project Manager – Dubai Tech Solutions</span>
+									<h5>Rizky Aditya</h5>
+									<span>Owner – CV Totabuan Mandiri</span>
 								</div>
 							</div>
 						</div>
@@ -41,18 +41,17 @@ export default function TestimonialArea() {
 								<div className="author">
 									<img
 										src="/assets/images/testimonials/author1.jpeg"
-										alt="Sarah K."
+										alt="Sari Wulandari"
 									/>
 								</div>
 								<div className="text">
-									“Oksa built our e-commerce platform with Next.js and Laravel, optimized
-									performance, and integrated payment/logistics APIs end-to-end. The result
-									was fast, stable, and easy to maintain.”
-									_
+									"Platform online kami dibangun dari nol sama Oksa. Mulai dari backend,
+									database, sampai tampilan depannya. Yang paling saya suka, beliau bisa
+									jelasin proses teknisnya dengan bahasa yang mudah kami mengerti."
 								</div>
 								<div className="testi-des">
-									<h5>Sarah K.</h5>
-									<span>Founder – Ecom Startup</span>
+									<h5>Sari Wulandari</h5>
+									<span>Direktur – Rahan Mancar Online</span>
 								</div>
 							</div>
 						</div>
@@ -63,17 +62,17 @@ export default function TestimonialArea() {
 								<div className="author">
 									<img
 										src="/assets/images/testimonials/author2.jpeg"
-										alt="Michael B."
+										alt="Doni Pratama"
 									/>
 								</div>
 								<div className="text">
-									“As a teammate, Oksa is dependable and methodical. His QA background shows
-									in how he writes tests and prevents regressions. Code reviews are thorough
-									and always constructive.”
+									"Dashboard yang Oksa buat beneran ngebantu tim kami monitor data harian.
+									Sebelumnya kami masih manual pakai spreadsheet. Sekarang semua real-time
+									dan jauh lebih efisien."
 								</div>
 								<div className="testi-des">
-									<h5>Michael B.</h5>
-									<span>Senior Developer – Alva Auto</span>
+									<h5>Doni Pratama</h5>
+									<span>Manajer Operasional – Helixio</span>
 								</div>
 							</div>
 						</div>
@@ -84,17 +83,17 @@ export default function TestimonialArea() {
 								<div className="author">
 									<img
 										src="/assets/images/testimonials/author3.jpeg"
-										alt="Eliana T."
+										alt="Mega Lestari"
 									/>
 								</div>
 								<div className="text">
-									“Great communication and ownership. Oksa translated product requirements
-									into a clear technical roadmap and kept stakeholders aligned through each
-									milestone.”
+									"Aplikasi absensi yang dibuat Oksa langsung kami pakai di kantor. Simpel,
+									nggak ribet, dan karyawan kami yang kurang familiar teknologi pun bisa
+									langsung pakai tanpa training panjang."
 								</div>
 								<div className="testi-des">
-									<h5>Eliana T.</h5>
-									<span>Product Manager – Fintech App</span>
+									<h5>Mega Lestari</h5>
+									<span>HRD Manager – Dexova Group</span>
 								</div>
 							</div>
 						</div>
@@ -105,17 +104,17 @@ export default function TestimonialArea() {
 								<div className="author">
 									<img
 										src="/assets/images/testimonials/author4.jpeg"
-										alt="Henry C."
+										alt="Hendra Saputra"
 									/>
 								</div>
 								<div className="text">
-									“We relied on Oksa for DevOps as well—Docker, CI/CD, and GKE. Deployments
-									became predictable, our error rate dropped, and observability improved
-									significantly.”
+									"Oksa orangnya jujur soal timeline dan biaya. Nggak ada hidden cost,
+									nggak ada janji kosong. Kalau ada kendala teknis, langsung dikasih tau
+									solusinya. Profesional banget."
 								</div>
 								<div className="testi-des">
-									<h5>Henry C.</h5>
-									<span>CTO – SaaS Platform</span>
+									<h5>Hendra Saputra</h5>
+									<span>Co-founder – Trofi Group</span>
 								</div>
 							</div>
 						</div>

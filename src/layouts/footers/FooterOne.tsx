@@ -1,4 +1,3 @@
-
 import React from 'react'
 
 export default function FooterOne() {
@@ -9,8 +8,8 @@ export default function FooterOne() {
           <div className="row">
             <div className="col-lg-12">
               <div className="footer-top">
-                <p> Have a project in mind?</p>
-                <h2><a href="mailto:oksasatyaa@gmail.com">lets work</a></h2>
+                <p>Punya proyek yang ingin dikerjakan?</p>
+                <h2><a href="mailto:oksasatyaa@gmail.com">ayo kerja sama</a></h2>
               </div>
             </div>
           </div>
@@ -19,7 +18,7 @@ export default function FooterOne() {
               <p className="copy-left-text">Oksa Satya®</p>
             </div>
             <div className="col-lg-6 col-sm-6">
-              <p className="copy-right-text"> © Copyright {new Date().getFullYear()}</p>
+              <p className="copy-right-text">© Hak Cipta {new Date().getFullYear()}</p>
             </div>
           </div>
         </div>

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: "%s – Oksa Satya",
   },
   description:
-    "Portfolio & resume of Oksa Satya, Full Stack Developer focused on backend (Golang, Laravel, Spring Boot, Next.js).",
+    "Portfolio Oksa Satya, Full Stack Developer berpengalaman dalam backend (Golang, Laravel, Spring Boot, Next.js). Membangun aplikasi web skalabel, API, dan platform SaaS.",
   keywords: [
     "Oksa Satya",
     "Full Stack Developer",
@@ -29,28 +29,30 @@ export const metadata: Metadata = {
     "React",
     "PostgreSQL",
     "Docker",
+    "Jasa Pembuatan Website",
+    "Developer Indonesia",
+    "Freelance Developer",
   ],
   alternates: {
     canonical: "/",
     languages: {
-      "en-US": "/",
-      "id-ID": "/id",
+      "id-ID": "/",
     },
   },
   openGraph: {
-    title: "Oksa Satya – Full Stack Developer Portfolio",
+    title: "Oksa Satya – Portfolio Full Stack Developer",
     description:
-      "Explore projects, skills, and experience in Golang, Laravel, Spring Boot, and Next.js.",
+      "Lihat proyek, keahlian, dan pengalaman saya dalam Golang, Laravel, Spring Boot, dan Next.js.",
     url: DOMAIN,
-    siteName: "Oksa Satya Portfolio",
-    locale: "en_US",
+    siteName: "Portfolio Oksa Satya",
+    locale: "id_ID",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Oksa Satya – Full Stack Developer Portfolio",
+    title: "Oksa Satya – Portfolio Full Stack Developer",
     description:
-      "Backend-leaning full stack developer. Scalable APIs, microservices, clean architecture.",
+      "Developer full-stack dengan fokus backend. API skalabel, microservices, arsitektur bersih.",
   },
 };
 
@@ -62,7 +64,7 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Oksa Satya Portfolio",
+    name: "Portfolio Oksa Satya",
     url: DOMAIN,
     potentialAction: {
       "@type": "SearchAction",
@@ -83,7 +85,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en">
+    <html lang="id">
       <head>
         {/* Google Fonts */}
         <link

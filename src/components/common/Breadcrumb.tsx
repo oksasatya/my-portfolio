@@ -1,4 +1,3 @@
-
 import React from 'react'
 
 export default function Breadcrumb({ title, style_2, style_3, style_4 }: any) {
@@ -10,13 +9,13 @@ export default function Breadcrumb({ title, style_2, style_3, style_4 }: any) {
             <div className="col-lg-12">
               <h2>{title}</h2>
               {style_2 &&
-                <p>A Collection of My Latest Works and Achievements: Discover the Projects that Define My Passion and Skills</p>
+                <p>Kumpulan karya dan pencapaian terbaru saya: temukan proyek-proyek yang mencerminkan passion dan keahlian saya dalam membangun solusi digital.</p>
               }
               {style_3 &&
-                <p>Fill out the form below to get in touch with me. I am always excited to hear about new opportunities and I will do my best to respond to your inquiry within 24 hours.</p>
+                <p>Isi formulir di bawah untuk menghubungi saya. Saya selalu antusias mendengar peluang baru dan akan berusaha merespons dalam 24 jam.</p>
               }
               {style_4 &&
-                <p>Stories, Advice, and Inspiration for the Curious Mind</p>
+                <p>Cerita, tips, dan inspirasi untuk pikiran yang selalu ingin tahu</p>
               }
             </div>
           </div>

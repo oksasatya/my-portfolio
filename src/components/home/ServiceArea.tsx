@@ -8,70 +8,60 @@ export default function ServiceArea() {
 					<div className="row">
 						<div className="col-xl-12 col-lg-12">
 							<div className="section-title section-black-title wow fadeInUp delay-0-2s">
-								<h2>Services</h2>
+								<h2>Layanan</h2>
 							</div>
 						</div>
 					</div>
-					
 					<div className="row">
-						{/* 01 - Full-Stack Development */}
+						{/* 01 */}
 						<div className="col-lg-8 col-md-7">
 							<div className="service-item wow fadeInUp delay-0-2s">
 								<i className="ri-code-s-slash-line"></i>
 								<h5>01</h5>
-								<h4>Full-Stack Development</h4>
+								<h4>Pengembangan Full-Stack</h4>
 								<p>
-									Design and develop end-to-end web applications using <b>Java/JSP
-									(Spring)</b>, <b>Laravel/PHP</b>, <b>Go</b>, and <b>Next.js</b>.
-									Focused on building scalable solutions with clean architecture and maintainable
-									codebase.
+									Merancang dan mengembangkan aplikasi web end-to-end menggunakan <b>Java/JSP (Spring)</b>,
+									<b>Laravel/PHP</b>, <b>Go</b>, dan <b>Next.js</b>.
+									Berfokus pada solusi skalabel dengan arsitektur bersih dan kode yang mudah dipelihara.
 								</p>
 							</div>
 						</div>
-						
-						{/* 02 - API & Integrations */}
+						{/* 02 */}
 						<div className="col-lg-4 col-md-5">
 							<div className="service-item wow fadeInUp delay-0-4s">
 								<i className="ri-plug-line"></i>
 								<h5>02</h5>
-								<h4>API & System Integrations</h4>
+								<h4>API & Integrasi Sistem</h4>
 								<p>
-									Experienced in integrating third-party services such as <b>payment gateways</b>, <b>HRIS
-									(Mekari Talenta)</b>,
-									<b>logistics APIs</b>, and <b>email services</b>. Ensuring reliable communication
-									through
-									secure API design, webhooks, and monitoring.
+									Berpengalaman mengintegrasikan layanan pihak ketiga seperti <b>payment gateway</b>,
+									<b>HRIS (Mekari Talenta)</b>, <b>API logistik</b>, dan <b>layanan email</b>.
+									Memastikan komunikasi yang andal melalui desain API aman, webhook, dan monitoring.
 								</p>
 							</div>
 						</div>
-						
-						{/* 03 - Cloud & DevOps */}
+						{/* 03 */}
 						<div className="col-lg-4 col-md-5">
 							<div className="service-item wow fadeInUp delay-0-6s">
 								<i className="ri-cloud-line"></i>
 								<h5>03</h5>
 								<h4>Cloud & DevOps</h4>
 								<p>
-									Deployment and infrastructure management on <b>Vercel</b>, <b>Railway</b>, and <b>Google
-									Kubernetes Engine</b>.
-									Skilled in <b>Docker</b>, CI/CD pipelines, and cloud storage solutions such as <b>Google
-									Cloud Storage</b>.
+									Deployment dan manajemen infrastruktur di <b>Vercel</b>, <b>Railway</b>, dan
+									<b>Google Kubernetes Engine</b>. Mahir dalam <b>Docker</b>, pipeline CI/CD,
+									dan solusi penyimpanan cloud seperti <b>Google Cloud Storage</b>.
 								</p>
 							</div>
 						</div>
-						
-						{/* 04 - Performance & Security */}
+						{/* 04 */}
 						<div className="col-lg-8 col-md-7">
 							<div className="service-item wow fadeInUp delay-0-8s">
 								<i className="ri-shield-check-line"></i>
 								<h5>04</h5>
-								<h4>Performance & Security</h4>
+								<h4>Performa & Keamanan</h4>
 								<p>
-									Strong focus on application performance optimization (caching, database tuning,
-									Redis) and
-									implementing security best practices including <b>JWT/OAuth2 authentication</b>,
-									input validation, and rate limiting. Quality-driven approach from prior QA
-									background.
+									Fokus kuat pada optimasi performa aplikasi (caching, database tuning, Redis)
+									dan penerapan praktik keamanan terbaik termasuk <b>autentikasi JWT/OAuth2</b>,
+									validasi input, dan rate limiting. Pendekatan berorientasi kualitas dari latar belakang QA.
 								</p>
 							</div>
 						</div>

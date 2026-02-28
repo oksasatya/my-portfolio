@@ -1,9 +1,7 @@
-
 "use client"
 import React, { useState } from 'react'
 
 export default function ContactArea() {
-
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
@@ -11,10 +9,8 @@ export default function ContactArea() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    // Add form submission logic here
     console.log('Form submitted:', { name, email, subject, message });
   };
-
 
   return (
     <>
@@ -23,72 +19,62 @@ export default function ContactArea() {
           <div className="row">
             <div className="col-xl-12 col-lg-12">
               <div className="section-title text-white wow fadeInUp delay-0-2s">
-                <h2>Contact Me</h2>
+                <h2>Hubungi Saya</h2>
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-lg-4">
-              <div className="contact-content-part  wow fadeInUp delay-0-2s">
-
+              <div className="contact-content-part wow fadeInUp delay-0-2s">
                 <div className="single-contact wow fadeInUp" data-wow-delay=".2s">
                   <span className="circle-btn">
                     <i className="ri-map-pin-line"></i>
                   </span>
-                  <h2>our office:</h2>
-                  <p>Dubai,United Emirates Arab</p>
+                  <h2>Lokasi:</h2>
+                  <p>Dubai, Uni Emirat Arab</p>
                 </div>
-
-
                 <div className="single-contact wow fadeInUp" data-wow-delay=".4s">
                   <span className="circle-btn">
                     <i className="ri-headphone-line"></i>
                   </span>
-                  <h2>contact number:</h2>
+                  <h2>Nomor Telepon:</h2>
                   <p>+62818846228</p>
                 </div>
-
-
                 <div className="single-contact wow fadeInUp" data-wow-delay=".6s">
                   <span className="circle-btn">
                     <i className="ri-mail-line"></i>
                   </span>
-                  <h2>Email us:</h2>
+                  <h2>Email:</h2>
                   <p>oksasatyaa@gmail.com</p>
                 </div>
-
-
                 <div className="single-contact wow fadeInUp" data-wow-delay=".6s">
-                  <h2>Socials</h2>
+                  <h2>Media Sosial</h2>
                   <div className="about-social">
                     <ul>
-                      <li><a target='_blank' href="https://www.facebook.com/oksastya/"><i className="ri-facebook-circle-fill"></i></a></li>
-                      {/*<li><a target='_blank' href="https://twitter.com"><i className="ri-twitter-x-line"></i></a></li>*/}
-                      <li><a target='_blank' href="https://www.linkedin.com/in/oksastya/"><i className="ri-linkedin-fill"></i></a></li>
-                      <li><a target='_blank' href="https://github.com/oksasatya"><i className="ri-github-line"></i></a></li>
+                      <li><a target="_blank" href="https://www.facebook.com/oksastya/"><i className="ri-facebook-circle-fill"></i></a></li>
+                      <li><a target="_blank" href="https://www.linkedin.com/in/oksastya/"><i className="ri-linkedin-fill"></i></a></li>
+                      <li><a target="_blank" href="https://github.com/oksasatya"><i className="ri-github-line"></i></a></li>
                     </ul>
                   </div>
                 </div>
-
               </div>
-            </div> 
-
+            </div>
             <div className="col-lg-8">
               <div className="contact-form contact-form-area wow fadeInUp delay-0-4s">
                 <form id="contactForm" className="contact-form" onSubmit={handleSubmit}>
                   <div className="row">
                     <div className="col-md-6">
                       <div className="form-group">
-                        <label htmlFor="name">Full Name</label>
+                        <label htmlFor="name">Nama Lengkap</label>
                         <input
                           type="text"
                           id="name"
                           className="form-control"
                           value={name}
                           onChange={(e) => setName(e.target.value)}
-                          placeholder="Steve Milner"
+                          placeholder="Budi Santoso"
                           required
-                          data-error="Please enter your Name"
+                          data-error="Masukkan nama Anda"
                         />
                         <label htmlFor="name" className="for-icon"><i className="far fa-user"></i></label>
                         <div className="help-block with-errors"></div>
@@ -96,16 +82,16 @@ export default function ContactArea() {
                     </div>
                     <div className="col-md-6">
                       <div className="form-group">
-                        <label htmlFor="email">Email Address</label>
+                        <label htmlFor="email">Alamat Email</label>
                         <input
                           type="email"
                           id="email"
                           className="form-control"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          placeholder="hello@websitename.com"
+                          placeholder="halo@namaanda.com"
                           required
-                          data-error="Please enter your Email"
+                          data-error="Masukkan email Anda"
                         />
                         <label htmlFor="email" className="for-icon"><i className="far fa-envelope"></i></label>
                         <div className="help-block with-errors"></div>
@@ -113,16 +99,16 @@ export default function ContactArea() {
                     </div>
                     <div className="col-md-12">
                       <div className="form-group">
-                        <label htmlFor="subject">Subject</label>
+                        <label htmlFor="subject">Subjek</label>
                         <input
                           type="text"
                           id="subject"
                           className="form-control"
                           value={subject}
                           onChange={(e) => setSubject(e.target.value)}
-                          placeholder="Your Subject"
+                          placeholder="Subjek pesan Anda"
                           required
-                          data-error="Please enter your Subject"
+                          data-error="Masukkan subjek pesan"
                         />
                         <label htmlFor="subject" className="for-icon"><i className="far fa-user"></i></label>
                         <div className="help-block with-errors"></div>
@@ -130,7 +116,7 @@ export default function ContactArea() {
                     </div>
                     <div className="col-md-12">
                       <div className="form-group">
-                        <label htmlFor="message">Your Message</label>
+                        <label htmlFor="message">Pesan Anda</label>
                         <textarea
                           name="message"
                           id="message"
@@ -138,9 +124,9 @@ export default function ContactArea() {
                           rows={4}
                           value={message}
                           onChange={(e) => setMessage(e.target.value)}
-                          placeholder="Write Your message"
+                          placeholder="Tulis pesan Anda di sini"
                           required
-                          data-error="Please Write your Message"
+                          data-error="Tulis pesan Anda"
                         ></textarea>
                         <div className="help-block with-errors"></div>
                       </div>
@@ -148,24 +134,22 @@ export default function ContactArea() {
                     <div className="col-md-12">
                       <div className="form-group mb-0">
                         <button type="submit" className="theme-btn">
-                          Send Me Message <i className="ri-mail-line"></i>
+                          Kirim Pesan <i className="ri-mail-line"></i>
                         </button>
                         <div id="msgSubmit" className="hidden"></div>
                       </div>
                     </div>
                     <div className="col-md-12 text-center">
-                      <p className="input-success">We have received your mail, We will get back to you soon!</p>
-                      <p className="input-error">Sorry, Message could not send! Please try again.</p>
+                      <p className="input-success">Pesan Anda telah diterima, kami akan segera menghubungi Anda!</p>
+                      <p className="input-error">Maaf, pesan gagal terkirim! Silakan coba lagi.</p>
                     </div>
                   </div>
                 </form>
               </div>
             </div>
-
           </div>
         </div>
       </section>
-
     </>
   )
 }

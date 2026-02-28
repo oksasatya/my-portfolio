@@ -8,38 +8,37 @@ interface DataType {
 		title: string;
 	}[];
 }
-// menu data
 const menu_data: DataType[] = [
 	{
 		id: 1,
-		title: "Home",
+		title: "Beranda",
 		link: "/",
 		has_dropdown: false,
 	},
 	{
 		id: 2,
-		title: "About",
+		title: "Tentang",
 		link: "/about",
 		has_dropdown: false,
 	},
 	{
 		id: 3,
-		title: "services",
+		title: "Layanan",
 		link: "/service",
 		has_dropdown: false,
 	},
 	{
 		id: 4,
-		title: "Projects",
+		title: "Proyek",
 		link: "#",
 		has_dropdown: true,
 		sub_menus: [
-			{ link: "/projects", title: "Projects List" },
+			{ link: "/projects", title: "Daftar Proyek" },
 		],
 	},
 	{
 		id: 6,
-		title: "Contact",
+		title: "Kontak",
 		link: "/contact",
 		has_dropdown: false,
 	},
