@@ -346,7 +346,7 @@ export default function PortfolioArea() {
 			<style>{`
 				@media (max-width: 640px) {
 					.timeline-line-desktop { left: 16px !important; }
-					.timeline-row { flex-direction: column !important; gap: 8px !important; border-left: 2px solid rgba(167,139,250,0.2); padding-left: 12px; }
+					.timeline-row { flex-direction: column !important; gap: 8px !important; border-left: 2px solid rgba(167,139,250,0.2) !important; padding-left: 12px !important; }
 					.timeline-year-col { width: auto !important; text-align: left !important; padding-left: 0 !important; }
 					.timeline-dot-col { display: none !important; }
 					.timeline-card { flex: 0 0 100% !important; max-width: 100% !important; min-width: 0 !important; }
