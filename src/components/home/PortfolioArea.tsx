@@ -256,6 +256,7 @@ export default function PortfolioArea() {
 										{entry.projects.map((item, idx) => (
 											<div
 												key={item.id}
+												className="timeline-card"
 												onClick={() => handleImagePopup(startIndex + idx)}
 												style={{
 													flex: '0 0 calc(50% - 8px)',
@@ -345,9 +346,11 @@ export default function PortfolioArea() {
 			<style>{`
 				@media (max-width: 640px) {
 					.timeline-line-desktop { left: 16px !important; }
-					.timeline-row { flex-direction: column !important; gap: 8px !important; }
-					.timeline-year-col { width: auto !important; text-align: left !important; padding-left: 36px !important; }
+					.timeline-row { flex-direction: column !important; gap: 8px !important; border-left: 2px solid rgba(167,139,250,0.2) !important; padding-left: 12px !important; }
+					.timeline-year-col { width: auto !important; text-align: left !important; padding-left: 0 !important; }
 					.timeline-dot-col { display: none !important; }
+					.timeline-card { flex: 0 0 100% !important; max-width: 100% !important; min-width: 0 !important; }
+					.timeline-year-col span { display: inline-block !important; background: rgba(167,139,250,0.1) !important; border: 1px solid rgba(167,139,250,0.3) !important; border-radius: 20px !important; padding: 2px 12px !important; font-size: 13px !important; color: #a78bfa !important; letter-spacing: 0 !important; }
 				}
 			`}</style>
 
