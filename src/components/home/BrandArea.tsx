@@ -34,12 +34,12 @@ export default function BrandArea() {
               <div className="company-list">
                 <div className="scroller" data-direction="left" data-speed="slow">
                   <div className="scroller__inner">
-                    <img src="assets/images/client-logos/partner1.png" alt="Company" />
-                    <img src="assets/images/client-logos/partner2.png" alt="Company" />
-                    <img src="assets/images/client-logos/partner3.png" alt="Company" />
-                    <img src="assets/images/client-logos/partner4.png" alt="Company" />
-                    <img src="assets/images/client-logos/partner5.png" alt="Company" />
-                    <img src="assets/images/client-logos/partner1.png" alt="Company" />
+                    <img src="/assets/images/client-logos/partner1.png" alt="Company" />
+                    <img src="/assets/images/client-logos/partner2.png" alt="Company" />
+                    <img src="/assets/images/client-logos/partner3.png" alt="Company" />
+                    <img src="/assets/images/client-logos/partner4.png" alt="Company" />
+                    <img src="/assets/images/client-logos/partner5.png" alt="Company" />
+                    <img src="/assets/images/client-logos/partner1.png" alt="Company" />
                   </div>
                 </div>
               </div>

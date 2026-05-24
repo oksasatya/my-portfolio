@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const raw = process.env.NEXT_PUBLIC_SITE_URL || 'https://example.com';
+  const raw = process.env.NEXT_PUBLIC_SITE_URL || 'https://oksasatya.dev';
   const site = raw.replace(/\/$/, '');
 
   const paths = [
@@ -10,7 +10,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/contact',
     '/projects',
     '/service',
-    '/single-project',
   ];
 
   const now = new Date();

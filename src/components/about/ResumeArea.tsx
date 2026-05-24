@@ -8,7 +8,7 @@ export default function ResumeArea() {
             {/* Header */}
             <header className="row">
               <div className="col-12">
-                <h1 className="mb-2 text-black">Resume</h1>
+                <h2 className="mb-2 text-black">Resume</h2>
                 <p className="text-muted">
                   Full Stack Developer with a strong backend focus—building secure, fast, and maintainable APIs.
                 </p>

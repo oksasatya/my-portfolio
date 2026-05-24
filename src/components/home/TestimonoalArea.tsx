@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 
 export default function TestimonialArea() {
 	return (
@@ -12,15 +13,17 @@ export default function TestimonialArea() {
 							</div>
 						</div>
 					</div>
-					
+
 					<div className="row">
 						{/* 1 */}
 						<div className="col-lg-6 col-md-6">
 							<div className="testimonial-item wow fadeInUp delay-0-2s">
 								<div className="author">
-									<img
+									<Image
 										src="/assets/images/testimonials/author.jpeg"
 										alt="Rizky Aditya"
+										width={80}
+										height={80}
 									/>
 								</div>
 								<div className="text">
@@ -34,14 +37,16 @@ export default function TestimonialArea() {
 								</div>
 							</div>
 						</div>
-						
+
 						{/* 2 */}
 						<div className="col-lg-6 col-md-6">
 							<div className="testimonial-item wow fadeInUp delay-0-4s">
 								<div className="author">
-									<img
+									<Image
 										src="/assets/images/testimonials/author1.jpeg"
 										alt="Sari Wulandari"
+										width={80}
+										height={80}
 									/>
 								</div>
 								<div className="text">
@@ -55,14 +60,16 @@ export default function TestimonialArea() {
 								</div>
 							</div>
 						</div>
-						
+
 						{/* 3 */}
 						<div className="col-lg-4 col-md-6">
 							<div className="testimonial-item wow fadeInUp delay-0-6s">
 								<div className="author">
-									<img
+									<Image
 										src="/assets/images/testimonials/author2.jpeg"
 										alt="Doni Pratama"
+										width={80}
+										height={80}
 									/>
 								</div>
 								<div className="text">
@@ -76,14 +83,16 @@ export default function TestimonialArea() {
 								</div>
 							</div>
 						</div>
-						
+
 						{/* 4 */}
 						<div className="col-lg-4 col-md-6">
 							<div className="testimonial-item wow fadeInUp delay-0-8s">
 								<div className="author">
-									<img
+									<Image
 										src="/assets/images/testimonials/author3.jpeg"
 										alt="Mega Lestari"
+										width={80}
+										height={80}
 									/>
 								</div>
 								<div className="text">
@@ -97,14 +106,16 @@ export default function TestimonialArea() {
 								</div>
 							</div>
 						</div>
-						
+
 						{/* 5 */}
 						<div className="col-lg-4 col-md-6">
 							<div className="testimonial-item wow fadeInUp delay-0-9s">
 								<div className="author">
-									<img
+									<Image
 										src="/assets/images/testimonials/author4.jpeg"
 										alt="Hendra Saputra"
+										width={80}
+										height={80}
 									/>
 								</div>
 								<div className="text">
@@ -119,7 +130,7 @@ export default function TestimonialArea() {
 							</div>
 						</div>
 					</div>
-				
+
 				</div>
 			</section>
 		</>

@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 
 export default function HeroArea() {
   return (
@@ -18,13 +19,31 @@ export default function HeroArea() {
                 <div className="clienti-reviews">
                   <ul className="clienti-profile">
                     <li>
-                      <img className="img-fluid" src="/assets/images/stack/java.png" alt="Java logo" />
+                      <Image
+                        className="img-fluid"
+                        src="/assets/images/stack/java.png"
+                        alt="Java logo"
+                        width={40}
+                        height={40}
+                      />
                     </li>
                     <li>
-                      <img className="img-fluid" src="/assets/images/stack/Go.png" alt="Go logo" />
+                      <Image
+                        className="img-fluid"
+                        src="/assets/images/stack/Go.png"
+                        alt="Go logo"
+                        width={40}
+                        height={40}
+                      />
                     </li>
                     <li>
-                      <img className="img-fluid" src="/assets/images/stack/next-js.png" alt="Next.js logo" />
+                      <Image
+                        className="img-fluid"
+                        src="/assets/images/stack/next-js.png"
+                        alt="Next.js logo"
+                        width={40}
+                        height={40}
+                      />
                     </li>
                   </ul>
                   <div className="reviews">
@@ -36,7 +55,15 @@ export default function HeroArea() {
             </div>
             <div className="col-lg-6">
               <div className="hero-image">
-                <img src="/assets/images/about/me.jpg" alt="Oksa Satya" />
+                <Image
+                  src="/assets/images/about/me.jpg"
+                  alt="Oksa Satya — Full-Stack Developer"
+                  width={600}
+                  height={600}
+                  priority
+                  sizes="(max-width: 768px) 100vw, 600px"
+                  style={{ width: '100%', height: 'auto' }}
+                />
               </div>
             </div>
             <div className="col-lg-3 pt-30">

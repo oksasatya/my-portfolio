@@ -20,7 +20,7 @@ export default function PostboxArea({setIsVideoOpen}: any) {
                 <article className="postbox__item format-image mb-50 transition-3">
                   <div className="postbox__thumb w-img">
                     <Link href="/blog-details">
-                      <img src="assets/images/blog/blog1.jpg" alt="" />
+                      <img src="/assets/images/blog/blog1.jpg" alt="" />
                     </Link>
                   </div>
                   <div className="postbox__content">
@@ -49,7 +49,7 @@ export default function PostboxArea({setIsVideoOpen}: any) {
                 <article className="postbox__item format-video mb-50 transition-3">
                   <div className="postbox__thumb postbox__video w-img p-relative">
                     <Link href="/blog-details">
-                      <img src="assets/images/blog/blog2.jpg" alt="" />
+                      <img src="/assets/images/blog/blog2.jpg" alt="" />
                     </Link>
                     <a onClick={() => setIsVideoOpen(true)} style={{ cursor: "pointer" }} className="play-btn pulse-btn popup-video"><i className="fas fa-play"></i></a>
                   </div>
@@ -116,13 +116,13 @@ export default function PostboxArea({setIsVideoOpen}: any) {
                   className="postbox__thumb postbox__slider swiper-container w-img p-relative">
                     
                       <SwiperSlide className="postbox__slider-item swiper-slide">
-                        <img src="assets/images/blog/blog1.jpg" alt="" />
+                        <img src="/assets/images/blog/blog1.jpg" alt="" />
                       </SwiperSlide>
                       <SwiperSlide className="postbox__slider-item swiper-slide">
-                        <img src="assets/images/blog/blog2.jpg" alt="" />
+                        <img src="/assets/images/blog/blog2.jpg" alt="" />
                       </SwiperSlide>
                       <SwiperSlide className="postbox__slider-item swiper-slide">
-                        <img src="assets/images/blog/blog3.jpg" alt="" />
+                        <img src="/assets/images/blog/blog3.jpg" alt="" />
                       </SwiperSlide>
                    
                     <div className="postbox__nav">
@@ -213,7 +213,7 @@ export default function PostboxArea({setIsVideoOpen}: any) {
                   <div className="sidebar__widget-content">
                     <div className="sidebar__author">
                       <div className="sidebar__author-thumb">
-                        <img src="assets/images/blog/author.jpg" alt="" />
+                        <img src="/assets/images/blog/author.jpg" alt="" />
                       </div>
                       <div className="sidebar__author-content">
                         <h3 className="sidebar__author-title">Colene Landin</h3>
@@ -233,7 +233,7 @@ export default function PostboxArea({setIsVideoOpen}: any) {
                     <div className="sidebar__post">
                       <div className="rc__post d-flex align-items-center">
                         <div className="rc__post-thumb">
-                          <Link href="/blog-details"><img src="assets/images/blog/blog-sm-1.jpg" alt="" /></Link>
+                          <Link href="/blog-details"><img src="/assets/images/blog/blog-sm-1.jpg" alt="" /></Link>
                         </div>
                         <div className="rc__post-content">
                           <h3 className="rc__post-title">
@@ -251,7 +251,7 @@ export default function PostboxArea({setIsVideoOpen}: any) {
                       </div>
                       <div className="rc__post d-flex align-items-center">
                         <div className="rc__post-thumb">
-                          <Link href="/blog-details"><img src="assets/images/blog/blog-sm-2.jpg" alt="" /></Link>
+                          <Link href="/blog-details"><img src="/assets/images/blog/blog-sm-2.jpg" alt="" /></Link>
                         </div>
                         <div className="rc__post-content">
                           <h3 className="rc__post-title">
@@ -269,7 +269,7 @@ export default function PostboxArea({setIsVideoOpen}: any) {
                       </div>
                       <div className="rc__post d-flex align-items-center">
                         <div className="rc__post-thumb">
-                          <Link href="/blog-details"><img src="assets/images/blog/blog-sm-3.jpg" alt="" /></Link>
+                          <Link href="/blog-details"><img src="/assets/images/blog/blog-sm-3.jpg" alt="" /></Link>
                         </div>
                         <div className="rc__post-content">
                           <h3 className="rc__post-title">

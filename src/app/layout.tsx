@@ -2,9 +2,9 @@
 import "../styles/index.css";
 import React from "react";
 import Script from "next/script";
-import TemplateScripts from "@/components/common/TemplateScripts";
 import Preloader from "@/components/common/preloader";
 import type { Metadata } from "next";
+import { poppins, oswald } from "./fonts";
 
 const DOMAIN = "https://oksasatya.dev";
 const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID;
@@ -35,9 +35,6 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: "/",
-    languages: {
-      "id-ID": "/",
-    },
   },
   openGraph: {
     title: "Oksa Satya – Portfolio Full Stack Developer",
@@ -47,12 +44,21 @@ export const metadata: Metadata = {
     siteName: "Portfolio Oksa Satya",
     locale: "id_ID",
     type: "website",
+    images: [
+      {
+        url: "/assets/images/about/me.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Oksa Satya – Full Stack Developer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Oksa Satya – Portfolio Full Stack Developer",
     description:
       "Developer full-stack dengan fokus backend. API skalabel, microservices, arsitektur bersih.",
+    images: ["/assets/images/about/me.jpg"],
   },
 };
 
@@ -66,11 +72,6 @@ export default function RootLayout({
     "@type": "WebSite",
     name: "Portfolio Oksa Satya",
     url: DOMAIN,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${DOMAIN}/search?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
   };
 
   const personLd = {
@@ -85,14 +86,8 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="id">
+    <html lang="id" className={`${poppins.variable} ${oswald.variable}`}>
       <head>
-        {/* Google Fonts */}
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        />
-
         {/* JSON-LD structured data */}
         <Script
           id="website-ld"
@@ -147,29 +142,6 @@ export default function RootLayout({
 
         <Preloader />
         {children}
-
-        {/* Vendor scripts */}
-        <Script src="/assets/js/jquery-3.6.0.min.js" strategy="beforeInteractive" />
-        <Script src="/assets/js/gsap.min.js" strategy="afterInteractive" />
-        <Script src="/assets/js/ScrollTrigger.min.js" strategy="afterInteractive" />
-        <Script src="/assets/js/lenis.js" strategy="afterInteractive" />
-
-        {/* jQuery plugins */}
-        <Script src="/assets/js/bootstrap.min.js" strategy="afterInteractive" />
-        <Script src="/assets/js/imagesloaded.pkgd.min.js" strategy="afterInteractive" />
-        <Script src="/assets/js/isotope.pkgd.min.js" strategy="afterInteractive" />
-        <Script src="/assets/js/jquery.magnific-popup.min.js" strategy="afterInteractive" />
-        <Script src="/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" />
-        <Script src="/assets/js/slick.min.js" strategy="afterInteractive" />
-        <Script src="/assets/js/appear.min.js" strategy="afterInteractive" />
-        <Script src="/assets/js/wow.min.js" strategy="afterInteractive" />
-        <Script src="/assets/js/mobilemenu.js" strategy="afterInteractive" />
-
-        {/* Swiper (load BEFORE script.js) */}
-        <Script src="/assets/js/swiper-bundle.js" strategy="afterInteractive" />
-
-        {/* finally call script.js via client component */}
-        <TemplateScripts />
       </body>
     </html>
   );

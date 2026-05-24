@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-  const raw = process.env.NEXT_PUBLIC_SITE_URL || 'https://example.com';
+  const raw = process.env.NEXT_PUBLIC_SITE_URL || 'https://oksasatya.dev';
   const site = raw.replace(/\/$/, '');
 
   return {
@@ -11,7 +11,6 @@ export default function robots(): MetadataRoute.Robots {
       disallow: ['/api/', '/private/'],
     },
     sitemap: `${site}/sitemap.xml`,
-    host: site,
   };
 }
 
