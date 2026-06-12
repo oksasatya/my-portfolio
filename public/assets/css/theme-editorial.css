@@ -79,13 +79,18 @@ p { color: var(--ink-soft); }
 .main-hero-area .reviews { color: var(--ink); font-family: var(--mono-font); font-size: 13px; letter-spacing: 0.02em; }
 .main-hero-area .reviews p { color: var(--muted); font-family: var(--text-font); }
 .hero-content p { color: var(--ink-soft); }
-.hero-image { border-radius: 14px; overflow: hidden; }
+/* colourful gradient disc behind the circular photo (was flat grey) */
+.main-hero-area .hero-image::before {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #34d399 100%) !important;
+  filter: blur(2px);
+  opacity: 0.9;
+}
 
 /* ---- Buttons ---- */
 .theme-btn {
-  background: var(--ink);
+  background: var(--accent);
   color: #fff;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--accent);
   border-radius: 999px;
   padding: 15px 30px;
   font-family: var(--text-font);
@@ -94,11 +99,11 @@ p { color: var(--ink-soft); }
   transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
 }
 .theme-btn:hover {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--ink);
+  border-color: var(--ink);
   color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(109,40,217,0.22);
+  box-shadow: 0 12px 28px rgba(109,40,217,0.28);
 }
 .hero-link-secondary { color: var(--accent); }
 
@@ -172,9 +177,10 @@ p { color: var(--ink-soft); }
 .footer-top h2 a:hover { color: var(--accent); }
 .copy-left-text, .copy-right-text { color: var(--muted); }
 
-/* ---- Magic cursor: hide on the light theme (the white ball is invisible) ---- */
+/* ---- Magic cursor: keep the original RING (don't fill it solid). Tint the
+   outline to the accent so it reads on the light paper. ---- */
 @media (pointer: fine) {
-  #ball { background: var(--accent); mix-blend-mode: normal; }
+  #ball { background: transparent; border-color: var(--accent); }
 }
 
 /* ---- Header (sticky was violet via --primary-color) ---- */

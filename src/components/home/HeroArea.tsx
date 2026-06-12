@@ -62,12 +62,11 @@ export default function HeroArea() {
               <div className="hero-image">
                 <Image
                   src="/assets/images/about/me.jpg"
-                  alt="Oksa Satya — Full-Stack Developer"
+                  alt="Oksa Satya — Backend Engineer"
                   width={600}
                   height={600}
                   priority
-                  sizes="(max-width: 768px) 100vw, 600px"
-                  style={{ width: '100%', height: 'auto' }}
+                  sizes="(max-width: 768px) 100vw, 320px"
                 />
               </div>
             </div>
