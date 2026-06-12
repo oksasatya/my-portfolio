@@ -26,7 +26,7 @@ export default function OpengraphImage() {
               width: 18,
               height: 18,
               borderRadius: 999,
-              background: "#6d28d9",
+              background: "#1d4ed8",
             }}
           />
           <div
@@ -45,7 +45,7 @@ export default function OpengraphImage() {
           <div
             style={{
               fontSize: 30,
-              color: "#6d28d9",
+              color: "#1d4ed8",
               fontWeight: 600,
               marginBottom: 16,
             }}

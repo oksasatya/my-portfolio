@@ -79,11 +79,11 @@ p { color: var(--ink-soft); }
 .main-hero-area .reviews { color: var(--ink); font-family: var(--mono-font); font-size: 13px; letter-spacing: 0.02em; }
 .main-hero-area .reviews p { color: var(--muted); font-family: var(--text-font); }
 .hero-content p { color: var(--ink-soft); }
-/* colourful gradient disc behind the circular photo (was flat grey) */
+/* solid near-black disc behind the circular photo (user: "background item aja") */
 .main-hero-area .hero-image::before {
-  background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 50%, #34d399 100%) !important;
-  filter: blur(2px);
-  opacity: 0.9;
+  background: #15140f !important;
+  filter: none;
+  opacity: 1;
 }
 
 /* ---- Buttons ---- */
