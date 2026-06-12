@@ -3,16 +3,26 @@ import React from 'react'
 const serviceLd = {
 	"@context": "https://schema.org",
 	"@type": "ProfessionalService",
-	name: "Oksa Satya — Jasa Web & Backend Development",
+	name: "Oksa Satya — Jasa Pembuatan Website, Aplikasi & Backend",
 	url: "https://oksasatya.dev/service",
+	description:
+		"Jasa pembuatan website, aplikasi web, sistem informasi, dan API/integrasi sistem dengan Golang, Laravel, Spring Boot, dan Next.js — dari company profile dan toko online sampai platform SaaS.",
 	provider: { "@type": "Person", name: "Oksa Satya", url: "https://oksasatya.dev" },
-	areaServed: "Worldwide",
+	areaServed: ["Indonesia", "Worldwide"],
+	serviceType: [
+		"Jasa Pembuatan Website",
+		"Jasa Pembuatan Aplikasi Web",
+		"Jasa Pembuatan API & Integrasi Sistem",
+		"Jasa Pembuatan Sistem Informasi",
+		"Backend Development",
+		"Cloud & DevOps",
+	],
 	knowsAbout: ["Go", "Java", "Spring Boot", "Laravel", "Next.js", "REST API", "SaaS", "Docker"],
 	makesOffer: [
-		{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Pengembangan Full-Stack" } },
-		{ "@type": "Offer", itemOffered: { "@type": "Service", name: "API & Integrasi Sistem" } },
-		{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Cloud & DevOps" } },
-		{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Performa & Keamanan" } },
+		{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Jasa Pembuatan Website & Aplikasi Web Full-Stack" } },
+		{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Jasa Pembuatan API & Integrasi Sistem" } },
+		{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Cloud & DevOps (Docker, CI/CD)" } },
+		{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Optimasi Performa & Keamanan Aplikasi" } },
 	],
 };
 
@@ -29,7 +39,7 @@ export default function ServiceArea() {
 						<div className="col-xl-12 col-lg-12">
 							<div className="section-title section-black-title wow fadeInUp delay-0-2s">
 								<h2>Layanan</h2>
-								<p>Bukan sekadar &ldquo;bikin aplikasi&rdquo; — saya bantu Anda menyelesaikan masalah bisnis dengan sistem yang andal dan siap tumbuh.</p>
+								<p>Jasa pembuatan website, aplikasi web, sistem informasi, dan API/integrasi sistem — dari company profile sampai platform SaaS, dengan Golang, Laravel, dan Next.js. Bukan sekadar &ldquo;bikin aplikasi&rdquo;: saya bantu Anda menyelesaikan masalah bisnis dengan sistem yang andal dan siap tumbuh.</p>
 							</div>
 						</div>
 					</div>
