@@ -9,7 +9,7 @@ export default function FooterOne() {
             <div className="col-lg-12">
               <div className="footer-top">
                 <p>Punya proyek yang ingin dikerjakan?</p>
-                <h2><a href="mailto:oksasatyaa@gmail.com">ayo kerja sama</a></h2>
+                <h2><a href="https://wa.me/62818846228" target="_blank" rel="noopener noreferrer">ayo kerja sama</a></h2>
               </div>
             </div>
           </div>

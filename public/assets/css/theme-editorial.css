@@ -63,7 +63,7 @@ p { color: var(--ink-soft); }
 .about-area,
 .projects-area { background: var(--paper) !important; }
 
-.contact-area { background: var(--surface-2) !important; }
+.contact-area { background: var(--paper) !important; }
 
 /* generous vertical rhythm */
 .about-area, .services-area, .projects-area, .contact-area { padding-top: 96px; padding-bottom: 96px; }
@@ -222,3 +222,15 @@ p { color: var(--ink-soft); }
 /* ---- About: action buttons (Download CV) ---- */
 .about-actions { margin-top: 22px; }
 .about-actions .theme-btn i { margin-right: 8px; }
+
+/* ---- Outline button variant (e.g. Download CV) ---- */
+.theme-btn--outline {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+}
+.theme-btn--outline:hover {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}

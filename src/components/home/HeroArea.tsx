@@ -80,6 +80,14 @@ export default function HeroArea() {
                   (HRIS, Payroll, POS, Inventori).
                 </p>
                 <Link className="theme-btn" href="/contact">Diskusikan Proyek</Link>
+                <a
+                  className="theme-btn theme-btn--outline"
+                  href="https://cdn.dexova.id/assets/img/public/cv/cv-2026-ats.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Download CV
+                </a>
                 <Link className="hero-link-secondary" href="/projects">Lihat Studi Kasus →</Link>
               </div>
             </div>
