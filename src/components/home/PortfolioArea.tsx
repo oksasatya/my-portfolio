@@ -83,7 +83,9 @@ export default function PortfolioArea() {
 	const timelineRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		const handleScroll = () => {
+		let ticking = false;
+		const compute = () => {
+			ticking = false;
 			const el = timelineRef.current;
 			if (!el) return;
 			const rect = el.getBoundingClientRect();
@@ -94,8 +96,14 @@ export default function PortfolioArea() {
 			const progress = Math.min(1, Math.max(0, passed / total));
 			setLineProgress(progress);
 		};
+		const handleScroll = () => {
+			if (!ticking) {
+				ticking = true;
+				requestAnimationFrame(compute);
+			}
+		};
 		window.addEventListener('scroll', handleScroll, {passive: true});
-		handleScroll();
+		compute();
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, []);
 
