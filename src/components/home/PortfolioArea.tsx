@@ -2,6 +2,7 @@
 import Image, {StaticImageData} from "next/image";
 import React, {useState, useRef, useEffect} from "react";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 const ImagePopup = dynamic(() => import("@/modals/ImagePopup"), {ssr: false});
 
@@ -22,6 +23,7 @@ interface ProjectItem {
 	category: string;
 	description: string;
 	portrait?: boolean;
+	caseStudySlug?: string;
 }
 
 interface TimelineEntry {
@@ -46,8 +48,8 @@ const timeline_data: TimelineEntry[] = [
 	{
 		year: 2022,
 		projects: [
-			{id: 4, image: img_helixio, title: "Helixio", category: "Fullstack", description: "Platform fullstack Helixio"},
-			{id: 5, image: img_rahanmancar_online, title: "Rahan Mancar Online", category: "Web App", description: "Versi online platform Rahan Mancar"},
+			{id: 4, image: img_helixio, title: "Helixio", category: "SaaS", description: "SaaS produktivitas multi-tenant: Notes, Kanban & Calendar Sync", caseStudySlug: "helixio"},
+			{id: 5, image: img_rahanmancar_online, title: "Rahan Mancar", category: "Platform", description: "Platform website & CMS multi-tenant dengan modul SEO & lead", caseStudySlug: "rahan-mancar"},
 		],
 	},
 	{
@@ -66,7 +68,7 @@ const timeline_data: TimelineEntry[] = [
 		year: 2025,
 		projects: [
 			{id: 8, image: img_absensi, title: "Absensi App", category: "Mobile App", description: "Aplikasi absensi berbasis mobile", portrait: true},
-			{id: 9, image: img_nuvora, title: "Dexova ERP", category: "ERP", description: "Platform ERP terintegrasi: HRIS, Payroll, POS & Manajemen Inventori"},
+			{id: 9, image: img_nuvora, title: "Dexova ERP", category: "ERP", description: "Platform ERP terintegrasi: HRIS, Payroll, POS & Manajemen Inventori", caseStudySlug: "dexova-erp"},
 		],
 	},
 ];
@@ -253,87 +255,142 @@ export default function PortfolioArea() {
 										flexWrap: 'wrap',
 										gap: '16px',
 									}}>
-										{entry.projects.map((item, idx) => (
-											<div
-												key={item.id}
-												className="timeline-card"
-												onClick={() => handleImagePopup(startIndex + idx)}
-												style={{
-													flex: '0 0 calc(50% - 8px)',
-													maxWidth: 'calc(50% - 8px)',
-													minWidth: '220px',
-													cursor: 'pointer',
-													borderRadius: '12px',
-													overflow: 'hidden',
-													background: 'rgba(255,255,255,0.03)',
-													border: '1px solid rgba(255,255,255,0.07)',
-													transition: 'transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease',
-												}}
-												onMouseEnter={(e) => {
-													const el = e.currentTarget as HTMLDivElement;
-													el.style.transform = 'translateY(-4px)';
-													el.style.borderColor = 'rgba(244,243,237,0.3)';
-													el.style.boxShadow = '0 16px 40px rgba(0,0,0,0.5)';
-												}}
-												onMouseLeave={(e) => {
-													const el = e.currentTarget as HTMLDivElement;
-													el.style.transform = 'translateY(0)';
-													el.style.borderColor = 'rgba(255,255,255,0.07)';
-													el.style.boxShadow = 'none';
-												}}
-											>
-												<div style={{
-													position: 'relative',
-													width: '100%',
-													paddingTop: item.portrait ? '177%' : '58%',
-													overflow: 'hidden',
-												}}>
-													<Image
-														src={item.image}
-														alt={item.title}
-														fill
-														style={{objectFit: 'cover', objectPosition: 'center'}}
-														sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
-													/>
-													<span style={{
-														position: 'absolute',
-														top: '12px',
-														right: '12px',
-														background: 'rgba(0,0,0,0.6)',
-														backdropFilter: 'blur(8px)',
-														color: 'var(--primary-color)',
-														fontSize: '11px',
-														fontWeight: '600',
-														letterSpacing: '1px',
-														textTransform: 'uppercase',
-														padding: '4px 10px',
-														borderRadius: '20px',
-														border: '1px solid rgba(244,243,237,0.2)',
+										{entry.projects.map((item, idx) => {
+											const cardStyle: React.CSSProperties = {
+												flex: '0 0 calc(50% - 8px)',
+												maxWidth: 'calc(50% - 8px)',
+												minWidth: '220px',
+												cursor: 'pointer',
+												borderRadius: '12px',
+												overflow: 'hidden',
+												background: 'rgba(255,255,255,0.03)',
+												border: '1px solid rgba(255,255,255,0.07)',
+												transition: 'transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease',
+												textDecoration: 'none',
+												display: 'block',
+											};
+											const onEnter = (e: React.MouseEvent<HTMLElement>) => {
+												const el = e.currentTarget;
+												el.style.transform = 'translateY(-4px)';
+												el.style.borderColor = 'rgba(244,243,237,0.3)';
+												el.style.boxShadow = '0 16px 40px rgba(0,0,0,0.5)';
+											};
+											const onLeave = (e: React.MouseEvent<HTMLElement>) => {
+												const el = e.currentTarget;
+												el.style.transform = 'translateY(0)';
+												el.style.borderColor = 'rgba(255,255,255,0.07)';
+												el.style.boxShadow = 'none';
+											};
+											const inner = (
+												<>
+													<div style={{
+														position: 'relative',
+														width: '100%',
+														paddingTop: item.portrait ? '177%' : '58%',
+														overflow: 'hidden',
 													}}>
-														{item.category}
-													</span>
+														<Image
+															src={item.image}
+															alt={`Tampilan proyek ${item.title}`}
+															fill
+															style={{objectFit: 'cover', objectPosition: 'center'}}
+															sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+														/>
+														{item.caseStudySlug && (
+															<span style={{
+																position: 'absolute',
+																top: '12px',
+																left: '12px',
+																background: 'rgba(52,211,153,0.15)',
+																backdropFilter: 'blur(8px)',
+																color: '#6ee7b7',
+																fontSize: '11px',
+																fontWeight: '700',
+																letterSpacing: '0.5px',
+																padding: '4px 10px',
+																borderRadius: '20px',
+																border: '1px solid rgba(52,211,153,0.35)',
+															}}>
+																✦ Dianalisa AI
+															</span>
+														)}
+														<span style={{
+															position: 'absolute',
+															top: '12px',
+															right: '12px',
+															background: 'rgba(0,0,0,0.6)',
+															backdropFilter: 'blur(8px)',
+															color: 'var(--primary-color)',
+															fontSize: '11px',
+															fontWeight: '600',
+															letterSpacing: '1px',
+															textTransform: 'uppercase',
+															padding: '4px 10px',
+															borderRadius: '20px',
+															border: '1px solid rgba(244,243,237,0.2)',
+														}}>
+															{item.category}
+														</span>
+													</div>
+													<div style={{padding: '16px 18px 18px'}}>
+														<h3 style={{
+															fontSize: '17px',
+															fontWeight: '600',
+															color: '#fff',
+															marginBottom: '4px',
+															fontFamily: 'var(--title-font)',
+														}}>
+															{item.title}
+														</h3>
+														<p style={{
+															fontSize: '13px',
+															color: 'rgba(255,255,255,0.45)',
+															margin: 0,
+															lineHeight: '1.5',
+														}}>
+															{item.description}
+														</p>
+														{item.caseStudySlug && (
+															<span style={{
+																display: 'inline-block',
+																marginTop: '12px',
+																fontSize: '12px',
+																fontWeight: '600',
+																color: 'var(--primary-color)',
+																letterSpacing: '0.3px',
+															}}>
+																Lihat studi kasus <span aria-hidden>→</span>
+															</span>
+														)}
+													</div>
+												</>
+											);
+
+											return item.caseStudySlug ? (
+												<Link
+													key={item.id}
+													href={`/projects/${item.caseStudySlug}`}
+													className="timeline-card"
+													style={cardStyle}
+													onMouseEnter={onEnter}
+													onMouseLeave={onLeave}
+													aria-label={`Buka studi kasus ${item.title}`}
+												>
+													{inner}
+												</Link>
+											) : (
+												<div
+													key={item.id}
+													className="timeline-card"
+													onClick={() => handleImagePopup(startIndex + idx)}
+													style={cardStyle}
+													onMouseEnter={onEnter}
+													onMouseLeave={onLeave}
+												>
+													{inner}
 												</div>
-												<div style={{padding: '16px 18px 18px'}}>
-													<h3 style={{
-														fontSize: '17px',
-														fontWeight: '600',
-														color: '#fff',
-														marginBottom: '4px',
-														fontFamily: 'var(--title-font)',
-													}}>
-														{item.title}
-													</h3>
-													<p style={{
-														fontSize: '13px',
-														color: 'rgba(255,255,255,0.45)',
-														margin: 0,
-														lineHeight: '1.5',
-													}}>
-														{item.description}
-													</p>
-												</div>
-											</div>
-										))}
+											);
+										})}
 									</div>
 								</div>
 							);

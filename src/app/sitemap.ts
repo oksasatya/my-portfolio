@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { getAllCaseStudySlugs } from '@/data/projects';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const raw = process.env.NEXT_PUBLIC_SITE_URL || 'https://oksasatya.dev';
@@ -10,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/contact',
     '/projects',
     '/service',
+    ...getAllCaseStudySlugs().map((slug) => `/projects/${slug}`),
   ];
 
   const now = new Date();
