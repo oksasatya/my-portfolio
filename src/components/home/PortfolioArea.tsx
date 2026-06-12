@@ -124,10 +124,10 @@ export default function PortfolioArea() {
 					{/* Section Header */}
 					<div className="row justify-content-center mb-4">
 						<div className="col-lg-8 text-center">
-							<h2 className="display-4 fw-bold text-white mb-3">
-								Proyek <span style={{color: 'var(--primary-color)'}}>Saya</span>
+							<h2 className="display-4 fw-bold mb-3">
+								Proyek <span style={{color: 'var(--accent, #6d28d9)'}}>Saya</span>
 							</h2>
-							<p className="lead mb-0" style={{color: 'rgba(255,255,255,0.55)'}}>
+							<p className="lead mb-0" style={{color: 'var(--ink-soft, #4a463d)'}}>
 								Perjalanan proyek dari 2020 hingga sekarang — dari company profile hingga platform SaaS modern.
 							</p>
 						</div>
@@ -137,13 +137,13 @@ export default function PortfolioArea() {
 					<div className="row justify-content-center mb-5">
 						<div className="col-lg-8">
 							<div style={{
-								background: 'rgba(255,255,255,0.04)',
-								border: '1px solid rgba(255,255,255,0.08)',
+								background: 'var(--surface, #fff)',
+								border: '1px solid var(--rule, #e7e2d6)',
 								borderRadius: '16px',
 								padding: '20px',
 							}}>
 								<p style={{
-									color: 'rgba(255,255,255,0.4)',
+									color: 'var(--muted, #8c877b)',
 									fontSize: '12px',
 									textTransform: 'uppercase',
 									letterSpacing: '2px',
@@ -188,7 +188,7 @@ export default function PortfolioArea() {
 							top: 0,
 							bottom: 0,
 							width: '2px',
-							background: 'rgba(244,243,237,0.1)',
+							background: 'var(--rule, #e7e2d6)',
 							pointerEvents: 'none',
 						}} className="timeline-line-desktop"/>
 						{/* Foreground line (grows on scroll) */}
@@ -271,8 +271,8 @@ export default function PortfolioArea() {
 												cursor: 'pointer',
 												borderRadius: '12px',
 												overflow: 'hidden',
-												background: 'rgba(255,255,255,0.03)',
-												border: '1px solid rgba(255,255,255,0.07)',
+												background: 'var(--surface, #fff)',
+												border: '1px solid var(--rule, #e7e2d6)',
 												transition: 'transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease',
 												textDecoration: 'none',
 												display: 'block',
@@ -280,13 +280,13 @@ export default function PortfolioArea() {
 											const onEnter = (e: React.MouseEvent<HTMLElement>) => {
 												const el = e.currentTarget;
 												el.style.transform = 'translateY(-4px)';
-												el.style.borderColor = 'rgba(244,243,237,0.3)';
-												el.style.boxShadow = '0 16px 40px rgba(0,0,0,0.5)';
+												el.style.borderColor = 'var(--accent, #6d28d9)';
+												el.style.boxShadow = '0 18px 44px rgba(23,21,15,0.12)';
 											};
 											const onLeave = (e: React.MouseEvent<HTMLElement>) => {
 												const el = e.currentTarget;
 												el.style.transform = 'translateY(0)';
-												el.style.borderColor = 'rgba(255,255,255,0.07)';
+												el.style.borderColor = 'var(--rule, #e7e2d6)';
 												el.style.boxShadow = 'none';
 											};
 											const inner = (
@@ -344,7 +344,7 @@ export default function PortfolioArea() {
 														<h3 style={{
 															fontSize: '17px',
 															fontWeight: '600',
-															color: '#fff',
+															color: 'var(--ink, #17150f)',
 															marginBottom: '4px',
 															fontFamily: 'var(--title-font)',
 														}}>
@@ -352,7 +352,7 @@ export default function PortfolioArea() {
 														</h3>
 														<p style={{
 															fontSize: '13px',
-															color: 'rgba(255,255,255,0.45)',
+															color: 'var(--muted, #8c877b)',
 															margin: 0,
 															lineHeight: '1.5',
 														}}>

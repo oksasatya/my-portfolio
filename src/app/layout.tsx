@@ -4,7 +4,7 @@ import React from "react";
 import Script from "next/script";
 import Preloader from "@/components/common/preloader";
 import type { Metadata } from "next";
-import { poppins, oswald } from "./fonts";
+import { poppins, oswald, fraunces, jetbrainsMono } from "./fonts";
 
 const DOMAIN = "https://oksasatya.dev";
 const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID;
@@ -106,7 +106,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="id" className={`${poppins.variable} ${oswald.variable}`}>
+    <html lang="id" className={`${poppins.variable} ${oswald.variable} ${fraunces.variable} ${jetbrainsMono.variable}`}>
       <head>
         {/* JSON-LD structured data */}
         <Script
