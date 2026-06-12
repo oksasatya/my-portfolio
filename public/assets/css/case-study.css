@@ -21,7 +21,7 @@
   transition: color 0.2s ease, gap 0.2s ease;
 }
 .cs-back:hover {
-  color: var(--accent, #6d28d9);
+  color: var(--accent, #1d4ed8);
   gap: 12px;
 }
 
@@ -47,8 +47,8 @@
   padding: 5px 12px;
   border-radius: 999px;
   border: 1px solid var(--rule, #e7e2d6);
-  background: var(--accent-soft, #f1ecff);
-  color: var(--accent, #6d28d9);
+  background: var(--accent-soft, #e7eefc);
+  color: var(--accent, #1d4ed8);
 }
 .cs-badge--ai {
   border-color: rgba(5, 150, 105, 0.3);
@@ -133,7 +133,7 @@
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--accent, #6d28d9);
+  color: var(--accent, #1d4ed8);
   font-family: var(--mono-font, monospace);
   margin: 0 0 14px;
 }
@@ -166,7 +166,7 @@
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
 }
 .cs-list--check li::before {
   background: linear-gradient(135deg, #10b981, #059669);
@@ -213,7 +213,7 @@
   border-radius: 20px;
   border: 1px solid var(--rule, #e7e2d6);
   background:
-    radial-gradient(120% 140% at 0% 0%, var(--accent-soft, #f1ecff), transparent 60%),
+    radial-gradient(120% 140% at 0% 0%, var(--accent-soft, #e7eefc), transparent 60%),
     var(--surface, #fff);
   text-align: center;
 }
@@ -243,8 +243,8 @@
 }
 .cs-cta-btn:hover {
   transform: translateY(-2px);
-  background: var(--accent, #6d28d9);
-  box-shadow: 0 12px 32px rgba(109, 40, 217, 0.25);
+  background: var(--accent, #1d4ed8);
+  box-shadow: 0 12px 32px rgba(29,78,216, 0.25);
   color: #fff;
 }
 
@@ -281,7 +281,7 @@
   display: inline-block;
   margin-left: 18px;
   font-weight: 600;
-  color: var(--accent, #6d28d9);
+  color: var(--accent, #1d4ed8);
   text-decoration: none;
 }
 .hero-link-secondary:hover { text-decoration: underline; }
@@ -290,6 +290,6 @@
   font-size: 0.95rem;
   font-weight: 500;
   padding-left: 12px;
-  border-left: 2px solid var(--accent, #6d28d9);
+  border-left: 2px solid var(--accent, #1d4ed8);
   color: var(--ink, #17150f);
 }

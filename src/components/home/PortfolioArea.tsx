@@ -125,7 +125,7 @@ export default function PortfolioArea() {
 					<div className="row justify-content-center mb-4">
 						<div className="col-lg-8 text-center">
 							<h2 className="display-4 fw-bold mb-3">
-								Proyek <span style={{color: 'var(--accent, #6d28d9)'}}>Saya</span>
+								Proyek <span style={{color: 'var(--accent, #1d4ed8)'}}>Saya</span>
 							</h2>
 							<p className="lead mb-0" style={{color: 'var(--ink-soft, #4a463d)'}}>
 								Perjalanan proyek dari 2020 hingga sekarang — dari company profile hingga platform SaaS modern.
@@ -198,8 +198,8 @@ export default function PortfolioArea() {
 							top: 0,
 							width: '2px',
 							height: `${lineProgress * 100}%`,
-							background: 'linear-gradient(to bottom, #a78bfa, #60a5fa, #34d399)',
-							boxShadow: '0 0 10px rgba(167,139,250,0.5)',
+							background: 'linear-gradient(to bottom, #3b82f6, #60a5fa, #34d399)',
+							boxShadow: '0 0 10px rgba(59,130,246,0.5)',
 							transition: 'height 80ms linear',
 							pointerEvents: 'none',
 							zIndex: 1,
@@ -250,8 +250,8 @@ export default function PortfolioArea() {
 											width: '12px',
 											height: '12px',
 											borderRadius: '50%',
-											background: 'linear-gradient(135deg, #a78bfa, #60a5fa)',
-											boxShadow: '0 0 14px rgba(167,139,250,0.7)',
+											background: 'linear-gradient(135deg, #3b82f6, #60a5fa)',
+											boxShadow: '0 0 14px rgba(59,130,246,0.7)',
 											flexShrink: 0,
 										}}/>
 									</div>
@@ -280,7 +280,7 @@ export default function PortfolioArea() {
 											const onEnter = (e: React.MouseEvent<HTMLElement>) => {
 												const el = e.currentTarget;
 												el.style.transform = 'translateY(-4px)';
-												el.style.borderColor = 'var(--accent, #6d28d9)';
+												el.style.borderColor = 'var(--accent, #1d4ed8)';
 												el.style.boxShadow = '0 18px 44px rgba(23,21,15,0.12)';
 											};
 											const onLeave = (e: React.MouseEvent<HTMLElement>) => {
@@ -411,11 +411,11 @@ export default function PortfolioArea() {
 			<style>{`
 				@media (max-width: 640px) {
 					.timeline-line-desktop { left: 16px !important; }
-					.timeline-row { flex-direction: column !important; gap: 8px !important; border-left: 2px solid rgba(167,139,250,0.2) !important; padding-left: 12px !important; }
+					.timeline-row { flex-direction: column !important; gap: 8px !important; border-left: 2px solid rgba(59,130,246,0.2) !important; padding-left: 12px !important; }
 					.timeline-year-col { width: auto !important; text-align: left !important; padding-left: 0 !important; }
 					.timeline-dot-col { display: none !important; }
 					.timeline-card { flex: 0 0 100% !important; max-width: 100% !important; min-width: 0 !important; }
-					.timeline-year-col span { display: inline-block !important; background: rgba(167,139,250,0.1) !important; border: 1px solid rgba(167,139,250,0.3) !important; border-radius: 20px !important; padding: 2px 12px !important; font-size: 13px !important; color: #a78bfa !important; letter-spacing: 0 !important; }
+					.timeline-year-col span { display: inline-block !important; background: rgba(59,130,246,0.1) !important; border: 1px solid rgba(59,130,246,0.3) !important; border-radius: 20px !important; padding: 2px 12px !important; font-size: 13px !important; color: #3b82f6 !important; letter-spacing: 0 !important; }
 				}
 			`}</style>
 
