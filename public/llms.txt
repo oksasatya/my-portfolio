@@ -2,14 +2,14 @@
 
 > Oksa Satya is a backend-focused Full-Stack Developer based in Indonesia. He builds
 > reliable APIs, system integrations (payment, HRIS, logistics), and end-to-end SaaS
-> platforms with Go, Java/Spring Boot, and Next.js. Since 2022 he has worked remotely
-> as a Full Stack Developer for PT Infini Software House Technology DMCC (Dubai), and
+> platforms with Go, Java/Spring Boot, and Next.js. Since 2022 he has worked onsite in
+> Dubai as a Full Stack Developer for PT Infini Software House Technology DMCC, and
 > is currently building Dexova, an integrated ERP SaaS (HRIS, Payroll, POS, Inventory).
 
 ## About
 - Name: Oksa Satya
 - Role: Backend Engineer / Full-Stack Developer (backend-first)
-- Based in: Indonesia; works remotely for a Dubai software house
+- Based in: Dubai (onsite), originally from Indonesia
 - Stack: Go (Echo, Gin), Java (Spring Boot), PHP (Laravel), Node.js; React/Next.js;
   PostgreSQL, MySQL, MongoDB, Redis; Docker, Linux
 - Specialties: REST APIs, hexagonal/clean architecture, multi-tenant systems, RBAC,

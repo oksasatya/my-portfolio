@@ -218,3 +218,7 @@ p { color: var(--ink-soft); }
   transition: color .2s ease;
 }
 .about-github-link:hover { color: var(--accent); }
+
+/* ---- About: action buttons (Download CV) ---- */
+.about-actions { margin-top: 22px; }
+.about-actions .theme-btn i { margin-right: 8px; }

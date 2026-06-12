@@ -4,8 +4,8 @@ import Count from '../common/Count'
 const counter_data = [
 {
 id: 1,
-title: 'Tahun Remote (Dubai)',
-count: 3,
+title: 'Tahun Onsite (Dubai)',
+count: 4,
 cls: "plus",
 },
 {
@@ -34,8 +34,8 @@ return (
 <div className="col-lg-9 col-sm-9">
 <div className="about-content-part wow fadeInUp delay-0-2s">
 <p>
-Sejak 2022 saya bekerja remote sebagai Full-Stack Developer untuk PT Infini Software House
-Technology (Dubai), membangun aplikasi enterprise dengan <strong>Java/Spring Boot</strong> dan
+Sejak 2022 saya bekerja onsite di Dubai sebagai Full-Stack Developer untuk PT Infini Software
+House Technology, membangun aplikasi enterprise dengan <strong>Java/Spring Boot</strong> dan
 <strong>Next.js</strong>. Fokus saya backend: API yang andal, integrasi sistem, dan arsitektur
 yang tidak bikin pusing saat skala bertumbuh. Di luar kerjaan, saya membangun
 <strong> Dexova</strong> — platform ERP terintegrasi (HRIS, Payroll, POS, Inventori) yang lahir
@@ -50,6 +50,16 @@ className="about-github-link"
 >
 <i className="ri-github-line" aria-hidden></i> Lihat kode &amp; proyek open-source saya di GitHub →
 </a>
+<div className="about-actions">
+<a
+href="https://cdn.dexova.id/assets/img/public/cv/cv-2026-ats.pdf"
+target="_blank"
+rel="noopener noreferrer"
+className="theme-btn"
+>
+<i className="ri-download-line" aria-hidden></i> Download CV
+</a>
+</div>
 </div>
 <div className="hero-counter-area d-flex justify-content-between wow fadeInUp delay-0-4s">
 {counter_data.map((item, i) => (

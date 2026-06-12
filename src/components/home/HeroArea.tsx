@@ -52,7 +52,7 @@ export default function HeroArea() {
                     </li>
                   </ul>
                   <div className="reviews">
-                    3+ tahun remote (Dubai) · 8+ proyek production
+                    4 tahun onsite (Dubai) · 8+ proyek production
                     <p>Spesialis backend: API skalabel, integrasi sistem, dan platform SaaS modern.</p>
                   </div>
                 </div>
