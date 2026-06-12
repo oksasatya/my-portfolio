@@ -9,7 +9,7 @@ export default function ServiceArea() {
 						<div className="col-xl-12 col-lg-12">
 							<div className="section-title section-black-title wow fadeInUp delay-0-2s">
 								<h2>Layanan</h2>
-								<p>Bukan sekadar "bikin aplikasi" — saya bantu Anda menyelesaikan masalah bisnis dengan sistem yang andal dan siap tumbuh.</p>
+								<p>Bukan sekadar &ldquo;bikin aplikasi&rdquo; — saya bantu Anda menyelesaikan masalah bisnis dengan sistem yang andal dan siap tumbuh.</p>
 							</div>
 						</div>
 					</div>

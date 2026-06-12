@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function HeroArea() {
   return (
@@ -79,8 +80,8 @@ export default function HeroArea() {
                   Saat ini membangun <strong>Dexova</strong>, platform ERP terintegrasi
                   (HRIS, Payroll, POS, Inventori).
                 </p>
-                <a className="theme-btn" href="/contact">Diskusikan Proyek</a>
-                <a className="hero-link-secondary" href="/projects">Lihat Studi Kasus →</a>
+                <Link className="theme-btn" href="/contact">Diskusikan Proyek</Link>
+                <Link className="hero-link-secondary" href="/projects">Lihat Studi Kasus →</Link>
               </div>
             </div>
           </div>
