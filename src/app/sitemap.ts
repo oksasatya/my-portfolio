@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { getAllCaseStudySlugs } from '@/data/projects';
+import { getAllServiceSlugs } from '@/data/services';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const raw = process.env.NEXT_PUBLIC_SITE_URL || 'https://oksasatya.dev';
@@ -11,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/contact',
     '/projects',
     '/service',
+    ...getAllServiceSlugs().map((slug) => `/jasa/${slug}`),
     ...getAllCaseStudySlugs().map((slug) => `/projects/${slug}`),
   ];
 

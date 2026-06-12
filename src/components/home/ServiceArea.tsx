@@ -1,4 +1,5 @@
 import React from 'react'
+import { serviceLandings } from '@/data/services'
 
 const serviceLd = {
 	"@context": "https://schema.org",
@@ -103,6 +104,11 @@ export default function ServiceArea() {
 						<div className="row">
 							<div className="col-12 text-center wow fadeInUp delay-0-2s" style={{ marginTop: 32 }}>
 								<a className="theme-btn" href="/contact">Punya proyek serupa? Diskusikan kebutuhan Anda →</a>
+								<div className="jasa-hub-links">
+									{serviceLandings.map((s) => (
+										<a key={s.slug} href={`/jasa/${s.slug}`}>{s.h1}</a>
+									))}
+								</div>
 							</div>
 						</div>
 					</div>

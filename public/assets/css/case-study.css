@@ -293,3 +293,29 @@
   border-left: 2px solid var(--accent, #1d4ed8);
   color: var(--ink, #17150f);
 }
+
+/* ==========================================================================
+   Jasa landing pages (/jasa/[slug]) — process steps, FAQ, hub links
+   ========================================================================== */
+.jasa-steps { list-style: none; margin: 0; padding: 0; }
+.jasa-steps li { display: flex; gap: 18px; margin-bottom: 22px; }
+.jasa-step-no { font-family: var(--mono-font, monospace); font-weight: 700; color: var(--accent, #1d4ed8); font-size: 14px; padding-top: 3px; flex-shrink: 0; }
+.jasa-step-title { font-size: 1.05rem; color: var(--ink, #17150f); margin: 0 0 4px; font-family: var(--title-font, serif); }
+.jasa-step-desc { color: var(--ink-soft, #4a463d); margin: 0; line-height: 1.65; }
+
+.jasa-faq { display: flex; flex-direction: column; gap: 10px; }
+.jasa-faq-item { border: 1px solid var(--rule, #e7e2d6); border-radius: 12px; padding: 16px 18px; background: var(--surface, #fff); }
+.jasa-faq-item summary { font-weight: 600; color: var(--ink, #17150f); cursor: pointer; list-style: none; }
+.jasa-faq-item summary::-webkit-details-marker { display: none; }
+.jasa-faq-item[open] summary { margin-bottom: 8px; }
+.jasa-faq-item p { color: var(--ink-soft, #4a463d); margin: 0; line-height: 1.65; }
+
+.jasa-estimate { color: var(--ink-soft, #4a463d); font-size: 0.95rem; line-height: 1.6; margin: 0 0 8px; }
+.jasa-related { list-style: none; margin: 0; padding: 0; }
+.jasa-related li { margin-bottom: 8px; }
+.jasa-related a { color: var(--accent, #1d4ed8); text-decoration: none; font-weight: 500; }
+.jasa-related a:hover { text-decoration: underline; }
+
+.jasa-hub-links { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 18px; }
+.jasa-hub-links a { display: inline-block; padding: 8px 16px; border: 1px solid var(--rule, #e7e2d6); border-radius: 999px; color: var(--ink, #17150f); text-decoration: none; font-weight: 500; font-size: 14px; transition: border-color .2s, color .2s; }
+.jasa-hub-links a:hover { border-color: var(--accent, #1d4ed8); color: var(--accent, #1d4ed8); }
