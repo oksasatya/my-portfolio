@@ -12,22 +12,38 @@ export default function CaseStudyDetail({
 }: {
   readonly caseStudy: CaseStudy;
 }) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    name: cs.title,
-    headline: cs.tagline,
-    abstract: cs.summary,
-    creator: {
-      "@type": "Person",
-      name: "Oksa Satya",
-      url: DOMAIN,
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      name: cs.title,
+      headline: cs.tagline,
+      abstract: cs.summary,
+      creator: {
+        "@type": "Person",
+        name: "Oksa Satya",
+        url: DOMAIN,
+      },
+      keywords: [...cs.stack, ...cs.highlights].join(", "),
+      dateCreated: String(cs.year),
+      image: `${DOMAIN}${cs.image}`,
+      url: `${DOMAIN}/projects/${cs.slug}`,
     },
-    keywords: [...cs.stack, ...cs.highlights].join(", "),
-    dateCreated: String(cs.year),
-    image: `${DOMAIN}${cs.image}`,
-    url: `${DOMAIN}/projects/${cs.slug}`,
-  };
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Beranda", item: DOMAIN },
+        { "@type": "ListItem", position: 2, name: "Proyek", item: `${DOMAIN}/projects` },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: cs.title,
+          item: `${DOMAIN}/projects/${cs.slug}`,
+        },
+      ],
+    },
+  ];
 
   return (
     <>

@@ -1,8 +1,28 @@
 import React from 'react'
 
+const serviceLd = {
+	"@context": "https://schema.org",
+	"@type": "ProfessionalService",
+	name: "Oksa Satya — Jasa Web & Backend Development",
+	url: "https://oksasatya.dev/service",
+	provider: { "@type": "Person", name: "Oksa Satya", url: "https://oksasatya.dev" },
+	areaServed: "Worldwide",
+	knowsAbout: ["Go", "Java", "Spring Boot", "Laravel", "Next.js", "REST API", "SaaS", "Docker"],
+	makesOffer: [
+		{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Pengembangan Full-Stack" } },
+		{ "@type": "Offer", itemOffered: { "@type": "Service", name: "API & Integrasi Sistem" } },
+		{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Cloud & DevOps" } },
+		{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Performa & Keamanan" } },
+	],
+};
+
 export default function ServiceArea() {
 	return (
 		<>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }}
+			/>
 			<section id="services" className="services-area">
 				<div className="container">
 					<div className="row">

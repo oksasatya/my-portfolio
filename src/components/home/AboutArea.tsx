@@ -42,6 +42,14 @@ yang tidak bikin pusing saat skala bertumbuh. Di luar kerjaan, saya membangun
 dari masalah nyata di lapangan. Kalau Anda butuh developer yang paham sisi teknis sekaligus sisi
 bisnis, mari ngobrol.
 </p>
+<a
+href="https://github.com/oksasatya"
+target="_blank"
+rel="noopener noreferrer"
+className="about-github-link"
+>
+<i className="ri-github-line" aria-hidden></i> Lihat kode &amp; proyek open-source saya di GitHub →
+</a>
 </div>
 <div className="hero-counter-area d-flex justify-content-between wow fadeInUp delay-0-4s">
 {counter_data.map((item, i) => (
