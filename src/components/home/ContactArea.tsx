@@ -1,15 +1,34 @@
 "use client"
 import React, { useState } from 'react'
 
+// Single source of truth for contact details (keep in sync with FooterOne + Person schema).
+const WA_NUMBER = '62818846228'; // 0818846228 in international format
+const WA_DISPLAY = '+62 818-846-228';
+const EMAIL = 'oksasatyaa@gmail.com';
+const WA_BASE = `https://wa.me/${WA_NUMBER}`;
+
 export default function ContactArea() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
+  const [sent, setSent] = useState(false);
 
-  const handleSubmit = (e: any) => {
+  // No backend by design — the message is routed to WhatsApp with a prefilled text.
+  const composeWaHref = () => {
+    const lines = [
+      `Halo Oksa, saya ${name || '[nama]'}.`,
+      subject ? `Perihal: ${subject}` : '',
+      message ? `\n${message}` : '',
+      email ? `\nEmail saya: ${email}` : '',
+    ].filter(Boolean);
+    return `${WA_BASE}?text=${encodeURIComponent(lines.join('\n'))}`;
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Form submitted:', { name, email, subject, message });
+    window.open(composeWaHref(), '_blank', 'noopener,noreferrer');
+    setSent(true);
   };
 
   return (
@@ -20,6 +39,18 @@ export default function ContactArea() {
             <div className="col-xl-12 col-lg-12">
               <div className="section-title text-white wow fadeInUp delay-0-2s">
                 <h2>Hubungi Saya</h2>
+                <p style={{ color: 'rgba(255,255,255,0.6)', marginTop: 8 }}>
+                  Lebih cepat? Chat langsung via WhatsApp — biasanya saya balas dalam &lt;24 jam.
+                </p>
+                <a
+                  href={WA_BASE}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="theme-btn"
+                  style={{ marginTop: 12, display: 'inline-flex', alignItems: 'center', gap: 8 }}
+                >
+                  <i className="ri-whatsapp-line" aria-hidden></i> Chat WhatsApp
+                </a>
               </div>
             </div>
           </div>
@@ -35,25 +66,29 @@ export default function ContactArea() {
                 </div>
                 <div className="single-contact wow fadeInUp" data-wow-delay=".4s">
                   <span className="circle-btn">
-                    <i className="ri-headphone-line"></i>
+                    <i className="ri-whatsapp-line"></i>
                   </span>
-                  <h2>Nomor Telepon:</h2>
-                  <p>+62818846228</p>
+                  <h2>WhatsApp:</h2>
+                  <p>
+                    <a href={WA_BASE} target="_blank" rel="noopener noreferrer">{WA_DISPLAY}</a>
+                  </p>
                 </div>
                 <div className="single-contact wow fadeInUp" data-wow-delay=".6s">
                   <span className="circle-btn">
                     <i className="ri-mail-line"></i>
                   </span>
                   <h2>Email:</h2>
-                  <p>oksasatyaa@gmail.com</p>
+                  <p>
+                    <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+                  </p>
                 </div>
                 <div className="single-contact wow fadeInUp" data-wow-delay=".6s">
                   <h2>Media Sosial</h2>
                   <div className="about-social">
                     <ul>
-                      <li><a target="_blank" href="https://www.facebook.com/oksastya/"><i className="ri-facebook-circle-fill"></i></a></li>
-                      <li><a target="_blank" href="https://www.linkedin.com/in/oksastya/"><i className="ri-linkedin-fill"></i></a></li>
-                      <li><a target="_blank" href="https://github.com/oksasatya"><i className="ri-github-line"></i></a></li>
+                      <li><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/oksastya/"><i className="ri-facebook-circle-fill"></i></a></li>
+                      <li><a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/oksastya/"><i className="ri-linkedin-fill"></i></a></li>
+                      <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/oksasatya"><i className="ri-github-line"></i></a></li>
                     </ul>
                   </div>
                 </div>
@@ -134,15 +169,21 @@ export default function ContactArea() {
                     <div className="col-md-12">
                       <div className="form-group mb-0">
                         <button type="submit" className="theme-btn">
-                          Kirim Pesan <i className="ri-mail-line"></i>
+                          Kirim via WhatsApp <i className="ri-whatsapp-line"></i>
                         </button>
-                        <div id="msgSubmit" className="hidden"></div>
+                        <a href={`mailto:${EMAIL}`} style={{ marginLeft: 16, color: 'rgba(255,255,255,0.7)' }}>
+                          atau kirim email
+                        </a>
                       </div>
                     </div>
-                    <div className="col-md-12 text-center">
-                      <p className="input-success">Pesan Anda telah diterima, kami akan segera menghubungi Anda!</p>
-                      <p className="input-error">Maaf, pesan gagal terkirim! Silakan coba lagi.</p>
-                    </div>
+                    {sent && (
+                      <div className="col-md-12 text-center">
+                        <p className="input-success" role="status">
+                          WhatsApp terbuka dengan pesan Anda — tinggal tekan kirim. Jika tidak terbuka,{' '}
+                          <a href={WA_BASE} target="_blank" rel="noopener noreferrer">chat di sini</a>.
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </form>
               </div>

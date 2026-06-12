@@ -2637,7 +2637,6 @@ html.lenis body {
 
 body.loaded {
     overflow: hidden !important;
-    height: 100% !important;
 }
 
 /* Main Preloader Container */

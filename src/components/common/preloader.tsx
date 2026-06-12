@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from '@/plugins';
 
 export default function Preloader() {
 	const [isLoading, setIsLoading] = useState(true);
@@ -10,23 +11,28 @@ export default function Preloader() {
 	const progressFillRef = useRef<HTMLDivElement>(null);
 	const exitStartedRef = useRef(false);
 
-	// Body scroll lock while preloader is on screen
+	// Body scroll lock while the preloader covers the screen.
+	// IMPORTANT: never write/restore document.body.style.height here. On desktop
+	// GSAP ScrollSmoother owns the body height (it sets a tall height so the
+	// window can scroll while #smooth-content is translated). Setting it to
+	// '100vh' and restoring the captured value on exit wiped ScrollSmoother's
+	// height, collapsing the scroll range and freezing the page. Lock via
+	// overflow only, then refresh ScrollTrigger so the smoother recomputes once
+	// the lock is lifted.
 	useEffect(() => {
 		if (!isLoading) return;
 		const prevBodyOverflow = document.body.style.overflow;
 		const prevHtmlOverflow = document.documentElement.style.overflow;
-		const prevBodyHeight = document.body.style.height;
 
 		document.body.style.overflow = 'hidden';
-		document.body.style.height = '100vh';
 		document.documentElement.style.overflow = 'hidden';
 		document.body.classList.add('loaded');
 
 		return () => {
 			document.body.style.overflow = prevBodyOverflow;
-			document.body.style.height = prevBodyHeight;
 			document.documentElement.style.overflow = prevHtmlOverflow;
 			document.body.classList.remove('loaded');
+			requestAnimationFrame(() => ScrollTrigger.refresh());
 		};
 	}, [isLoading]);
 

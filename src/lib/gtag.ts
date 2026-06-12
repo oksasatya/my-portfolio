@@ -3,25 +3,33 @@ export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || '';
 
 export const pageview = (url: string, title?: string) => {
   if (typeof window === 'undefined') return;
+  const w = window as any;
+  w.dataLayer = w.dataLayer || [];
 
-  // Prefer direct GA4 gtag if available
-  if (GA4_ID && (window as any).gtag) {
-    (window as any).gtag('config', GA4_ID, {
+  if (GA4_ID) {
+    // Define a gtag shim if the afterInteractive gtag stub hasn't run yet,
+    // so the initial pageview is queued into dataLayer instead of dropped.
+    if (typeof w.gtag !== 'function') {
+      w.gtag = function gtag() {
+        w.dataLayer.push(arguments);
+      };
+    }
+    w.gtag('event', 'page_view', {
       page_path: url,
       page_title: title || document.title,
-      page_location: window.location.href,
+      page_location: w.location.href,
+      send_to: GA4_ID,
     });
     return;
   }
 
   // Fallback for GTM-based setups: push into dataLayer
   if (GTM_ID) {
-    (window as any).dataLayer = (window as any).dataLayer || [];
-    (window as any).dataLayer.push({
+    w.dataLayer.push({
       event: 'page_view',
       page_path: url,
       page_title: title || document.title,
-      page_location: window.location.href,
+      page_location: w.location.href,
     });
   }
 };

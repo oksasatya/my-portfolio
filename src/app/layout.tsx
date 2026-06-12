@@ -79,9 +79,29 @@ export default function RootLayout({
     "@type": "Person",
     name: "Oksa Satya",
     url: DOMAIN,
-    jobTitle: "Full Stack Developer",
+    jobTitle: "Backend Engineer / Full Stack Developer",
+    email: "mailto:oksasatyaa@gmail.com",
+    image: `${DOMAIN}/assets/images/about/me.jpg`,
+    worksFor: {
+      "@type": "Organization",
+      name: "PT Infini Software House Technology DMCC",
+    },
+    knowsAbout: [
+      "Go",
+      "Java",
+      "Spring Boot",
+      "Laravel",
+      "Next.js",
+      "PostgreSQL",
+      "Docker",
+      "Backend Engineering",
+      "REST API",
+      "SaaS",
+    ],
     sameAs: [
-      // add socials if available
+      "https://github.com/oksasatya",
+      "https://www.linkedin.com/in/oksastya/",
+      "https://www.facebook.com/oksastya/",
     ],
   };
 

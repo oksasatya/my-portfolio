@@ -18,7 +18,7 @@ if (typeof window !== "undefined") {
   require("bootstrap/dist/js/bootstrap");
 }
 
-export default function Wrapper({ children }: any) {
+export default function Wrapper({ children }: { children: React.ReactNode }) {
 
   const pathname = usePathname();
   const smootherRef = useRef<any | null>(null);
@@ -69,13 +69,6 @@ export default function Wrapper({ children }: any) {
     };
   }, [pathname]);
 
-  useEffect(() => {
-    if (typeof document !== 'undefined') {
-      document.dispatchEvent(new Event('preloader:start'));
-      console.log(document.getElementById('preloader'));
-    }
-  }, [pathname]);
-
   // round cursor
   const cursorBallRef = useRef<HTMLDivElement | null>(null);
 
@@ -95,42 +88,30 @@ export default function Wrapper({ children }: any) {
       });
     };
 
-    // Hover effects for links
-    const handleMouseEnter = () => {
-      cursorBall.classList.add('hovered');
-      gsap.to(cursorBall, {
-        duration: 0.3,
-        scale: 2,
-        opacity: 0,
-        ease: 'power2.out',
-      });
+    // Event delegation so links rendered AFTER mount (route changes, lightbox,
+    // menus) get the hover effect too. mouseover/mouseout bubble; mouseenter
+    // does not — so we delegate and match the nearest <a>.
+    const handleOver = (e: MouseEvent) => {
+      if ((e.target as HTMLElement)?.closest('a')) {
+        cursorBall.classList.add('hovered');
+        gsap.to(cursorBall, { duration: 0.3, scale: 2, opacity: 0, ease: 'power2.out' });
+      }
+    };
+    const handleOut = (e: MouseEvent) => {
+      if ((e.target as HTMLElement)?.closest('a')) {
+        cursorBall.classList.remove('hovered');
+        gsap.to(cursorBall, { duration: 0.3, scale: 1, opacity: 1, ease: 'power2.out' });
+      }
     };
 
-    const handleMouseLeave = () => {
-      cursorBall.classList.remove('hovered');
-      gsap.to(cursorBall, {
-        duration: 0.3,
-        scale: 1,
-        opacity: 1,
-        ease: 'power2.out',
-      });
-    };
-
-    // Attach event listeners
     document.addEventListener('mousemove', handleMouseMove);
-    const hoverElements = document.querySelectorAll('a');
-    hoverElements.forEach((element) => {
-      element.addEventListener('mouseenter', handleMouseEnter);
-      element.addEventListener('mouseleave', handleMouseLeave);
-    });
+    document.addEventListener('mouseover', handleOver);
+    document.addEventListener('mouseout', handleOut);
 
-    // Cleanup event listeners on unmount
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
-      hoverElements.forEach((element) => {
-        element.removeEventListener('mouseenter', handleMouseEnter);
-        element.removeEventListener('mouseleave', handleMouseLeave);
-      });
+      document.removeEventListener('mouseover', handleOver);
+      document.removeEventListener('mouseout', handleOut);
     };
   }, []);
 
