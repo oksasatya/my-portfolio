@@ -15,6 +15,11 @@ import img_dashboard_rahan from "@/assets/images/projects/dashboard-rahan.jpeg";
 import img_dexova from "@/assets/images/projects/dexova.png";
 import img_absensi from "@/assets/images/projects/absensi.png";
 import img_nuvora from "@/assets/images/projects/code1.jpeg";
+import img_chasago from "@/assets/images/projects/code2.jpeg";
+import img_analytic from "@/assets/images/projects/code3.jpeg";
+import img_seluscraf from "@/assets/images/projects/code4.jpeg";
+import img_mula from "@/assets/images/projects/code5.jpeg";
+import img_jastip from "@/assets/images/projects/code3.jpg";
 
 interface ProjectItem {
 	id: number;
@@ -69,6 +74,16 @@ const timeline_data: TimelineEntry[] = [
 		projects: [
 			{id: 8, image: img_absensi, title: "Absensi App", category: "Mobile App", description: "Aplikasi absensi berbasis mobile", portrait: true},
 			{id: 9, image: img_nuvora, title: "Dexova ERP", category: "ERP", description: "Platform ERP terintegrasi: HRIS, Payroll, POS & Manajemen Inventori", caseStudySlug: "dexova-erp"},
+			{id: 10, image: img_analytic, title: "Trading Analytics API", category: "API", description: "Backend analitik trading + generator MT5 .set — Go, Chi, SQLC, PostgreSQL"},
+		],
+	},
+	{
+		year: 2026,
+		projects: [
+			{id: 11, image: img_chasago, title: "chasago", category: "Open Source", description: "CLI generator boilerplate Go REST API: Clean Architecture, Paseto, audit log, i18n — sekali command, project siap production"},
+			{id: 12, image: img_seluscraf, title: "Seluscraf", category: "E-commerce", description: "Backend e-commerce toko baju muslim — Go/Gin, GORM, Redis, JWT + Google OAuth"},
+			{id: 13, image: img_jastip, title: "Jastip Chasa Store", category: "E-commerce", description: "Platform jastip (titip-beli) — Go REST API (Gin, fx, Paseto, Redis) + storefront"},
+			{id: 14, image: img_mula, title: "Mula Property", category: "Web App", description: "Platform listing properti — Nuxt (Vue) dengan UI modern & cepat"},
 		],
 	},
 ];
