@@ -4,21 +4,21 @@ import Count from '../common/Count'
 const counter_data = [
 {
 id: 1,
-title: 'Tahun Pengalaman',
+title: 'Tahun Remote (Dubai)',
 count: 3,
 cls: "plus",
 },
 {
 id: 2,
-title: 'Proyek Selesai',
+title: 'Proyek Production',
 count: 15,
-cls: "k-plus",
+cls: "plus",
 },
 {
 id: 3,
-title: 'Kepuasan Klien',
-count: 90,
-cls: "percent",
+title: 'Integrasi Sistem',
+count: 5,
+cls: "plus",
 },
 ]
 
@@ -34,11 +34,13 @@ return (
 <div className="col-lg-9 col-sm-9">
 <div className="about-content-part wow fadeInUp delay-0-2s">
 <p>
-Saya Oksa Satya, seorang Full-Stack Developer berpengalaman dalam Java, Go, Laravel, dan
-Next.js. Dengan lebih dari 3 tahun pengalaman profesional dan 15+ proyek yang telah diselesaikan,
-saya spesialis dalam membangun aplikasi skalabel dengan arsitektur bersih dan perhatian kuat
-terhadap detail. Saya passionate dalam problem-solving, kerja tim, dan pembelajaran berkelanjutan
-untuk menghasilkan solusi perangkat lunak yang berdampak.
+Sejak 2022 saya bekerja remote sebagai Full-Stack Developer untuk PT Infini Software House
+Technology (Dubai), membangun aplikasi enterprise dengan <strong>Java/Spring Boot</strong> dan
+<strong>Next.js</strong>. Fokus saya backend: API yang andal, integrasi sistem, dan arsitektur
+yang tidak bikin pusing saat skala bertumbuh. Di luar kerjaan, saya membangun
+<strong> Dexova</strong> — platform ERP terintegrasi (HRIS, Payroll, POS, Inventori) yang lahir
+dari masalah nyata di lapangan. Kalau Anda butuh developer yang paham sisi teknis sekaligus sisi
+bisnis, mari ngobrol.
 </p>
 </div>
 <div className="hero-counter-area d-flex justify-content-between wow fadeInUp delay-0-4s">

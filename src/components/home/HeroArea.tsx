@@ -9,7 +9,11 @@ export default function HeroArea() {
           <div className="row">
             <div className="col-lg-12">
               <div className="hero-content wow fadeInUp text-black text-center delay-0-2s">
-                <h1 className={'text-black'}>Oksa Satya — Full-Stack Developer (Go, Java, Next.js)</h1>
+                <h1 className={'text-black'}>Backend Engineer yang Membangun Sistem Skalabel</h1>
+                <p className="hero-subhead">
+                  Go · Java/Spring Boot · Next.js — saya bantu bisnis &amp; startup membangun API yang andal,
+                  integrasi sistem (payment, HRIS, logistik), dan platform SaaS end-to-end.
+                </p>
               </div>
             </div>
           </div>
@@ -47,8 +51,8 @@ export default function HeroArea() {
                     </li>
                   </ul>
                   <div className="reviews">
-                    Keahlian terbukti dalam <strong>Java</strong>, <strong>Go</strong>, dan <strong>Next.js</strong>
-                    <p>Spesialis membangun sistem backend skalabel, aplikasi web modern, dan platform SaaS.</p>
+                    3+ tahun remote (Dubai) · 8+ proyek production
+                    <p>Spesialis backend: API skalabel, integrasi sistem, dan platform SaaS modern.</p>
                   </div>
                 </div>
               </div>
@@ -69,15 +73,14 @@ export default function HeroArea() {
             <div className="col-lg-3 pt-30">
               <div className="hero-content wow fadeInUp delay-0-4s">
                 <p>
-                  Saya Oksa Satya — Fullstack Developer dengan keahlian kuat di
-                  <strong> Java</strong>, <strong> Spring Boot</strong>, dan pengembangan backend.
-                  Saya juga aktif mengerjakan proyek menggunakan <strong> Go</strong> dan framework
-                  frontend modern seperti <strong> Next.js</strong>.
-                  Saat ini sedang membangun <strong> Dexova</strong>, sebuah platform ERP lengkap
-                  mencakup <strong>HRIS</strong>, <strong>Payroll</strong>, <strong>POS</strong>, dan
-                  <strong> Manajemen Inventori</strong> — dirancang untuk bisnis yang butuh solusi terintegrasi.
+                  Saya Oksa Satya. Fokus saya <strong>backend</strong> — API yang andal,
+                  integrasi sistem, dan arsitektur yang tidak bikin pusing saat skala bertumbuh,
+                  dengan <strong>Go</strong>, <strong>Java/Spring Boot</strong>, dan <strong>Next.js</strong>.
+                  Saat ini membangun <strong>Dexova</strong>, platform ERP terintegrasi
+                  (HRIS, Payroll, POS, Inventori).
                 </p>
-                <a className="theme-btn" href="/contact">Hubungi Saya</a>
+                <a className="theme-btn" href="/contact">Diskusikan Proyek</a>
+                <a className="hero-link-secondary" href="/projects">Lihat Studi Kasus →</a>
               </div>
             </div>
           </div>

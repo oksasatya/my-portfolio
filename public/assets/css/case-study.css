@@ -269,3 +269,29 @@
     padding: 28px 20px;
   }
 }
+
+/* ==========================================================================
+   Revamp copy helpers (Phase 1) — restyled fully in the editorial-light pass.
+   ========================================================================== */
+.hero-subhead {
+  max-width: 720px;
+  margin: 14px auto 0;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #4a4a52;
+}
+.hero-link-secondary {
+  display: inline-block;
+  margin-left: 18px;
+  font-weight: 600;
+  color: var(--primary-color, #a78bfa);
+  text-decoration: none;
+}
+.hero-link-secondary:hover { text-decoration: underline; }
+.service-benefit {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding-left: 12px;
+  border-left: 2px solid var(--primary-color, #a78bfa);
+}

@@ -13,7 +13,7 @@ export default function Projects() {
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <main>
-            <Breadcrumb title="Projects" style_2={true} />
+            <Breadcrumb title="Proyek & Studi Kasus" style_2={true} />
             <PortfolioArea />
           </main>
           <FooterOne />

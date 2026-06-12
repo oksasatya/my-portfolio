@@ -6,7 +6,7 @@ import AboutArea from './AboutArea'
 import ServiceArea from './ServiceArea'
 import HeaderOne from '@/layouts/headers/HeaderOne'
 import PortfolioArea from './PortfolioArea'
-import TestimonoalArea from './TestimonoalArea'
+// import TestimonoalArea from './TestimonoalArea' // removed: placeholder/unverifiable testimonials (E-E-A-T). Re-add with real proof.
 // import BlogArea from './BlogArea'
 import ContactArea from './ContactArea'
 import FooterOne from '@/layouts/footers/FooterOne'
@@ -25,7 +25,7 @@ export default function Home() {
             <AboutArea />
             <ServiceArea />
             <PortfolioArea />
-            <TestimonoalArea />
+            {/* <TestimonoalArea /> removed — testimonials were placeholder/unverifiable (E-E-A-T). Re-add real proof later. */}
             {/*<BlogArea />*/}
             <ContactArea />
           </main>

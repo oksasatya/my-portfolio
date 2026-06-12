@@ -13,7 +13,7 @@ export default function Contact() {
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <main>
-            <Breadcrumb title="Say Hello" style_3={true} />
+            <Breadcrumb title="Hubungi Saya" style_3={true} />
             <ContactArea />
           </main>
           <FooterOne />

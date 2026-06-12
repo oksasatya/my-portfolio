@@ -9,6 +9,7 @@ export default function ServiceArea() {
 						<div className="col-xl-12 col-lg-12">
 							<div className="section-title section-black-title wow fadeInUp delay-0-2s">
 								<h2>Layanan</h2>
+								<p>Bukan sekadar "bikin aplikasi" — saya bantu Anda menyelesaikan masalah bisnis dengan sistem yang andal dan siap tumbuh.</p>
 							</div>
 						</div>
 					</div>
@@ -24,6 +25,7 @@ export default function ServiceArea() {
 									<b>Laravel/PHP</b>, <b>Go</b>, dan <b>Next.js</b>.
 									Berfokus pada solusi skalabel dengan arsitektur bersih dan kode yang mudah dipelihara.
 								</p>
+								<p className="service-benefit"><strong>Hasil:</strong> aplikasi cepat dirilis, mudah dirawat, dan siap tumbuh seiring bisnis.</p>
 							</div>
 						</div>
 						{/* 02 */}
@@ -37,6 +39,7 @@ export default function ServiceArea() {
 									<b>HRIS (Mekari Talenta)</b>, <b>API logistik</b>, dan <b>layanan email</b>.
 									Memastikan komunikasi yang andal melalui desain API aman, webhook, dan monitoring.
 								</p>
+								<p className="service-benefit"><strong>Hasil:</strong> sistem Anda terhubung mulus — tanpa data nyangkut atau input ganda.</p>
 							</div>
 						</div>
 						{/* 03 */}
@@ -50,6 +53,7 @@ export default function ServiceArea() {
 									<b>Google Kubernetes Engine</b>. Mahir dalam <b>Docker</b>, pipeline CI/CD,
 									dan solusi penyimpanan cloud seperti <b>Google Cloud Storage</b>.
 								</p>
+								<p className="service-benefit"><strong>Hasil:</strong> deploy otomatis, downtime minim, biaya infrastruktur terkendali.</p>
 							</div>
 						</div>
 						{/* 04 */}
@@ -63,6 +67,12 @@ export default function ServiceArea() {
 									dan penerapan praktik keamanan terbaik termasuk <b>autentikasi JWT/OAuth2</b>,
 									validasi input, dan rate limiting. Pendekatan berorientasi kualitas dari latar belakang QA.
 								</p>
+								<p className="service-benefit"><strong>Hasil:</strong> aplikasi cepat = pelanggan tidak kabur, dan data Anda terlindungi.</p>
+							</div>
+						</div>
+						<div className="row">
+							<div className="col-12 text-center wow fadeInUp delay-0-2s" style={{ marginTop: 32 }}>
+								<a className="theme-btn" href="/contact">Punya proyek serupa? Diskusikan kebutuhan Anda →</a>
 							</div>
 						</div>
 					</div>

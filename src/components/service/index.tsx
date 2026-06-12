@@ -12,7 +12,7 @@ export default function Service() {
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <main>
-            <Breadcrumb title="Services" />
+            <Breadcrumb title="Layanan Web & Backend Development" />
             <ServiceArea />
           </main>
           <FooterOne />

@@ -20,7 +20,7 @@ export default function HeaderOne() {
                 <div className="col-xl-2 col-lg-2 col-12 d-lg-block">
                   <div className="logo-area">
                     <div className="logo d-lg-block d-flex justify-content-center">
-                      <Link href="/"><img src="/assets/images/logo.png" alt="" /></Link>
+                      <Link href="/"><img src="/assets/images/logo.png" alt="Oksa Satya" /></Link>
                     </div>
                   </div>
                 </div>

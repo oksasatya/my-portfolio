@@ -110,7 +110,7 @@ export default function PortfolioArea() {
 		<>
 			<div className="projects-area" id="portfolio">
 				<div className="custom-icon">
-					<img src="/assets/images/custom/work-scribble.svg" alt="custom"/>
+					<img src="/assets/images/custom/work-scribble.svg" alt="" aria-hidden="true"/>
 				</div>
 				<div className="container">
 					{/* Section Header */}

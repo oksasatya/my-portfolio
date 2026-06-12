@@ -13,7 +13,7 @@ export default function About() {
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <main>
-            <Breadcrumb title="About Me" />
+            <Breadcrumb title="Tentang Oksa Satya" />
             <ResumeArea />
             <SkillArea />
           </main>
