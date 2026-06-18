@@ -19,6 +19,7 @@
   --rule: #e7e2d6;
   --accent: #1d4ed8;
   --accent-soft: #e7eefc;
+  --accent-warm: #a8421f;   /* terracotta — section titles on /about (non-blue, AA on paper) */
 
   /* remap existing template tokens onto the new palette */
   --primary-color: var(--accent);     /* every `color: var(--primary-color)` -> violet accent */
@@ -64,6 +65,18 @@ p { color: var(--ink-soft); }
 .projects-area { background: var(--paper) !important; }
 
 .contact-area { background: var(--paper) !important; }
+
+/* resume + skill sections still inherited --primary-color (the blue accent) for
+   their background — they were missed in the flip above. Match the paper sections. */
+.resume-area,
+.skill-area { background: var(--paper) !important; }
+
+/* /about section titles in terracotta instead of plain ink/black.
+   Scoped to these two sections — global accent (links/buttons) stays as-is.
+   !important beats Bootstrap's .text-black on the "Resume" heading. */
+.resume-area > .container > header h2,
+.resume-area .resume-wrapper > h2,
+.skill-area .section-title h2 { color: var(--accent-warm) !important; }
 
 /* generous vertical rhythm */
 .about-area, .services-area, .projects-area, .contact-area { padding-top: 96px; padding-bottom: 96px; }
