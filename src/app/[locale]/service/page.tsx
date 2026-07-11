@@ -2,28 +2,50 @@ import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { ServiceHubPage } from "@/components/service/ServiceHubPage";
 import { JsonLd } from "@/components/ui/JsonLd";
+import { getServiceHub } from "@/data/service-hub";
+import { serviceLandings } from "@/data/services";
+import { languageAlternates } from "@/i18n/routes";
+import type { Locale } from "@/i18n/routing";
 
 const DOMAIN = "https://oksasatya.dev";
 
-export const metadata: Metadata = {
-  title: "Jasa Pembuatan Website, Aplikasi & API",
-  description:
-    "Jasa pembuatan website, aplikasi web, API/integrasi sistem, dan toko online dengan Go, Laravel, dan Next.js. Dari company profile sampai platform SaaS — backend skalabel, aman, dan siap tumbuh.",
-  alternates: { canonical: "/service", languages: { id: "/service", en: "/en/service", "x-default": "/service" } },
-  openGraph: {
-    title: "Jasa Pembuatan Website, Aplikasi & API — Oksa Satya",
+const META = {
+  id: {
+    title: "Jasa Pembuatan Website, Aplikasi & API",
     description:
+      "Jasa pembuatan website, aplikasi web, API/integrasi sistem, dan toko online dengan Go, Laravel, dan Next.js. Dari company profile sampai platform SaaS — backend skalabel, aman, dan siap tumbuh.",
+    ogTitle: "Jasa Pembuatan Website, Aplikasi & API — Oksa Satya",
+    ogDesc:
       "Jasa pembuatan website, aplikasi web, API & integrasi sistem dengan Go, Laravel, dan Next.js — backend skalabel sampai platform SaaS.",
-    url: "/service",
-    type: "website",
+    twDesc: "Jasa pembuatan website, aplikasi web, API & integrasi sistem — Go, Laravel, Next.js.",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Jasa Pembuatan Website, Aplikasi & API — Oksa Satya",
+  en: {
+    title: "Web, Application & API Development Services",
     description:
-      "Jasa pembuatan website, aplikasi web, API & integrasi sistem — Go, Laravel, Next.js.",
+      "Website, web application, API/system integration, and e-commerce development with Go, Laravel, and Next.js. From company profiles to SaaS platforms — scalable, secure backends built to grow.",
+    ogTitle: "Web, Application & API Development Services — Oksa Satya",
+    ogDesc:
+      "Website, web application, API & system integration development with Go, Laravel, and Next.js — scalable backends up to SaaS platforms.",
+    twDesc: "Website, web app, API & system integration — Go, Laravel, Next.js.",
   },
-};
+} as const;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const c = META[locale] ?? META.id;
+  const url = locale === "en" ? "/en/service" : "/service";
+  return {
+    title: c.title,
+    description: c.description,
+    alternates: { canonical: url, languages: languageAlternates("/service") },
+    openGraph: { title: c.ogTitle, description: c.ogDesc, url, type: "website" },
+    twitter: { card: "summary_large_image", title: c.ogTitle, description: c.twDesc },
+  };
+}
 
 const professionalServiceLd = {
   "@context": "https://schema.org",
@@ -41,6 +63,19 @@ const professionalServiceLd = {
     "Jasa Pembuatan Toko Online",
   ],
   knowsAbout: ["Go", "Java", "Spring Boot", "Laravel", "Next.js", "REST API", "SaaS", "Docker"],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Layanan pengembangan software",
+    itemListElement: serviceLandings.map((s) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: s.h1,
+        url: `${DOMAIN}/jasa/${s.slug}`,
+        description: s.tagline,
+      },
+    })),
+  },
 };
 
 const breadcrumbLd = {
@@ -55,11 +90,25 @@ const breadcrumbLd = {
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
+
+  // FAQ rich-result markup mirrors the FAQ rendered on this page, per locale.
+  const hub = getServiceHub(locale as Locale);
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: hub.faq.items.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+
   return (
     <>
       <JsonLd id="professional-service-ld" data={professionalServiceLd} />
       <JsonLd id="breadcrumb-ld" data={breadcrumbLd} />
-      <ServiceHubPage />
+      <JsonLd id="service-faq-ld" data={faqLd} />
+      <ServiceHubPage locale={locale as Locale} />
     </>
   );
 }

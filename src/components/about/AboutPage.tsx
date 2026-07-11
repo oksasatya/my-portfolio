@@ -1,13 +1,15 @@
 import Image from "next/image";
-import { FileDown } from "lucide-react";
+import { FileDown, Mail } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
-import { waLink, CONTACT, CV_URL } from "@/lib/contact";
-import { getAboutData } from "@/data/locale-data";
+import { GithubIcon, LinkedinIcon } from "@/components/ui/brand-icons";
+import { NodesBackdrop, ContourBackdrop } from "@/components/ui/backdrops";
+import { waLink, CONTACT, GMAIL_COMPOSE, CV_URL } from "@/lib/contact";
+import { getAboutData, getHomeData } from "@/data/locale-data";
 import type { ResumeEntry } from "@/data/about";
 import type { Locale } from "@/i18n/routing";
 
@@ -40,25 +42,24 @@ export function AboutPage() {
   const locale = useLocale() as Locale;
   const t = useTranslations("aboutPage");
   const th = useTranslations("header");
-  const { workExperience, clientProjects, education, certificates, skillGroups } =
+  const { workExperience, clientProjects, education, certificates, skillGroups, approach } =
     getAboutData(locale);
+  const { trustItems } = getHomeData(locale);
 
   return (
     <>
       <Header />
       <main>
-        <div className="border-b border-line">
-          <Container className="py-14 sm:py-20">
+        {/* Hero — dark with the node motif so the page opens with depth. */}
+        <div className="relative overflow-hidden border-b border-line bg-dark">
+          <NodesBackdrop />
+          <Container className="relative py-14 sm:py-20">
             <div className="grid items-center gap-10 lg:grid-cols-[2fr_1fr]">
               <div>
-                <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-                  {t("title")}
-                </h1>
+                <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">{t("title")}</h1>
                 <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
                   {t.rich("intro1", {
-                    b: (chunks) => (
-                      <strong className="font-semibold text-ink">{chunks}</strong>
-                    ),
+                    b: (chunks) => <strong className="font-semibold text-ink">{chunks}</strong>,
                   })}
                 </p>
                 <p className="mt-4 max-w-2xl leading-relaxed text-muted">{t("intro2")}</p>
@@ -69,8 +70,11 @@ export function AboutPage() {
                   <Button href={CV_URL} external variant="secondary" size="lg">
                     <FileDown size={16} aria-hidden /> {t("cv")}
                   </Button>
-                  <Button href={CONTACT.github} external variant="ghost" size="lg">
-                    GitHub
+                  <Button href={CONTACT.github} external variant="secondary" size="lg">
+                    <GithubIcon size={16} /> GitHub
+                  </Button>
+                  <Button href={CONTACT.linkedin} external variant="secondary" size="lg">
+                    <LinkedinIcon size={16} /> LinkedIn
                   </Button>
                 </div>
               </div>
@@ -88,6 +92,35 @@ export function AboutPage() {
             </div>
           </Container>
         </div>
+
+        {/* Experience snapshot */}
+        <section aria-label={t("statLabel")} className="border-b border-line bg-bg">
+          <Container>
+            <ul className="flex flex-wrap gap-x-6 gap-y-2 py-5 font-mono text-xs text-muted sm:text-sm">
+              {trustItems.map((item) => (
+                <li key={item} className="tabular-nums">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </Container>
+        </section>
+
+        {/* How I work */}
+        <Section className="border-b border-line bg-surface" ariaLabel={t("approachTitle")}>
+          <div className="max-w-2xl">
+            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{t("approachTitle")}</h2>
+            <p className="mt-3 text-muted">{t("approachIntro")}</p>
+          </div>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2">
+            {approach.map((a) => (
+              <div key={a.title} className="rounded-xl border border-line bg-bg p-6">
+                <h3 className="font-display text-lg font-semibold">{a.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{a.body}</p>
+              </div>
+            ))}
+          </div>
+        </Section>
 
         <Section ariaLabel={t("resumeLabel")}>
           <div className="grid gap-14 lg:grid-cols-2">
@@ -137,6 +170,46 @@ export function AboutPage() {
             </div>
           </div>
         </Section>
+
+        {/* Contact — dark with contour motif (the site's contact surface) */}
+        <section className="relative overflow-hidden border-t border-line bg-dark">
+          <ContourBackdrop />
+          <Container className="relative py-16 text-center sm:py-20">
+            <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl">
+              {t("contactTitle")}
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-lg text-muted">{t("contactIntro")}</p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <Button href={waLink(th("waMessage"))} external size="lg">
+                {t("contactWa")}
+              </Button>
+              <Button href={GMAIL_COMPOSE} external variant="secondary" size="lg">
+                <Mail size={16} aria-hidden /> {t("contactEmail")}
+              </Button>
+            </div>
+            <div
+              aria-label={t("socialLabel")}
+              className="mt-8 flex items-center justify-center gap-6 text-sm"
+            >
+              <a
+                href={CONTACT.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 items-center gap-2 text-muted transition-colors hover:text-ink"
+              >
+                <GithubIcon size={16} /> GitHub
+              </a>
+              <a
+                href={CONTACT.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 items-center gap-2 text-muted transition-colors hover:text-ink"
+              >
+                <LinkedinIcon size={16} /> LinkedIn
+              </a>
+            </div>
+          </Container>
+        </section>
       </main>
       <Footer />
     </>

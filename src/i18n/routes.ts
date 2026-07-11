@@ -4,7 +4,6 @@
 const EN_PATHS = new Set([
   "/",
   "/about",
-  "/contact",
   "/service",
   "/projects",
   "/projects/dexova-erp",

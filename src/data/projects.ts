@@ -114,7 +114,7 @@ export const caseStudies: readonly CaseStudy[] = [
       "Batas modul yang jelas membuat penambahan modul baru bisa dilakukan tanpa membongkar yang sudah ada — siap untuk skala.",
     ],
     repoVisibility: "private",
-    image: "/assets/images/dexova/dexova-hris-dashboard-admin.webp",
+    image: "/assets/images/dexova/admin/employees.png",
     deepDive: {
       sections: [
         {
@@ -266,7 +266,7 @@ export const caseStudies: readonly CaseStudy[] = [
       "Proses payroll yang tadinya spreadsheet manual menjadi run yang terkunci, terlacak, dan bisa diaudit.",
     ],
     repoVisibility: "private",
-    image: "/assets/images/dexova/dexova-hris-golongan-job-level.webp",
+    image: "/assets/images/dexova/admin/attendance-analytics.png",
     deepDive: {
       sections: [
         {
@@ -437,7 +437,7 @@ export const caseStudies: readonly CaseStudy[] = [
       "Stok selalu konsisten dengan penjualan dan retur karena sinkron otomatis dengan modul Inventory.",
     ],
     repoVisibility: "private",
-    image: "/assets/images/projects/dexova.webp",
+    image: "/assets/images/dexova/kasir/transaksi.png",
     deepDive: {
       sections: [
         {
@@ -641,71 +641,288 @@ export const caseStudies: readonly CaseStudy[] = [
 ] as const;
 
 /** Compact archive rows on /projects — deliverables without a full case study. */
+export type ProjectGroup = "ecommerce" | "systems" | "web" | "oss" | "mobile";
+
 export interface ArchiveProject {
   readonly title: string;
   readonly year: number;
+  readonly group: ProjectGroup;
   readonly category: string;
   readonly description: string;
+  /** Short stack summary, e.g. "Go · Next.js". */
+  readonly tech: string;
+  readonly repoVisibility: "public" | "private";
+  /** GitHub URL — public repos only. */
+  readonly repoUrl?: string;
 }
 
+const GH = "https://github.com/oksasatya";
+
 export const archiveProjects: readonly ArchiveProject[] = [
+  // E-commerce & marketplace
   {
-    title: "Mula Property",
-    year: 2026,
-    category: "Web App",
-    description: "Platform listing properti — Nuxt (Vue) dengan UI modern & cepat.",
-  },
-  {
-    title: "chasago",
-    year: 2026,
-    category: "Open Source",
-    description:
-      "CLI generator boilerplate Go REST API: Clean Architecture, Paseto, audit log, i18n — sekali command, project siap production.",
-  },
-  {
-    title: "Seluscraf",
-    year: 2026,
+    title: "ChasaStore",
+    year: 2025,
+    group: "ecommerce",
     category: "E-commerce",
     description:
-      "Backend e-commerce toko baju muslim — Go/Gin, GORM, Redis, JWT + Google OAuth.",
+      "Platform top-up game & e-commerce: storefront, katalog produk, dan alur pembayaran.",
+    tech: "Next.js · TypeScript · Java",
+    repoVisibility: "private",
   },
   {
     title: "Jastip Chasa Store",
     year: 2026,
+    group: "ecommerce",
+    category: "Marketplace",
+    description:
+      "Platform jastip (titip-beli): storefront, dashboard admin, dan scraper harga otomatis.",
+    tech: "Go · Vue · Svelte · Python",
+    repoVisibility: "private",
+  },
+  {
+    title: "Yok Shopping",
+    year: 2025,
+    group: "ecommerce",
+    category: "E-commerce",
+    description: "Toko online end-to-end: REST API Go + storefront Next.js.",
+    tech: "Go · TypeScript",
+    repoVisibility: "private",
+  },
+  {
+    title: "Seluscraf",
+    year: 2026,
+    group: "ecommerce",
     category: "E-commerce",
     description:
-      "Platform jastip (titip-beli) — Go REST API (Gin, fx, Paseto, Redis) + storefront.",
+      "Backend e-commerce baju muslim: katalog, order, dan auth JWT + Google OAuth.",
+    tech: "Go · Gin · GORM · Redis",
+    repoVisibility: "private",
+  },
+  {
+    title: "Dubai Deals",
+    year: 2025,
+    group: "ecommerce",
+    category: "Marketplace",
+    description: "Platform deals/promo: backend Go, storefront, dan back-office.",
+    tech: "Go · TypeScript",
+    repoVisibility: "public",
+    repoUrl: `${GH}/dubai-deals-be`,
+  },
+
+  // Business systems & dashboards
+  {
+    title: "ChasaWorks",
+    year: 2026,
+    group: "systems",
+    category: "Dashboard",
+    description: "Dashboard operasional + landing page perusahaan.",
+    tech: "PHP · TypeScript",
+    repoVisibility: "private",
+  },
+  {
+    title: "Web App Analytics",
+    year: 2025,
+    group: "systems",
+    category: "Analytics",
+    description: "Dashboard analitik web: pelacakan event + API Go.",
+    tech: "Go · TypeScript",
+    repoVisibility: "private",
+  },
+  {
+    title: "Berdikari",
+    year: 2026,
+    group: "systems",
+    category: "CMS",
+    description: "CMS + sistem manajemen untuk grup Berdikari.",
+    tech: "PHP · TypeScript",
+    repoVisibility: "private",
+  },
+  {
+    title: "KBU",
+    year: 2026,
+    group: "systems",
+    category: "Business App",
+    description: "Sistem bisnis KBU: API, dashboard admin, dan situs publik.",
+    tech: "PHP · JavaScript",
+    repoVisibility: "private",
+  },
+  {
+    title: "My Finance",
+    year: 2025,
+    group: "systems",
+    category: "Web App",
+    description: "Aplikasi pencatat keuangan pribadi: API Go + frontend Next.js.",
+    tech: "Go · TypeScript",
+    repoVisibility: "private",
+  },
+  {
+    title: "Nuvora",
+    year: 2025,
+    group: "systems",
+    category: "Web Platform",
+    description: "Platform web: backend Go + frontend Next.js.",
+    tech: "Go · TypeScript",
+    repoVisibility: "private",
+  },
+  {
+    title: "Uje Motor Inventory",
+    year: 2025,
+    group: "systems",
+    category: "Inventory",
+    description: "Sistem inventori bengkel: stok sparepart dan transaksi.",
+    tech: "JavaScript",
+    repoVisibility: "private",
   },
   {
     title: "Trading Analytics API",
     year: 2025,
+    group: "systems",
     category: "API",
+    description: "Backend analitik trading + generator file MT5 .set.",
+    tech: "Go · Chi · SQLC",
+    repoVisibility: "private",
+  },
+
+  // Websites & landing pages
+  {
+    title: "Doctor Swimming Pools",
+    year: 2025,
+    group: "web",
+    category: "Landing + API",
     description:
-      "Backend analitik trading + generator MT5 .set — Go, Chi, SQLC, PostgreSQL.",
+      "Jasa pembuatan kolam renang: landing page konversi + backend penangkap lead.",
+    tech: "Next.js · Go",
+    repoVisibility: "private",
   },
   {
-    title: "Dashboard Rahan",
-    year: 2023,
-    category: "Dashboard",
-    description: "Dashboard admin & monitoring Rahan.",
+    title: "Mula Property",
+    year: 2026,
+    group: "web",
+    category: "Web App",
+    description: "Platform listing properti dengan UI modern & cepat.",
+    tech: "Nuxt · Vue",
+    repoVisibility: "private",
+  },
+  {
+    title: "PT Trofi",
+    year: 2025,
+    group: "web",
+    category: "Corporate",
+    description: "Website & sistem korporat PT Trofi (frontend + backend).",
+    tech: "TypeScript",
+    repoVisibility: "private",
+  },
+  {
+    title: "PT Pear",
+    year: 2026,
+    group: "web",
+    category: "Corporate",
+    description: "Website korporat PT Pear.",
+    tech: "TypeScript",
+    repoVisibility: "private",
+  },
+  {
+    title: "Jet Construction",
+    year: 2025,
+    group: "web",
+    category: "Corporate",
+    description: "Website perusahaan konstruksi.",
+    tech: "TypeScript",
+    repoVisibility: "private",
   },
   {
     title: "Trofi Group",
     year: 2021,
-    category: "Web Profile",
+    group: "web",
+    category: "Company Profile",
     description: "Website company profile Trofi Group.",
-  },
-  {
-    title: "Rahan Mancar (v1)",
-    year: 2021,
-    category: "Web App",
-    description: "Aplikasi web untuk manajemen Rahan Mancar.",
+    tech: "Web",
+    repoVisibility: "private",
   },
   {
     title: "Totabuan",
     year: 2020,
-    category: "Web Profile",
-    description: "Company profile website untuk Totabuan.",
+    group: "web",
+    category: "Company Profile",
+    description: "Website company profile Totabuan.",
+    tech: "Web",
+    repoVisibility: "private",
+  },
+
+  // Open source & tools
+  {
+    title: "chasago",
+    year: 2026,
+    group: "oss",
+    category: "CLI",
+    description:
+      "CLI generator boilerplate Go REST API: Clean Architecture, Paseto, audit log, i18n.",
+    tech: "Go",
+    repoVisibility: "public",
+    repoUrl: `${GH}/chasago`,
+  },
+  {
+    title: "rust-task-api",
+    year: 2026,
+    group: "oss",
+    category: "API",
+    description: "REST API manajemen task di Rust.",
+    tech: "Rust",
+    repoVisibility: "public",
+    repoUrl: `${GH}/rust-task-api`,
+  },
+  {
+    title: "go-ddd-clean-architecture",
+    year: 2025,
+    group: "oss",
+    category: "Reference",
+    description: "Template referensi Go: DDD + clean/hexagonal architecture.",
+    tech: "Go",
+    repoVisibility: "public",
+    repoUrl: `${GH}/go-ddd-clean-architecture`,
+  },
+  {
+    title: "Task Tracker",
+    year: 2026,
+    group: "oss",
+    category: "CLI",
+    description: "CLI task tracker di Go.",
+    tech: "Go",
+    repoVisibility: "public",
+    repoUrl: `${GH}/Task-Tracker`,
+  },
+  {
+    title: "router-lens",
+    year: 2026,
+    group: "oss",
+    category: "Tool",
+    description: "Utility Go untuk analisis routing.",
+    tech: "Go",
+    repoVisibility: "public",
+    repoUrl: `${GH}/router-lens`,
+  },
+
+  // Mobile
+  {
+    title: "veyra",
+    year: 2026,
+    group: "mobile",
+    category: "Mobile",
+    description: "Aplikasi mobile lintas-platform (Flutter).",
+    tech: "Flutter · Dart",
+    repoVisibility: "public",
+    repoUrl: `${GH}/veyra`,
+  },
+  {
+    title: "obd-app",
+    year: 2026,
+    group: "mobile",
+    category: "iOS",
+    description: "Aplikasi iOS diagnostik OBD-II kendaraan.",
+    tech: "Swift · iOS",
+    repoVisibility: "public",
+    repoUrl: `${GH}/obd-app`,
   },
 ];
 

@@ -82,3 +82,27 @@ export const skillGroups: readonly { readonly label: string; readonly items: str
   { label: "Database", items: "PostgreSQL, MySQL, MongoDB, Redis" },
   { label: "DevOps", items: "Docker, Linux, CI/CD, Git (GitHub/GitLab)" },
 ];
+
+export interface ApproachItem {
+  readonly title: string;
+  readonly body: string;
+}
+
+export const approach: readonly ApproachItem[] = [
+  {
+    title: "Outcome dulu, teknologi belakangan",
+    body: "Saya mulai dari masalah bisnisnya — bukan dari framework favorit. Sistem yang benar adalah yang menyelesaikan masalah nyata dan bisa dirawat, bukan yang paling keren di kertas.",
+  },
+  {
+    title: "Kualitas production, bukan sekadar 'jadi'",
+    body: "Arsitektur yang bersih, error handling yang disiplin, keamanan, dan observability — hal-hal yang baru terasa penting justru saat aplikasi sudah dipakai orang setiap hari.",
+  },
+  {
+    title: "Sistem yang bisa diaudit",
+    body: "Payroll yang bisa ditelusuri, kas yang selalu cocok, stok yang jujur. Setiap perubahan meninggalkan jejak — supaya Anda percaya pada angka yang keluar dari sistem.",
+  },
+  {
+    title: "Komunikasi jujur & transparan",
+    body: "Estimasi realistis, kabar progres rutin, dan jujur soal trade-off. Saya lebih suka bilang 'ini butuh waktu' daripada menjanjikan yang tidak bisa ditepati.",
+  },
+];

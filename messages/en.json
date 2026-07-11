@@ -24,7 +24,6 @@
     "servicesLabel": "Deep dives",
     "contactLabel": "Contact",
     "home": "Home",
-    "contact": "Contact",
     "rights": "All rights reserved."
   },
   "home": {
@@ -77,6 +76,12 @@
     "contactEmail": "Email Me",
     "stackLabel": "Technologies I work with"
   },
+  "contactTopics": {
+    "freelance": "Freelance project",
+    "remote": "Remote role",
+    "consult": "Technical consultation",
+    "collab": "Collaboration"
+  },
   "caseStudy": {
     "home": "Home",
     "projects": "Projects",
@@ -100,36 +105,6 @@
     "ctaSecondary": "View other work",
     "waMessage": "Hi Oksa, I read the {title} case study and would like to discuss."
   },
-  "contactForm": {
-    "greeting": "Hi Oksa, I am",
-    "topicLabel": "I'm reaching out about",
-    "name": "Name",
-    "namePh": "Your name",
-    "phone": "Your WhatsApp number",
-    "phoneNote": "So I can reply.",
-    "msg": "Tell me what you need",
-    "msgPh": "e.g. we're hiring a remote full-stack engineer…",
-    "submit": "Send to My WhatsApp",
-    "sending": "Sending…",
-    "sentTitle": "Message sent ✓",
-    "sentBody1": "Your message reached my WhatsApp. I'll reply to",
-    "sentBody2": "— usually within 24 hours.",
-    "err1": "Failed to send — try again, or",
-    "errLink": "continue via your WhatsApp",
-    "privacy": "Messages are forwarded straight to my WhatsApp — nothing is stored on this site.",
-    "topics": {
-      "freelance": "Freelance project",
-      "remote": "Remote role",
-      "consult": "Technical consultation",
-      "collab": "Collaboration"
-    }
-  },
-  "contactPage": {
-    "title": "Let's talk",
-    "intro": "Freelance projects, remote roles, technical consultation, or collaboration — tell me what you need and I'll help map the solution.",
-    "waNote": "Fastest — usually answered within 24 hours",
-    "emailNote": "For longer briefs or attachments"
-  },
   "aboutPage": {
     "title": "About me",
     "intro1": "I'm Oksa Satya — a full-stack developer with a backend focus. Since 2022 I've built enterprise applications for PT Infini Software House Technology (Dubai), and on the side I build <b>Dexova</b>, an ERP platform for Indonesian businesses.",
@@ -141,16 +116,14 @@
     "workTitle": "Work experience",
     "clientTitle": "Selected client projects",
     "eduTitle": "Education & certifications",
-    "skillsTitle": "Skills"
-  },
-  "servicePage": {
-    "title": "Services",
-    "intro": "Website, web application, and API development — not just \"done\", but systems that solve a business problem and are built to grow.",
-    "cta": "Free consultation via WhatsApp",
-    "waMessage": "Hi Oksa, I'd like to discuss a project.",
-    "listLabel": "Service list",
-    "learn": "Learn more",
-    "proofTitle": "Built to production standards",
-    "proofIntro": "The same standards as the systems I build and operate myself:"
+    "skillsTitle": "Skills",
+    "statLabel": "Experience summary",
+    "approachTitle": "How I work",
+    "approachIntro": "The principles I hold on every project — why clients and teams trust me with production systems.",
+    "contactTitle": "Let's build something",
+    "contactIntro": "Have a project, a role, or just want to talk shop? Tell me — I usually reply within 24 hours.",
+    "contactWa": "Chat on WhatsApp",
+    "contactEmail": "Email Me",
+    "socialLabel": "Social links"
   }
 }

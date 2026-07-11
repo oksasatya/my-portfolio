@@ -24,7 +24,6 @@
     "servicesLabel": "Layanan",
     "contactLabel": "Kontak",
     "home": "Beranda",
-    "contact": "Kontak",
     "rights": "Semua hak dilindungi."
   },
   "home": {
@@ -77,6 +76,12 @@
     "contactEmail": "Kirim Email",
     "stackLabel": "Teknologi yang saya pakai"
   },
+  "contactTopics": {
+    "freelance": "Proyek freelance",
+    "remote": "Peluang kerja remote",
+    "consult": "Konsultasi teknis",
+    "collab": "Kolaborasi"
+  },
   "caseStudy": {
     "home": "Beranda",
     "projects": "Proyek",
@@ -100,36 +105,6 @@
     "ctaSecondary": "Lihat proyek lain",
     "waMessage": "Halo Oksa, saya membaca studi kasus {title} dan ingin mendiskusikan proyek serupa."
   },
-  "contactForm": {
-    "greeting": "Halo Oksa, saya",
-    "topicLabel": "Keperluan",
-    "name": "Nama",
-    "namePh": "Nama Anda",
-    "phone": "Nomor WhatsApp Anda",
-    "phoneNote": "Untuk saya balas.",
-    "msg": "Ceritakan kebutuhan Anda",
-    "msgPh": "Contoh: saya butuh sistem kasir + stok untuk 3 outlet…",
-    "submit": "Kirim ke WhatsApp Saya",
-    "sending": "Mengirim…",
-    "sentTitle": "Pesan terkirim ✓",
-    "sentBody1": "Pesan anda sudah masuk ke WhatsApp saya. Saya balas ke nomor",
-    "sentBody2": "— biasanya kurang dari 24 jam.",
-    "err1": "Gagal mengirim — coba lagi, atau",
-    "errLink": "lanjutkan lewat WhatsApp Anda",
-    "privacy": "Pesan diteruskan langsung ke WhatsApp saya — tidak ada data yang disimpan di situs ini.",
-    "topics": {
-      "freelance": "Proyek freelance",
-      "remote": "Peluang kerja remote",
-      "consult": "Konsultasi teknis",
-      "collab": "Kolaborasi"
-    }
-  },
-  "contactPage": {
-    "title": "Mari bicara",
-    "intro": "Proyek freelance, peluang remote, konsultasi teknis, atau kolaborasi — ceritakan kebutuhannya, saya bantu petakan solusinya.",
-    "waNote": "Paling cepat — biasanya dibalas < 24 jam",
-    "emailNote": "Untuk brief panjang atau lampiran"
-  },
   "aboutPage": {
     "title": "Tentang saya",
     "intro1": "Saya Oksa Satya — full-stack developer dengan fokus backend. Sejak 2022 saya membangun aplikasi enterprise untuk PT Infini Software House Technology (Dubai), dan di luar itu membangun <b>Dexova</b>, platform ERP untuk bisnis Indonesia.",
@@ -141,16 +116,14 @@
     "workTitle": "Pengalaman kerja",
     "clientTitle": "Proyek klien terpilih",
     "eduTitle": "Pendidikan & sertifikasi",
-    "skillsTitle": "Keahlian"
-  },
-  "servicePage": {
-    "title": "Layanan",
-    "intro": "Jasa pembuatan website, aplikasi web, API, dan toko online — bukan sekadar \"jadi\", tapi sistem yang menyelesaikan masalah bisnis dan siap tumbuh.",
-    "cta": "Diskusi gratis via WhatsApp",
-    "waMessage": "Halo Oksa, saya ingin mendiskusikan proyek. Boleh kita ngobrol?",
-    "listLabel": "Daftar layanan",
-    "learn": "Pelajari layanan",
-    "proofTitle": "Dikerjakan dengan standar production",
-    "proofIntro": "Standar yang sama dengan sistem yang saya bangun dan operasikan sendiri:"
+    "skillsTitle": "Keahlian",
+    "statLabel": "Ringkasan pengalaman",
+    "approachTitle": "Cara saya bekerja",
+    "approachIntro": "Prinsip yang saya pegang di setiap proyek — kenapa klien dan tim mempercayakan sistem produksi kepada saya.",
+    "contactTitle": "Mari bangun sesuatu",
+    "contactIntro": "Punya proyek, lowongan, atau sekadar ingin diskusi teknis? Ceritakan — biasanya saya balas kurang dari 24 jam.",
+    "contactWa": "Chat via WhatsApp",
+    "contactEmail": "Kirim Email",
+    "socialLabel": "Tautan sosial"
   }
 }

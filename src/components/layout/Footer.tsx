@@ -1,9 +1,9 @@
 import { useLocale, useTranslations } from "next-intl";
-import { Mail, MessageCircle } from "lucide-react";
+import { Mail } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui/Container";
-import { GithubIcon, LinkedinIcon } from "@/components/ui/brand-icons";
-import { CONTACT, waLink } from "@/lib/contact";
+import { GithubIcon, LinkedinIcon, WhatsappIcon } from "@/components/ui/brand-icons";
+import { CONTACT, GMAIL_COMPOSE, waLink } from "@/lib/contact";
 
 // Structural per-locale link sets (labels come from messages where shared).
 const PAGES: Record<string, readonly { label?: string; key?: string; href: string }[]> = {
@@ -12,14 +12,12 @@ const PAGES: Record<string, readonly { label?: string; key?: string; href: strin
     { key: "services", href: "/service" },
     { key: "articles", href: "/articles" },
     { key: "about", href: "/about" },
-    { key: "contactNav", href: "/contact" },
   ],
   en: [
     { key: "projects", href: "/projects" },
     { key: "services", href: "/service" },
     { key: "articles", href: "/articles" },
     { key: "about", href: "/about" },
-    { key: "contactNav", href: "/contact" },
   ],
 };
 
@@ -44,7 +42,6 @@ export function Footer() {
 
   const navLabel = (key: string): string => {
     if (key === "home") return t("home");
-    if (key === "contactNav") return t("contact");
     return tn(key);
   };
 
@@ -95,12 +92,14 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-ink transition-colors hover:text-violet-deep"
                 >
-                  <MessageCircle size={16} aria-hidden /> WhatsApp
+                  <WhatsappIcon size={16} aria-hidden /> WhatsApp
                 </a>
               </li>
               <li>
                 <a
-                  href={`mailto:${CONTACT.email}`}
+                  href={GMAIL_COMPOSE}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-ink transition-colors hover:text-violet-deep"
                 >
                   <Mail size={16} aria-hidden /> Email

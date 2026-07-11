@@ -1,6 +1,6 @@
 // English /about data — structural twin of about.ts.
 
-import type { ResumeEntry } from "./about";
+import type { ApproachItem, ResumeEntry } from "./about";
 
 export const workExperienceEn: readonly ResumeEntry[] = [
   {
@@ -67,4 +67,23 @@ export const educationEn: readonly ResumeEntry[] = [
 export const certificatesEn: readonly string[] = [
   "Learn Golang from Beginner to Advance — Udemy (2024)",
   "Internship Certification — Citiasia Inc (2022)",
+];
+
+export const approachEn: readonly ApproachItem[] = [
+  {
+    title: "Outcome first, technology second",
+    body: "I start from the business problem — not from a favorite framework. The right system is the one that solves a real problem and can be maintained, not the one that looks coolest on paper.",
+  },
+  {
+    title: "Production quality, not just 'done'",
+    body: "Clean architecture, disciplined error handling, security, and observability — the things that only feel important once an application is used by people every day.",
+  },
+  {
+    title: "Systems you can audit",
+    body: "Traceable payroll, cash that always matches, honest stock. Every change leaves a trail — so you can trust the numbers the system produces.",
+  },
+  {
+    title: "Honest, transparent communication",
+    body: "Realistic estimates, regular progress updates, and honesty about trade-offs. I'd rather say 'this takes time' than promise something I can't deliver.",
+  },
 ];

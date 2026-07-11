@@ -36,7 +36,8 @@ export interface ServiceLanding {
   readonly relatedProjects: readonly string[];
 }
 
-const PROCESS_DEFAULT: readonly ProcessStep[] = [
+/** Shared 3-step engagement process — used by every /jasa spoke and the /service hub. */
+export const serviceProcess: readonly ProcessStep[] = [
   { title: "Diskusi & scope", desc: "Kita bahas kebutuhan, target, dan batasan. Saya bantu rumuskan scope yang jelas + estimasi waktu/biaya — gratis, tanpa komitmen." },
   { title: "Desain & pengerjaan", desc: "Saya kerjakan bertahap dengan update rutin. Anda bisa lihat progress, bukan kerja di balik layar." },
   { title: "Rilis & support", desc: "Deploy ke production, serah-terima dokumentasi, plus masa dukungan untuk perbaikan & penyesuaian." },
@@ -68,7 +69,7 @@ export const serviceLandings: readonly ServiceLanding[] = [
       "Opsi CMS supaya Anda bisa update konten sendiri tanpa coding",
       "Integrasi form/kontak ke WhatsApp atau email",
     ],
-    process: PROCESS_DEFAULT,
+    process: serviceProcess,
     stack: ["Next.js", "React", "TypeScript", "Laravel (CMS)", "Tailwind/Bootstrap"],
     faq: [
       { q: "Berapa lama pengerjaannya?", a: "Landing page sederhana biasanya 1–2 minggu; company profile multi-halaman atau web app lebih lama, tergantung fitur. Estimasi pasti diberikan setelah scope jelas." },
@@ -106,7 +107,7 @@ export const serviceLandings: readonly ServiceLanding[] = [
       "Integrasi ke layanan lain (payment, HRIS, logistik, email)",
       "Arsitektur yang siap tumbuh saat data & pengguna bertambah",
     ],
-    process: PROCESS_DEFAULT,
+    process: serviceProcess,
     stack: ["Next.js", "Go (Echo/Gin)", "Laravel", "PostgreSQL", "Redis", "Docker"],
     faq: [
       { q: "Bedanya dengan jasa pembuatan website apa?", a: "Website fokus menampilkan informasi (company profile, landing). Aplikasi web itu sistem interaktif: ada login, data yang diolah, peran pengguna, dan alur kerja — seperti dashboard, POS, atau HRIS." },
@@ -144,7 +145,7 @@ export const serviceLandings: readonly ServiceLanding[] = [
       "Observability: logging, metrics, dan tracing supaya masalah cepat ketahuan",
       "Arsitektur bersih + testing supaya aman dirawat jangka panjang",
     ],
-    process: PROCESS_DEFAULT,
+    process: serviceProcess,
     stack: ["Go (Echo/Gin)", "Java/Spring Boot", "PostgreSQL", "Redis", "gRPC", "Docker"],
     faq: [
       { q: "Saya cuma butuh sambungin 2 sistem, bisa?", a: "Bisa. Integrasi (mis. menghubungkan website ke sistem HRIS atau payment) justru pekerjaan yang sering saya tangani." },
@@ -180,7 +181,7 @@ export const serviceLandings: readonly ServiceLanding[] = [
       "Manajemen user & autentikasi pelanggan",
       "Siap mobile + cepat supaya pembeli tidak kabur",
     ],
-    process: PROCESS_DEFAULT,
+    process: serviceProcess,
     stack: ["Next.js", "Go (Gin)", "PostgreSQL", "Redis", "Midtrans"],
     faq: [
       { q: "Bisa terima pembayaran otomatis?", a: "Bisa. Saya integrasikan payment gateway (mis. Midtrans) supaya pembayaran terkonfirmasi otomatis lewat webhook." },

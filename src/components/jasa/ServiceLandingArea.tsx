@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
@@ -7,6 +7,7 @@ import { Section } from "@/components/ui/Section";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { JsonLd } from "@/components/ui/JsonLd";
+import { WhatsappIcon } from "@/components/ui/brand-icons";
 import { DotGridBackdrop, ContourBackdrop } from "@/components/ui/backdrops";
 import { waLink } from "@/lib/contact";
 import { serviceLandings, type ServiceLanding } from "@/data/services";
@@ -98,7 +99,7 @@ export default function ServiceLandingArea({
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Button href={waHref} external size="lg">
-                <MessageCircle size={18} aria-hidden /> Diskusi gratis via WhatsApp
+                <WhatsappIcon size={18} aria-hidden /> Diskusi gratis via WhatsApp
               </Button>
               <Button href="/projects" variant="secondary" size="lg">
                 Lihat contoh proyek
@@ -235,7 +236,7 @@ export default function ServiceLandingArea({
             </p>
             <div className="mt-8">
               <Button href={waHref} external variant="inverse" size="lg">
-                <MessageCircle size={18} aria-hidden /> Chat WhatsApp sekarang
+                <WhatsappIcon size={18} aria-hidden /> Chat WhatsApp sekarang
               </Button>
             </div>
             <p className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/60">

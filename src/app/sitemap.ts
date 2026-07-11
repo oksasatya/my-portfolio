@@ -29,7 +29,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entry("/projects", 0.9, REDESIGN_DATE, "weekly"),
     entry("/service", 0.8),
     entry("/about", 0.7),
-    entry("/contact", 0.7),
     entry("/articles", 0.7, REDESIGN_DATE, "weekly"),
     ...getAllServiceSlugs().map((slug) => entry(`/jasa/${slug}`, 0.8)),
     ...getAllCaseStudySlugs().map((slug) =>
@@ -43,7 +42,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entry("/en/projects", 0.7, REDESIGN_DATE, "weekly"),
     entry("/en/service", 0.6),
     entry("/en/about", 0.6),
-    entry("/en/contact", 0.6),
     entry("/en/articles", 0.6, REDESIGN_DATE, "weekly"),
     ...getAllCaseStudyEnSlugs().map((slug) =>
       entry(`/en/projects/${slug}`, slug.startsWith("dexova") ? 0.8 : 0.6),

@@ -38,6 +38,17 @@ export function Button({
   className = "",
 }: ButtonProps) {
   const cls = `inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-colors duration-200 ${VARIANT[variant]} ${SIZE[size]} ${className}`;
+  // mailto:/tel: must NOT open in a new tab — the browser hands the URL to the
+  // OS handler and leaves a blank "Untitled" tab hanging when there is none.
+  // Render a plain in-place anchor so the mail/phone app is invoked without
+  // navigating away.
+  if (href.startsWith("mailto:") || href.startsWith("tel:")) {
+    return (
+      <a href={href} className={cls}>
+        {children}
+      </a>
+    );
+  }
   if (external) {
     return (
       <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>

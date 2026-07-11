@@ -5,13 +5,13 @@ import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { ContourBackdrop } from "@/components/ui/backdrops";
-import { CONTACT, waLink } from "@/lib/contact";
+import { CONTACT, GMAIL_COMPOSE, waLink } from "@/lib/contact";
 
 const INTENT_KEYS = ["freelance", "remote", "consult", "collab"] as const;
 
 export function ContactCta() {
   const t = useTranslations("home");
-  const tf = useTranslations("contactForm.topics");
+  const tf = useTranslations("contactTopics");
   const th = useTranslations("header");
   return (
     <Section id="contact" className="overflow-hidden" contained={false} ariaLabel={t("contactTitle")}>
@@ -33,7 +33,7 @@ export function ContactCta() {
             <Button href={waLink(th("waMessage"))} external size="lg">
               {t("contactWa")}
             </Button>
-            <Button href={`mailto:${CONTACT.email}`} variant="secondary" size="lg" external>
+            <Button href={GMAIL_COMPOSE} variant="secondary" size="lg" external>
               <Mail size={16} aria-hidden /> {t("contactEmail")}
             </Button>
           </div>

@@ -13,8 +13,8 @@ import { archiveProjects, caseStudies, getCaseStudy, type CaseStudy } from "./pr
 import { archiveProjectsEn, caseStudiesEn, getCaseStudyEn } from "./projects-en";
 import { articles, getArticle, type Article } from "./articles";
 import { articlesEn, getArticleEn } from "./articles-en";
-import { certificates, clientProjects, education, skillGroups, workExperience } from "./about";
-import { certificatesEn, clientProjectsEn, educationEn, workExperienceEn } from "./about-en";
+import { approach, certificates, clientProjects, education, skillGroups, workExperience } from "./about";
+import { approachEn, certificatesEn, clientProjectsEn, educationEn, workExperienceEn } from "./about-en";
 
 export function getHomeData(locale: Locale) {
   if (locale === "en") {
@@ -36,9 +36,10 @@ export function getAboutData(locale: Locale) {
       education: educationEn,
       certificates: certificatesEn,
       skillGroups,
+      approach: approachEn,
     };
   }
-  return { workExperience, clientProjects, education, certificates, skillGroups };
+  return { workExperience, clientProjects, education, certificates, skillGroups, approach };
 }
 
 export function getCaseStudyByLocale(locale: Locale, slug: string): CaseStudy | undefined {
