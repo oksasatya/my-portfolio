@@ -27,8 +27,13 @@ const SECONDARY: Record<string, readonly { label: string; href: string }[]> = {
     { label: "Jasa Pembuatan Aplikasi", href: "/jasa/pembuatan-aplikasi" },
     { label: "Jasa Pembuatan API", href: "/jasa/pembuatan-api" },
     { label: "Jasa Pembuatan Toko Online", href: "/jasa/pembuatan-toko-online" },
+    { label: "Jasa Sistem Kasir (POS)", href: "/jasa/sistem-pos-kasir" },
+    { label: "Jasa Sistem HRIS & Payroll", href: "/jasa/sistem-hris-payroll" },
   ],
   en: [
+    { label: "API & System Integration", href: "/jasa/pembuatan-api" },
+    { label: "Custom POS System", href: "/jasa/sistem-pos-kasir" },
+    { label: "HRIS & Payroll System", href: "/jasa/sistem-hris-payroll" },
     { label: "Dexova HRIS — Payroll & Attendance", href: "/projects/dexova-hris" },
     { label: "Dexova POS — Cashier & Reconciliation", href: "/projects/dexova-pos" },
   ],

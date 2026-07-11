@@ -11,29 +11,77 @@ import { WhatsappIcon } from "@/components/ui/brand-icons";
 import { DotGridBackdrop, ContourBackdrop } from "@/components/ui/backdrops";
 import { waLink } from "@/lib/contact";
 import { serviceLandings, type ServiceLanding } from "@/data/services";
-import { getCaseStudy } from "@/data/projects";
+import { serviceLandingsEn } from "@/data/services-en";
+import { getCaseStudyByLocale } from "@/data/locale-data";
+import type { Locale } from "@/i18n/routing";
 
 const DOMAIN = "https://oksasatya.dev";
 
-const TRUST = [
-  "4+ tahun aplikasi enterprise (Dubai)",
-  "Respon < 24 jam",
-  "Estimasi gratis",
-];
+const UI = {
+  id: {
+    crumbHome: "Beranda",
+    crumbServices: "Layanan",
+    ctaPrimary: "Diskusi gratis via WhatsApp",
+    ctaSecondary: "Lihat contoh proyek",
+    trust: ["4+ tahun aplikasi enterprise (Dubai)", "Respon < 24 jam", "Estimasi gratis"],
+    whyTitle: "Kenapa ini penting",
+    getTitle: "Yang Anda dapat",
+    processTitle: "Transparan dari awal sampai rilis",
+    proofTitle: "Sudah dipakai di proyek production",
+    stackLabel: "Tech stack",
+    estimateLabel: "Estimasi biaya",
+    estimateCta: "Minta estimasi",
+    faqTitle: "Yang sering ditanyakan",
+    ctaTitle: "Ceritakan kebutuhan Anda",
+    ctaBody:
+      "Diskusi & estimasi gratis, tanpa komitmen. Biasanya saya balas dalam kurang dari 24 jam.",
+    ctaButton: "Chat WhatsApp sekarang",
+    othersLabel: "Layanan lain:",
+    asideLabel: "Detail layanan",
+    waMessage: (keyword: string) => `Halo Oksa, saya tertarik dengan ${keyword}. Boleh diskusi?`,
+  },
+  en: {
+    crumbHome: "Home",
+    crumbServices: "Services",
+    ctaPrimary: "Free consultation via WhatsApp",
+    ctaSecondary: "See example projects",
+    trust: ["4+ years of enterprise apps (Dubai)", "Replies < 24 hours", "Free estimate"],
+    whyTitle: "Why this matters",
+    getTitle: "What you get",
+    processTitle: "Transparent from kickoff to release",
+    proofTitle: "Proven in production projects",
+    stackLabel: "Tech stack",
+    estimateLabel: "Cost estimate",
+    estimateCta: "Request an estimate",
+    faqTitle: "Frequently asked questions",
+    ctaTitle: "Tell me what you need",
+    ctaBody: "Free discussion & estimate, no commitment. I usually reply within 24 hours.",
+    ctaButton: "Chat on WhatsApp",
+    othersLabel: "Other services:",
+    asideLabel: "Service details",
+    waMessage: (keyword: string) =>
+      `Hi Oksa, I'm interested in ${keyword}. Can we discuss my project?`,
+  },
+} as const;
 
 export default function ServiceLandingArea({
   landing: s,
+  locale,
 }: {
   readonly landing: ServiceLanding;
+  readonly locale: Locale;
 }) {
-  const url = `${DOMAIN}/jasa/${s.slug}`;
-  const waHref = waLink(`Halo Oksa, saya tertarik dengan ${s.keyword}. Boleh diskusi?`);
+  const ui = UI[locale] ?? UI.id;
+  const base = locale === "en" ? "/en" : "";
+  const url = `${DOMAIN}${base}/jasa/${s.slug}`;
+  const waHref = waLink(ui.waMessage(s.keyword));
 
   const related = s.relatedProjects
-    .map((slug) => getCaseStudy(slug))
+    .map((slug) => getCaseStudyByLocale(locale, slug))
     .filter((c): c is NonNullable<typeof c> => Boolean(c));
 
-  const others = serviceLandings.filter((o) => o.slug !== s.slug);
+  const allLandings = locale === "en" ? serviceLandingsEn : serviceLandings;
+  const others = allLandings.filter((o) => o.slug !== s.slug);
 
   const serviceLd = {
     "@context": "https://schema.org",
@@ -42,6 +90,7 @@ export default function ServiceLandingArea({
     serviceType: s.keyword,
     description: s.metaDescription,
     url,
+    inLanguage: locale,
     provider: { "@type": "Person", name: "Oksa Satya", url: DOMAIN },
     areaServed: ["Indonesia", "Worldwide"],
   };
@@ -50,8 +99,8 @@ export default function ServiceLandingArea({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Beranda", item: DOMAIN },
-      { "@type": "ListItem", position: 2, name: "Layanan", item: `${DOMAIN}/service` },
+      { "@type": "ListItem", position: 1, name: ui.crumbHome, item: `${DOMAIN}${base || "/"}` },
+      { "@type": "ListItem", position: 2, name: ui.crumbServices, item: `${DOMAIN}${base}/service` },
       { "@type": "ListItem", position: 3, name: s.h1, item: url },
     ],
   };
@@ -81,11 +130,11 @@ export default function ServiceLandingArea({
             <nav aria-label="Breadcrumb" className="font-mono text-xs text-muted">
               <ol className="flex flex-wrap items-center gap-2">
                 <li>
-                  <Link href="/" className="hover:text-ink">Beranda</Link>
+                  <Link href={base || "/"} className="hover:text-ink">{ui.crumbHome}</Link>
                 </li>
                 <li aria-hidden>/</li>
                 <li>
-                  <Link href="/service" className="hover:text-ink">Layanan</Link>
+                  <Link href={`${base}/service`} className="hover:text-ink">{ui.crumbServices}</Link>
                 </li>
                 <li aria-hidden>/</li>
                 <li aria-current="page" className="text-ink">{s.h1}</li>
@@ -99,15 +148,15 @@ export default function ServiceLandingArea({
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Button href={waHref} external size="lg">
-                <WhatsappIcon size={18} aria-hidden /> Diskusi gratis via WhatsApp
+                <WhatsappIcon size={18} aria-hidden /> {ui.ctaPrimary}
               </Button>
-              <Button href="/projects" variant="secondary" size="lg">
-                Lihat contoh proyek
+              <Button href={`${base}/projects`} variant="secondary" size="lg">
+                {ui.ctaSecondary}
               </Button>
             </div>
 
             <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-2 font-mono text-xs text-muted sm:text-sm">
-              {TRUST.map((t) => (
+              {ui.trust.map((t) => (
                 <li key={t}>{t}</li>
               ))}
             </ul>
@@ -118,11 +167,11 @@ export default function ServiceLandingArea({
         <Section>
           <div className="grid gap-12 lg:grid-cols-2">
             <div>
-              <h2 className="text-2xl font-bold sm:text-3xl">Kenapa ini penting</h2>
+              <h2 className="text-2xl font-bold sm:text-3xl">{ui.whyTitle}</h2>
               <p className="mt-4 leading-relaxed text-muted">{s.intro}</p>
             </div>
             <div>
-              <h2 className="text-2xl font-bold sm:text-3xl">Yang Anda dapat</h2>
+              <h2 className="text-2xl font-bold sm:text-3xl">{ui.getTitle}</h2>
               <ul className="mt-4 space-y-3">
                 {s.whatYouGet.map((item) => (
                   <li key={item} className="flex gap-3 text-sm leading-relaxed">
@@ -137,9 +186,7 @@ export default function ServiceLandingArea({
 
         {/* Process — a real sequence, numbering earns its place */}
         <Section className="border-y border-line bg-surface">
-          <h2 className="text-2xl font-bold sm:text-3xl">
-            Transparan dari awal sampai rilis
-          </h2>
+          <h2 className="text-2xl font-bold sm:text-3xl">{ui.processTitle}</h2>
           <div className="mt-10 grid gap-8 md:grid-cols-3">
             {s.process.map((step, i) => (
               <div key={step.title}>
@@ -157,14 +204,12 @@ export default function ServiceLandingArea({
         <Section>
           <div className="grid gap-12 lg:grid-cols-[3fr_2fr]">
             <div>
-              <h2 className="text-2xl font-bold sm:text-3xl">
-                Sudah dipakai di proyek production
-              </h2>
+              <h2 className="text-2xl font-bold sm:text-3xl">{ui.proofTitle}</h2>
               <div className="mt-6 space-y-4">
                 {related.map((c) => (
                   <Link
                     key={c.slug}
-                    href={`/projects/${c.slug}`}
+                    href={`${base}/projects/${c.slug}`}
                     className="group flex items-center justify-between gap-4 rounded-xl border border-line bg-surface p-6 transition-colors hover:border-violet-glow"
                   >
                     <span>
@@ -180,9 +225,9 @@ export default function ServiceLandingArea({
               </div>
             </div>
 
-            <aside aria-label="Detail layanan" className="space-y-6">
+            <aside aria-label={ui.asideLabel} className="space-y-6">
               <div className="rounded-xl border border-line bg-surface p-6">
-                <p className="font-mono text-xs text-muted">Tech stack</p>
+                <p className="font-mono text-xs text-muted">{ui.stackLabel}</p>
                 <ul className="mt-3 flex flex-wrap gap-2">
                   {s.stack.map((t) => (
                     <li key={t}>
@@ -192,10 +237,10 @@ export default function ServiceLandingArea({
                 </ul>
               </div>
               <div className="rounded-xl border border-line bg-surface p-6">
-                <p className="font-mono text-xs text-muted">Estimasi biaya</p>
+                <p className="font-mono text-xs text-muted">{ui.estimateLabel}</p>
                 <p className="mt-3 text-sm leading-relaxed text-muted">{s.estimateNote}</p>
                 <Button href={waHref} external className="mt-5">
-                  Minta estimasi <ArrowRight size={14} aria-hidden />
+                  {ui.estimateCta} <ArrowRight size={14} aria-hidden />
                 </Button>
               </div>
             </aside>
@@ -204,7 +249,7 @@ export default function ServiceLandingArea({
 
         {/* FAQ */}
         <Section className="border-t border-line bg-surface">
-          <h2 className="text-2xl font-bold sm:text-3xl">Yang sering ditanyakan</h2>
+          <h2 className="text-2xl font-bold sm:text-3xl">{ui.faqTitle}</h2>
           <div className="mt-8 max-w-3xl divide-y divide-line border-y border-line">
             {s.faq.map((f) => (
               <details key={f.q} className="group py-4">
@@ -224,27 +269,22 @@ export default function ServiceLandingArea({
         </Section>
 
         {/* Final CTA */}
-        <Section dark contained={false} className="overflow-hidden" ariaLabel="Ajakan kerja sama">
+        <Section dark contained={false} className="overflow-hidden" ariaLabel={ui.ctaTitle}>
           <ContourBackdrop />
           <Container className="relative text-center">
-            <h2 className="text-3xl font-bold sm:text-4xl">
-              Ceritakan kebutuhan Anda
-            </h2>
-            <p className="mx-auto mt-4 max-w-lg text-white/70">
-              Diskusi & estimasi gratis, tanpa komitmen. Biasanya saya balas
-              dalam kurang dari 24 jam.
-            </p>
+            <h2 className="text-3xl font-bold sm:text-4xl">{ui.ctaTitle}</h2>
+            <p className="mx-auto mt-4 max-w-lg text-white/70">{ui.ctaBody}</p>
             <div className="mt-8">
               <Button href={waHref} external variant="inverse" size="lg">
-                <WhatsappIcon size={18} aria-hidden /> Chat WhatsApp sekarang
+                <WhatsappIcon size={18} aria-hidden /> {ui.ctaButton}
               </Button>
             </div>
             <p className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/60">
-              <span className="font-mono text-xs text-white/40">Layanan lain:</span>
+              <span className="font-mono text-xs text-white/40">{ui.othersLabel}</span>
               {others.map((o) => (
                 <Link
                   key={o.slug}
-                  href={`/jasa/${o.slug}`}
+                  href={`${base}/jasa/${o.slug}`}
                   className="underline-offset-4 transition-colors hover:text-white hover:underline"
                 >
                   {o.h1}

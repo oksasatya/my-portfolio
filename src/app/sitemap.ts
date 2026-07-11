@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { getAllCaseStudySlugs } from "@/data/projects";
 import { getAllCaseStudyEnSlugs } from "@/data/projects-en";
 import { getAllServiceSlugs } from "@/data/services";
+import { getAllServiceEnSlugs } from "@/data/services-en";
 import { articles } from "@/data/articles";
 import { articlesEn } from "@/data/articles-en";
 
@@ -42,6 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entry("/en/projects", 0.7, REDESIGN_DATE, "weekly"),
     entry("/en/service", 0.6),
     entry("/en/about", 0.6),
+    ...getAllServiceEnSlugs().map((slug) => entry(`/en/jasa/${slug}`, 0.7)),
     entry("/en/articles", 0.6, REDESIGN_DATE, "weekly"),
     ...getAllCaseStudyEnSlugs().map((slug) =>
       entry(`/en/projects/${slug}`, slug.startsWith("dexova") ? 0.8 : 0.6),

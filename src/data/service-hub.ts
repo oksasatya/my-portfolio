@@ -5,7 +5,7 @@
 import type { Locale } from "@/i18n/routing";
 import { serviceProcess, type FaqItem, type ProcessStep } from "./services";
 
-export type ServiceIcon = "web" | "app" | "api" | "store";
+export type ServiceIcon = "web" | "app" | "api" | "store" | "pos" | "hris";
 
 export interface HubServiceItem {
   /** /jasa spoke slug — Indonesian-only landing pages. */
@@ -143,6 +143,32 @@ const ID: ServiceHubCopy = {
         ],
         stack: "Next.js · Go · PostgreSQL · Midtrans",
       },
+      {
+        slug: "sistem-pos-kasir",
+        icon: "pos",
+        title: "Jasa Pembuatan Sistem Kasir (POS)",
+        tagline:
+          "Aplikasi kasir custom — QRIS otomatis, rekonsiliasi kas per shift, dan stok yang selalu sinkron.",
+        highlights: [
+          "QRIS Midtrans terkonfirmasi otomatis via webhook",
+          "Shift kasir + rekonsiliasi kas harian",
+          "Void/retur dengan stok kembali otomatis, multi-outlet",
+        ],
+        stack: "Next.js (PWA) · Go · PostgreSQL · Midtrans",
+      },
+      {
+        slug: "sistem-hris-payroll",
+        icon: "hris",
+        title: "Jasa Pembuatan Sistem HRIS & Payroll",
+        tagline:
+          "HRIS custom — payroll sesuai aturan Indonesia (PP 35/2021, PPh 21, BPJS) dan absensi geofence + selfie.",
+        highlights: [
+          "Mesin payroll: lembur bertingkat, PPh 21, BPJS, proration",
+          "Absensi geofence + selfie, anti titip absen",
+          "Approval berjenjang + slip gaji digital",
+        ],
+        stack: "Go · Next.js (PWA) · PostgreSQL · Redis",
+      },
     ],
   },
   why: {
@@ -270,6 +296,7 @@ const EN: ServiceHubCopy = {
         stack: "Next.js · Go · Laravel · PostgreSQL",
       },
       {
+        slug: "pembuatan-api",
         icon: "api",
         title: "API & System Integration",
         tagline:
@@ -292,6 +319,32 @@ const EN: ServiceHubCopy = {
           "No marketplace fees — you own the customer data",
         ],
         stack: "Next.js · Go · PostgreSQL · Midtrans",
+      },
+      {
+        slug: "sistem-pos-kasir",
+        icon: "pos",
+        title: "Custom POS System Development",
+        tagline:
+          "A custom point-of-sale — automatic QR payments, per-shift cash reconciliation, inventory that stays in sync.",
+        highlights: [
+          "QR payments confirmed automatically via webhook",
+          "Cashier shifts + daily cash reconciliation",
+          "Void/returns with automatic stock restoration, multi-outlet",
+        ],
+        stack: "Next.js (PWA) · Go · PostgreSQL · Midtrans",
+      },
+      {
+        slug: "sistem-hris-payroll",
+        icon: "hris",
+        title: "Custom HRIS & Payroll Development",
+        tagline:
+          "A custom HRIS — Indonesian-regulation payroll (tiered overtime, PPh 21, BPJS) and geofenced attendance.",
+        highlights: [
+          "Payroll engine: tiered overtime, income tax, social security",
+          "Geofenced attendance + selfie verification",
+          "Multi-level approvals + digital payslips",
+        ],
+        stack: "Go · Next.js (PWA) · PostgreSQL · Redis",
       },
     ],
   },

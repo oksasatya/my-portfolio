@@ -50,13 +50,17 @@ export function MobileNav() {
           </header>
 
           <nav
-            className="flex flex-1 flex-col justify-center gap-1 px-4"
+            className="flex flex-1 flex-col overflow-y-auto px-4 py-2"
             aria-label={th("navLabel")}
           >
-            <NavLinks
-              className="flex items-center rounded-xl px-4 py-4 font-display text-3xl tracking-tight transition-colors hover:bg-dark aria-[current=page]:bg-violet/10 aria-[current=page]:text-violet"
-              onNavigate={close}
-            />
+            {/* my-auto centers when content is short, scrolls from the top when tall. */}
+            <div className="my-auto flex flex-col gap-1">
+              <NavLinks
+                variant="mobile"
+                className="flex items-center rounded-xl px-4 py-4 font-display text-3xl tracking-tight transition-colors hover:bg-dark aria-[current=page]:bg-violet/10 aria-[current=page]:text-violet"
+                onNavigate={close}
+              />
+            </div>
           </nav>
 
           <div className="space-y-5 border-t border-line px-6 pb-8 pt-6">

@@ -5,7 +5,9 @@ import {
   Cable,
   Globe,
   LayoutDashboard,
+  ReceiptText,
   ShoppingCart,
+  Users,
   type LucideIcon,
 } from "lucide-react";
 import { Header } from "@/components/layout/Header";
@@ -22,6 +24,7 @@ import { Scene3D } from "@/components/three/Scene3D";
 import { waLink } from "@/lib/contact";
 import { getServiceHub, type HubServiceItem, type ServiceIcon } from "@/data/service-hub";
 import { serviceLandings } from "@/data/services";
+import { serviceLandingsEn } from "@/data/services-en";
 import { getCaseStudiesByLocale } from "@/data/locale-data";
 import type { Locale } from "@/i18n/routing";
 
@@ -30,6 +33,8 @@ const SERVICE_ICON: Record<ServiceIcon, LucideIcon> = {
   app: LayoutDashboard,
   api: Cable,
   store: ShoppingCart,
+  pos: ReceiptText,
+  hris: Users,
 };
 
 const H2_CLS = "text-2xl font-bold sm:text-3xl";
@@ -38,7 +43,8 @@ const SUBHEAD_CLS = "mt-3 max-w-2xl text-muted";
 function ServiceCard({
   item,
   learn,
-}: Readonly<{ item: HubServiceItem; learn: string }>) {
+  base,
+}: Readonly<{ item: HubServiceItem; learn: string; base: string }>) {
   const Icon = SERVICE_ICON[item.icon];
   const body = (
     <>
@@ -83,7 +89,7 @@ function ServiceCard({
 
   if (item.slug) {
     return (
-      <Link href={`/jasa/${item.slug}`} className={cardCls}>
+      <Link href={`${base}/jasa/${item.slug}`} className={cardCls}>
         {body}
       </Link>
     );
@@ -94,7 +100,8 @@ function ServiceCard({
 export function ServiceHubPage({ locale }: Readonly<{ locale: Locale }>) {
   const c = getServiceHub(locale);
   const waHref = waLink(c.hero.waMessage);
-  const caseBase = locale === "en" ? "/en/projects" : "/projects";
+  const base = locale === "en" ? "/en" : "";
+  const caseBase = `${base}/projects`;
   const allCases = getCaseStudiesByLocale(locale);
   const proof = c.proof.slugs
     .map((slug) => allCases.find((cs) => cs.slug === slug))
@@ -135,7 +142,7 @@ export function ServiceHubPage({ locale }: Readonly<{ locale: Locale }>) {
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {c.services.items.map((item, i) => (
               <Reveal key={item.title} delay={(i % 2) * 90}>
-                <ServiceCard item={item} learn={c.services.learn} />
+                <ServiceCard item={item} learn={c.services.learn} base={base} />
               </Reveal>
             ))}
           </div>
@@ -256,20 +263,18 @@ export function ServiceHubPage({ locale }: Readonly<{ locale: Locale }>) {
                 <WhatsappIcon size={18} aria-hidden /> {c.cta.button}
               </Button>
             </div>
-            {locale === "id" ? (
-              <p className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/60">
-                <span className="font-mono text-xs text-white/40">{c.cta.othersLabel}</span>
-                {serviceLandings.map((s) => (
-                  <Link
-                    key={s.slug}
-                    href={`/jasa/${s.slug}`}
-                    className="underline-offset-4 transition-colors hover:text-white hover:underline"
-                  >
-                    {s.h1}
-                  </Link>
-                ))}
-              </p>
-            ) : null}
+            <p className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/60">
+              <span className="font-mono text-xs text-white/40">{c.cta.othersLabel}</span>
+              {(locale === "en" ? serviceLandingsEn : serviceLandings).map((s) => (
+                <Link
+                  key={s.slug}
+                  href={`${base}/jasa/${s.slug}`}
+                  className="underline-offset-4 transition-colors hover:text-white hover:underline"
+                >
+                  {s.h1}
+                </Link>
+              ))}
+            </p>
           </Container>
         </Section>
       </main>
