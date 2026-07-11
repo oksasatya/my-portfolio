@@ -78,7 +78,7 @@ export const serviceLandings: readonly ServiceLanding[] = [
     ],
     estimateNote:
       "Biaya disesuaikan scope (jumlah halaman, fitur, CMS). Diskusi & estimasi gratis lewat WhatsApp.",
-    relatedProjects: ["rahan-mancar"],
+    relatedProjects: ["rahan-mancar", "dexova-erp"],
   },
   {
     slug: "pembuatan-aplikasi",
@@ -189,7 +189,7 @@ export const serviceLandings: readonly ServiceLanding[] = [
     ],
     estimateNote:
       "Biaya tergantung jumlah fitur (mis. multi-payment, voucher, multi-gudang). Diskusi gratis lewat WhatsApp.",
-    relatedProjects: [],
+    relatedProjects: ["dexova-pos", "dexova-erp"],
   },
 ];
 

@@ -1,32 +1,24 @@
-import { Poppins, Oswald, Fraunces, JetBrains_Mono } from 'next/font/google'
+import { Bricolage_Grotesque, Figtree, JetBrains_Mono } from "next/font/google";
 
-export const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-  style: ['normal', 'italic'],
-  display: 'swap',
-  variable: '--font-poppins',
-})
+// Display face — headings, hero. Variable font.
+export const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-bricolage",
+});
 
-export const oswald = Oswald({
-  subsets: ['latin'],
-  weight: ['200', '300', '400', '500', '600', '700'],
-  display: 'swap',
-  variable: '--font-oswald',
-})
+// Body face.
+export const figtree = Figtree({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-figtree",
+});
 
-// Editorial-light revamp: characterful serif display + mono for technical accents.
-export const fraunces = Fraunces({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '900'],
-  style: ['normal', 'italic'],
-  display: 'swap',
-  variable: '--font-fraunces',
-})
-
+// Technical labels, data figures, breadcrumbs, code. Mostly below the fold.
 export const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  display: 'swap',
-  variable: '--font-jetbrains',
-})
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+  preload: false,
+  variable: "--font-jetbrains-mono",
+});

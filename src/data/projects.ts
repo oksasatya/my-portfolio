@@ -13,6 +13,33 @@ export interface CaseStudyLink {
   readonly href: string;
 }
 
+export interface CaseScreenshot {
+  readonly src: string;
+  readonly alt: string;
+  readonly caption: string;
+  readonly width: number;
+  readonly height: number;
+}
+
+export interface CaseSection {
+  /** Anchor id — drives the sticky table of contents. */
+  readonly id: string;
+  readonly title: string;
+  readonly paragraphs?: readonly string[];
+  readonly bullets?: readonly string[];
+  readonly screenshots?: readonly CaseScreenshot[];
+  /** Labeled diagram rendered by the template. */
+  readonly diagram?: "dexova-architecture" | "pos-flow";
+}
+
+/** Long-form storytelling for flagship case studies. */
+export interface DeepDive {
+  readonly sections: readonly CaseSection[];
+  readonly lessons: readonly string[];
+  /** Slugs cross-linked at the end of the page. */
+  readonly related: readonly string[];
+}
+
 export interface CaseStudy {
   /** URL slug — drives /projects/[slug] */
   readonly slug: string;
@@ -38,6 +65,7 @@ export interface CaseStudy {
   /** Path under /public. */
   readonly image: string;
   readonly links?: readonly CaseStudyLink[];
+  readonly deepDive?: DeepDive;
 }
 
 export const caseStudies: readonly CaseStudy[] = [
@@ -49,23 +77,23 @@ export const caseStudies: readonly CaseStudy[] = [
     tagline:
       "ERP modular untuk bisnis: HRIS, Payroll, POS, dan Inventori dalam satu sistem Go.",
     summary:
-      "Platform ERP modular (HRIS, Payroll, POS, Inventori) dengan backend Go hexagonal, fitur AI tertanam, dan integrasi pembayaran Midtrans.",
+      "Platform ERP modular (HRIS, Payroll, POS, Inventori) dengan backend Go modular, fitur AI tertanam, dan integrasi pembayaran Midtrans.",
     role: "Architect & Full-Stack Developer (backend-heavy)",
     timeframe: "2025 – sekarang",
     highlights: [
-      "Hexagonal Go",
+      "Modular monolith Go",
       "Modular (HRIS · Payroll · POS · Inventori)",
       "AI-powered",
       "Midtrans",
-      "gRPC antar-service",
+      "Outbox + schedulers",
       "Multi-tenant",
     ],
     stack: [
-      "Go",
+      "Go (Gin)",
       "PostgreSQL + sqlc",
       "Next.js / TypeScript",
       "Redis",
-      "gRPC",
+      "PASETO",
       "SSE (real-time)",
       "Midtrans",
       "OpenAI / Google AI",
@@ -74,19 +102,451 @@ export const caseStudies: readonly CaseStudy[] = [
     problem:
       "Bisnis kecil–menengah menjalankan HR, payroll, kasir, dan stok di tool yang terpisah-pisah — spreadsheet di sini, aplikasi sendiri di sana. Akibatnya data tidak sinkron, rawan salah input, dan sulit mengambil keputusan lintas-divisi. Yang dibutuhkan: satu platform terintegrasi yang tetap terjangkau dan bisa tumbuh seiring bisnis.",
     solution: [
-      "Backend Go dengan arsitektur hexagonal dan pemisahan domain yang tegas — empat modul bisnis (Core, HRIS, Inventori, POS), masing-masing dengan query SQL dan migrasi databasenya sendiri sehingga satu modul tidak merusak modul lain.",
+      "Backend Go (Gin) dengan arsitektur clean/berlapis — modular monolith dengan pemisahan modul yang tegas — empat modul bisnis (Core, HRIS, Inventori, POS), masing-masing dengan query SQL dan migrasi databasenya sendiri sehingga satu modul tidak merusak modul lain.",
       "Aplikasi self-service karyawan (Next.js) untuk absensi, slip gaji, jadwal shift, dan data tim — mengurangi pekerjaan manual tim HR.",
       "Fitur AI tertanam langsung di backend (integrasi OpenAI & Google AI) untuk otomasi dan insight di atas data operasional.",
-      "Integrasi pembayaran Midtrans untuk alur transaksi POS, real-time update via Server-Sent Events, dan komunikasi antar-service via gRPC.",
+      "Integrasi pembayaran Midtrans untuk alur transaksi POS, real-time update via Server-Sent Events, dan integrasi gRPC (client) ke service workshop.",
       "Keamanan data tingkat aplikasi: enkripsi data sensitif beserta tooling migrasi enkripsi, dan isolasi data multi-tenant.",
     ],
     results: [
       "Empat modul bisnis (HRIS, Payroll, POS, Inventori) berjalan di atas satu codebase Go yang modular dan konsisten.",
       "Karyawan mendapat portal self-service (absensi, payslip, shift) sehingga proses HR yang tadinya manual jadi mandiri.",
-      "Arsitektur hexagonal + batas domain yang jelas membuat penambahan modul baru bisa dilakukan tanpa membongkar yang sudah ada — siap untuk skala.",
+      "Batas modul yang jelas membuat penambahan modul baru bisa dilakukan tanpa membongkar yang sudah ada — siap untuk skala.",
     ],
     repoVisibility: "private",
-    image: "/assets/images/projects/dexova.png",
+    image: "/assets/images/dexova/dexova-hris-dashboard-admin.webp",
+    deepDive: {
+      sections: [
+        {
+          id: "context",
+          title: "Context",
+          paragraphs: [
+            "Dexova adalah platform ERP untuk bisnis Indonesia — dibangun untuk perusahaan kecil–menengah yang butuh sistem operasional serius tanpa harga enterprise. Saya membangunnya sebagai architect sekaligus full-stack developer, dari desain skema database sampai UI kasir.",
+            "Produk ini live di dexova.id dan dipakai lewat tiga aplikasi production: dashboard admin (dex-fe), PWA absensi karyawan (dex-attendance), dan aplikasi kasir (dex-pos).",
+          ],
+        },
+        {
+          id: "business-problem",
+          title: "Business problem",
+          paragraphs: [
+            "Bisnis kecil–menengah menjalankan HR, payroll, kasir, dan stok di tool terpisah: absensi di spreadsheet, gaji dihitung manual, kasir di aplikasi sendiri, stok di catatan gudang. Data tidak pernah sinkron — jam lembur tidak nyambung ke slip gaji, penjualan kasir tidak mengurangi stok, dan pemilik tidak bisa melihat kondisi bisnis lintas divisi.",
+            "Konsekuensinya nyata: salah hitung gaji (dan risikonya terhadap kepatuhan aturan ketenagakerjaan), selisih kas yang tidak ketahuan, dan keputusan bisnis yang diambil dari data basi.",
+          ],
+        },
+        {
+          id: "ecosystem",
+          title: "Product ecosystem",
+          paragraphs: [
+            "Empat modul bisnis berjalan di satu backend Go — masing-masing dengan query SQL dan migrasi database sendiri, sehingga modul bisa berkembang tanpa saling merusak:",
+          ],
+          bullets: [
+            "HRIS & Payroll — siklus karyawan end-to-end: data karyawan, struktur organisasi, absensi, cuti, shift, sampai payroll run dan slip gaji digital.",
+            "Attendance (PWA karyawan) — check-in/out geofence dengan deteksi kantor terdekat, riwayat kehadiran, pengajuan koreksi, cuti, dan slip gaji.",
+            "POS — kasir multi-outlet dengan barcode, multi-payment (tunai, QRIS Midtrans, transfer, EDC, split), shift + rekonsiliasi kas, dan laporan penjualan.",
+            "Inventory — multi-gudang: purchase order, penerimaan barang dengan QC, stock opname barcode, transfer antar-gudang ber-approval, dan sinkronisasi otomatis dengan POS.",
+            "Dexova AI — layer AI (OpenAI / Google AI) di atas data operasional untuk pencarian dan insight.",
+          ],
+        },
+        {
+          id: "role",
+          title: "My role",
+          paragraphs: [
+            "Architect & full-stack developer — backend-heavy. Saya mendesain arsitektur modular monolith-nya, menulis domain logic (payroll, rekonsiliasi kas, stok), membangun ketiga aplikasi frontend, dan mengoperasikan deployment-nya. Keputusan produk dan prioritas fitur juga di tangan saya, jadi setiap fitur teknis di halaman ini sekaligus keputusan produk.",
+          ],
+        },
+        {
+          id: "challenges",
+          title: "Technical challenges",
+          bullets: [
+            "Multi-tenant sejak fondasi — tenant scoping ditegakkan di token (PASETO) dan middleware pada setiap query, dengan enkripsi AES-256-GCM untuk data sensitif (plus tooling migrasi enkripsi saat skema berubah).",
+            "Payroll yang sadar regulasi — lembur bertingkat mengikuti aturan PP 35/2021, PPh 21, BPJS, pro-rata, dan payday yang bergeser otomatis saat libur bank. Diimplementasikan sebagai business rules yang teruji, bukan hardcode.",
+            "Batas modul yang tegas — empat modul di satu codebase Go, masing-masing dengan lapisan controller → service → repository sendiri dan DI di satu composition root. Menambah modul baru tidak membongkar modul lama.",
+            "Real-time tanpa kompleksitas berlebih — Server-Sent Events untuk update dashboard dan notifikasi PWA; pekerjaan berat (bulk import Excel, export, payroll run) berjalan sebagai job async, plus outbox pattern untuk provisioning yang tidak boleh hilang.",
+            "Integrasi pembayaran — Midtrans QRIS (statis & dinamis) di alur kasir, dengan rekonsiliasi di sisi shift.",
+          ],
+        },
+        {
+          id: "architecture",
+          title: "Architecture & engineering decisions",
+          paragraphs: [
+            "Modular monolith, bukan microservices: satu binary Go (Gin) dengan empat modul berbatas jelas jauh lebih murah dioperasikan untuk skala saat ini — dan batas modulnya membuat pemisahan jadi service terpisah tetap terbuka bila dibutuhkan.",
+          ],
+          diagram: "dexova-architecture",
+          bullets: [
+            "Go + PostgreSQL (sqlc) — query type-safe yang di-generate, bukan ORM; tiap modul punya migrasi sendiri.",
+            "Redis untuk cache, sesi, dan rate-limit; 12+ scheduler in-process (auto-lock payroll, eskalasi approval, purge audit) + outbox worker.",
+            "SSE untuk update real-time; integrasi gRPC (client) ke service workshop; WebSocket untuk sinkronisasi stok POS.",
+            "Auth PASETO berbasis cookie; enkripsi AES-256-GCM untuk data sensitif + isolasi multi-tenant di level aplikasi (tenant scoping di token & middleware).",
+            "Frontend: Next.js/TypeScript untuk dashboard admin, PWA untuk absensi karyawan, aplikasi kasir terpisah.",
+          ],
+        },
+        {
+          id: "screenshots",
+          title: "UI",
+          paragraphs: ["Seluruh tangkapan layar menggunakan data demo."],
+          screenshots: [
+            {
+              src: "/assets/images/dexova/dexova-hris-dashboard-admin.webp",
+              alt: "Dashboard admin HRIS Dexova dengan ringkasan kehadiran dan departemen",
+              caption: "dex-fe — dashboard admin HRIS (data demo)",
+              width: 1510,
+              height: 859,
+            },
+            {
+              src: "/assets/images/dexova/dexova-attendance-pwa-checkin-v2.webp",
+              alt: "PWA absensi Dexova menampilkan tombol check-in dengan deteksi jarak kantor",
+              caption: "dex-attendance — check-in geofence di PWA karyawan (data demo)",
+              width: 720,
+              height: 1465,
+            },
+            {
+              src: "/assets/images/dexova/dexova-pos-cashier-transaction.webp",
+              alt: "Layar kasir Dexova POS dengan grid produk dan keranjang",
+              caption: "dex-pos — aplikasi kasir (data demo)",
+              width: 1280,
+              height: 800,
+            },
+          ],
+        },
+        {
+          id: "outcome",
+          title: "Outcome",
+          bullets: [
+            "Empat modul bisnis (HRIS, Payroll, POS, Inventory) berjalan production di satu codebase Go yang modular.",
+            "Tiga aplikasi dipakai user nyata: dashboard admin, PWA absensi karyawan, dan aplikasi kasir.",
+            "Karyawan mendapat portal self-service (absensi, slip gaji, cuti, shift) — proses HR yang tadinya manual jadi mandiri.",
+            "Arsitektur hexagonal + batas domain yang jelas terbukti: modul baru ditambahkan tanpa membongkar yang lama.",
+          ],
+        },
+      ],
+      lessons: [
+        "Modular monolith dengan batas tegas mengalahkan microservices prematur — biaya operasional turun drastis tanpa mengorbankan keteraturan.",
+        "Aturan payroll adalah domain logic paling berbahaya untuk di-hardcode; menjadikannya konfigurasi + business rules teruji membayar dirinya sendiri setiap kali regulasi atau kebijakan perusahaan berubah.",
+        "Job async + progress tracking bukan fitur 'nanti saja' — bulk import dan payroll run tanpa itu akan memblokir UI dan merusak kepercayaan user.",
+      ],
+      related: ["dexova-hris", "dexova-pos"],
+    },
+  },
+  {
+    slug: "dexova-hris",
+    title: "Dexova HRIS — Payroll & Absensi",
+    year: 2025,
+    category: "Deep dive · HRIS",
+    tagline:
+      "Payroll sadar regulasi dan absensi geofence — mesin HR Dexova dari dekat.",
+    summary:
+      "Deep dive modul HRIS Dexova: payroll engine dengan lembur bertingkat PP 35/2021, absensi geofence dual-address, eskalasi approval ber-SLA, dan pipeline data async.",
+    role: "Architect & Full-Stack Developer",
+    timeframe: "2025 – sekarang",
+    highlights: [
+      "Payroll engine (PP 35/2021)",
+      "Geofence + dual-address WFH",
+      "SLA approval escalation",
+      "Bulk import async",
+      "Employee PWA",
+    ],
+    stack: [
+      "Go",
+      "PostgreSQL + sqlc",
+      "Redis (job queue)",
+      "Next.js (dex-fe)",
+      "PWA (dex-attendance)",
+    ],
+    problem:
+      "Menghitung gaji di Indonesia bukan aritmetika sederhana: lembur bertingkat, PPh 21, BPJS, pro-rata karyawan baru, payday yang jatuh di hari libur bank. Dihitung manual, kesalahan hanya soal waktu — dan kesalahan gaji langsung merusak kepercayaan karyawan.",
+    solution: [
+      "Payroll engine dengan komponen gaji fleksibel, periode yang dikunci sebelum run, dan perhitungan lembur bertingkat sesuai PP 35/2021.",
+      "Absensi geofence dengan model dua alamat (kantor + WFH), deteksi kantor terdekat, dan koreksi kehadiran ber-approval.",
+      "Approval multi-level dengan eskalasi otomatis berbasis SLA ketika approver tidak merespons.",
+      "Bulk import/export Excel sebagai job async dengan progress tracking dan strategi duplikat.",
+    ],
+    results: [
+      "Siklus HR end-to-end — dari data karyawan sampai slip gaji digital — berjalan di satu modul.",
+      "Karyawan absen lewat PWA dengan geofence; HR memantau pelanggaran dan rekap bulanan yang mengunci data untuk payroll.",
+      "Proses payroll yang tadinya spreadsheet manual menjadi run yang terkunci, terlacak, dan bisa diaudit.",
+    ],
+    repoVisibility: "private",
+    image: "/assets/images/dexova/dexova-hris-golongan-job-level.webp",
+    deepDive: {
+      sections: [
+        {
+          id: "context",
+          title: "Context",
+          paragraphs: [
+            "HRIS adalah modul terbesar Dexova — dan alasan banyak bisnis melirik ERP. Modul ini melayani dua persona lewat dua aplikasi berbeda: admin HR bekerja di dashboard (dex-fe), karyawan memakai PWA absensi (dex-attendance).",
+            "Halaman ini membedah tiga bagian yang paling berat secara engineering: payroll engine, absensi geofence, dan mesin approval.",
+          ],
+        },
+        {
+          id: "payroll-engine",
+          title: "Payroll engine",
+          paragraphs: [
+            "Aturan penggajian Indonesia diimplementasikan sebagai business rules yang bisa dikonfigurasi — bukan angka hardcode:",
+          ],
+          bullets: [
+            "Lembur bertingkat mengikuti PP 35/2021 — tarif berbeda per jam ke-1, jam berikutnya, dan hari libur; lembur tercipta otomatis saat jadwal terlampaui, lalu melewati approval.",
+            "Komponen gaji fleksibel per perusahaan + tarif per karyawan (pro-rata untuk karyawan baru, komponen yang ditanggung perusahaan).",
+            "Cutoff vs payday dikonfigurasi terpisah; payday bergeser otomatis ketika jatuh di hari libur bank.",
+            "Periode payroll dikunci sebelum run — run digenerate dari data absensi yang sudah final, dengan progress monitoring.",
+            "Penyesuaian satu kali: bonus, THR, severance — masuk run tanpa mengubah komponen permanen.",
+            "Pinjaman karyawan dengan pemotongan gaji otomatis per periode.",
+            "Aturan pembagi tarif harian, strategi pembulatan, tipe minggu kerja (termasuk Sabtu setengah hari) — semua konfigurasi, bukan cabang if di kode.",
+            "Periode payroll yang lupa dikunci? Ada scheduler auto-lock — periode menutup dirinya sendiri sesuai konfigurasi.",
+          ],
+          screenshots: [
+            {
+              src: "/assets/images/dexova/dexova-hris-payroll-run.webp",
+              alt: "Halaman Run Payroll di dashboard Dexova: run digenerate dari periode yang terkunci",
+              caption: "dex-fe — Run Payroll: digenerate hanya dari periode terkunci (data demo)",
+              width: 1440,
+              height: 900,
+            },
+            {
+              src: "/assets/images/dexova/dexova-attendance-pwa-payslip.webp",
+              alt: "Slip gaji digital karyawan di PWA dex-attendance",
+              caption: "dex-attendance — slip gaji digital karyawan (data demo)",
+              width: 720,
+              height: 1465,
+            },
+          ],
+        },
+        {
+          id: "attendance",
+          title: "Absensi geofence",
+          paragraphs: [
+            "Absensi adalah data mentah payroll — kalau absensinya salah, gajinya salah. Desainnya berfokus pada validitas data di sumbernya:",
+          ],
+          bullets: [
+            "Check-in/out dari PWA dengan geofence (Geolocation API + retry/backoff): aplikasi mendeteksi kantor terdekat dan menolak absen di luar radius.",
+            "Selfie wajib saat check-in — kamera via getUserMedia dengan overlay nama + timestamp, mencegah titip absen.",
+            "Model dua alamat untuk WFH — karyawan bisa mengajukan lokasi rumah sebagai geofence kedua, lewat approval.",
+            "Koreksi kehadiran ber-approval (bukan edit bebas), plus manajemen pulang-lebih-awal.",
+            "Aturan pelanggaran + ambang keterlambatan per lokasi/departemen; analytics kehadiran dan laporan kepatuhan untuk HR.",
+            "Rekap bulanan mengunci data kehadiran sebagai input payroll — satu sumber kebenaran.",
+          ],
+          screenshots: [
+            {
+              src: "/assets/images/dexova/dexova-attendance-pwa-checkin-v2.webp",
+              alt: "PWA absensi Dexova: halaman check-in dengan deteksi jarak ke kantor",
+              caption: "dex-attendance — geofence check-in dengan selfie wajib (data demo)",
+              width: 720,
+              height: 1465,
+            },
+            {
+              src: "/assets/images/dexova/dexova-hris-attendance-admin.webp",
+              alt: "Halaman Attendance di dashboard admin Dexova dengan ringkasan hadir, absen, terlambat, dan cuti",
+              caption: "dex-fe — pemantauan kehadiran sisi admin (data demo)",
+              width: 1440,
+              height: 900,
+            },
+          ],
+        },
+        {
+          id: "approvals",
+          title: "Mesin approval",
+          bullets: [
+            "Aturan approval multi-level dengan final approval wajib di HR — konsisten untuk cuti, koreksi absen, lembur, dan shift swap.",
+            "Delegasi approval saat approver cuti/berhalangan.",
+            "Eskalasi otomatis berbasis SLA (scheduler in-process): pengajuan yang tidak direspons naik ke approver berikutnya — pengajuan tidak pernah menggantung.",
+          ],
+        },
+        {
+          id: "shifts",
+          title: "Shift & penjadwalan",
+          bullets: [
+            "Grid shift bulanan dengan generator rotasi otomatis.",
+            "Shift swap antar-karyawan dengan approval.",
+            "Toleransi keterlambatan per jadwal kerja.",
+          ],
+        },
+        {
+          id: "data-ops",
+          title: "Data operations",
+          paragraphs: [
+            "Onboarding perusahaan berarti ratusan karyawan masuk sekaligus — jalur datanya harus kuat:",
+          ],
+          bullets: [
+            "Bulk import Excel (Combined Bulk Import) sebagai job async: progress tracking, mode commit, strategi duplikat, dan auto-provisioning akun.",
+            "Export CSV/Excel dengan mode sync untuk data kecil dan async untuk dataset besar.",
+            "Reset password self-service dengan OTP email, masa berlaku, lockout 5 percobaan, dan eskalasi admin.",
+          ],
+          screenshots: [
+            {
+              src: "/assets/images/dexova/dexova-hris-employees.webp",
+              alt: "Manajemen karyawan di dashboard Dexova: daftar karyawan dengan departemen dan jabatan",
+              caption: "dex-fe — manajemen karyawan, target bulk import (data demo)",
+              width: 1440,
+              height: 900,
+            },
+          ],
+        },
+        {
+          id: "outcome",
+          title: "Outcome",
+          bullets: [
+            "Payroll berjalan dari data absensi yang terkunci — bukan spreadsheet yang diedit di menit terakhir.",
+            "Aturan regulasi (lembur bertingkat, payday shift) hidup sebagai konfigurasi teruji, siap mengikuti perubahan kebijakan.",
+            "HR berhenti menjadi operator data manual: approval, koreksi, dan rekap berjalan lewat alur yang bisa diaudit.",
+          ],
+        },
+      ],
+      lessons: [
+        "Aturan ketenagakerjaan berubah — payroll engine yang memisahkan aturan dari kode adalah investasi, bukan over-engineering.",
+        "Validitas data absensi harus dijaga di sumbernya (geofence, approval koreksi); membersihkannya belakangan jauh lebih mahal.",
+        "SLA + eskalasi otomatis mengubah approval dari bottleneck organisasi menjadi proses yang selesai sendiri.",
+      ],
+      related: ["dexova-erp", "dexova-pos"],
+    },
+  },
+  {
+    slug: "dexova-pos",
+    title: "Dexova POS — Kasir & Rekonsiliasi",
+    year: 2025,
+    category: "Deep dive · POS",
+    tagline:
+      "Kasir multi-outlet dengan QRIS Midtrans, split payment, dan rekonsiliasi kas per shift.",
+    summary:
+      "Deep dive modul POS Dexova: alur transaksi kasir, pembayaran QRIS Midtrans + split payment, shift dengan rekonsiliasi kas, dan retur dengan pengembalian stok otomatis.",
+    role: "Architect & Full-Stack Developer",
+    timeframe: "2025 – sekarang",
+    highlights: [
+      "Multi-outlet + role kasir",
+      "QRIS Midtrans (statis & dinamis)",
+      "Split payment",
+      "Shift + rekonsiliasi kas",
+      "Retur → stok balik otomatis",
+    ],
+    stack: [
+      "Go",
+      "PostgreSQL + sqlc",
+      "Midtrans",
+      "Next.js (dex-pos)",
+      "Web Bluetooth (ESC/POS)",
+    ],
+    problem:
+      "Kasir untuk UMKM harus cepat dipakai orang non-teknis, tapi di baliknya kas harus selalu bisa dipertanggungjawabkan: siapa yang buka shift, berapa kas awal, ke mana selisihnya, dan kenapa stok berkurang. Aplikasi kasir yang hanya mencatat penjualan tidak menjawab itu.",
+    solution: [
+      "Alur transaksi kasir yang cepat: pencarian + barcode, varian produk, harga bertingkat (retail/grosir/member), hold & resume keranjang.",
+      "Multi-payment: tunai, QRIS Midtrans statis/dinamis, transfer, EDC, dan split payment — plus kode promo.",
+      "Shift dengan kas awal, aturan satu shift aktif, dan rekonsiliasi kas saat tutup.",
+      "Void dan retur (sebagian/penuh) dengan pengembalian stok otomatis; akses diatur per role.",
+    ],
+    results: [
+      "Transaksi kasir dan pertanggungjawaban kas hidup di satu alur — selisih kas terlihat di rekonsiliasi shift, bukan di akhir bulan.",
+      "Pembayaran QRIS terintegrasi Midtrans tanpa alat tambahan.",
+      "Stok selalu konsisten dengan penjualan dan retur karena sinkron otomatis dengan modul Inventory.",
+    ],
+    repoVisibility: "private",
+    image: "/assets/images/projects/dexova.webp",
+    deepDive: {
+      sections: [
+        {
+          id: "context",
+          title: "Context",
+          paragraphs: [
+            "POS Dexova dipakai dua persona: kasir bekerja di aplikasi kasir (dex-pos), pemilik/manajer mengelola produk, outlet, dan laporan dari dashboard admin (dex-fe). Desain utamanya: kasir harus bisa dipakai tanpa pelatihan panjang, sementara setiap rupiah tetap terlacak.",
+          ],
+        },
+        {
+          id: "transaction-flow",
+          title: "Alur transaksi",
+          bullets: [
+            "Pencarian produk + scan barcode (html5-qrcode), dukungan varian dan add-on.",
+            "Harga bertingkat per produk: retail, grosir, member.",
+            "Hold & resume keranjang — kasir bisa melayani pelanggan berikutnya tanpa kehilangan transaksi yang menggantung.",
+            "Pemilihan pelanggan untuk harga member dan riwayat.",
+            "Katalog besar tetap mulus — daftar produk di-virtualisasi (TanStack Virtual), satu codebase untuk layout tablet split-panel dan HP slide-up cart.",
+          ],
+          screenshots: [
+            {
+              src: "/assets/images/dexova/dexova-pos-cashier-transaction.webp",
+              alt: "Layar kasir Dexova POS: grid produk di kiri, keranjang di kanan",
+              caption: "dex-pos — layar transaksi kasir (data demo)",
+              width: 1280,
+              height: 800,
+            },
+          ],
+        },
+        {
+          id: "payments",
+          title: "Pembayaran",
+          paragraphs: [
+            "Semua metode pembayaran umum di retail Indonesia didukung dalam satu alur checkout:",
+          ],
+          bullets: [
+            "Tunai dengan hitung kembalian.",
+            "QRIS Midtrans — statis (satu QR untuk semua transaksi) dan dinamis (QR per transaksi dengan nominal terkunci).",
+            "Transfer bank dan EDC.",
+            "Split payment — satu transaksi dibayar dengan kombinasi metode.",
+            "Kode promo dan diskon dengan aturan dari dashboard admin.",
+          ],
+          screenshots: [
+            {
+              src: "/assets/images/dexova/dexova-pos-cashier-payment.webp",
+              alt: "Jendela pembayaran Dexova POS dengan total, pajak, diskon, dan kode promo",
+              caption: "dex-pos — jendela pembayaran: multi-metode + split (data demo)",
+              width: 1280,
+              height: 800,
+            },
+          ],
+        },
+        {
+          id: "shift-reconciliation",
+          title: "Shift & rekonsiliasi kas",
+          paragraphs: [
+            "Bagian yang membedakan POS serius dari pencatat penjualan — pertanggungjawaban kas per shift:",
+          ],
+          bullets: [
+            "Buka shift dengan kas awal; aturan satu shift aktif per kasir mencegah transaksi tanpa penanggung jawab.",
+            "Tutup shift dengan rekonsiliasi: sistem membandingkan kas seharusnya vs kas fisik yang dihitung kasir.",
+            "Ringkasan shift dan rekonsiliasi kas harian tersedia sebagai laporan untuk pemilik.",
+          ],
+          diagram: "pos-flow",
+        },
+        {
+          id: "returns-void",
+          title: "Void & retur",
+          bullets: [
+            "Void untuk transaksi yang belum selesai; retur sebagian atau penuh untuk yang sudah dibayar.",
+            "Stok kembali otomatis saat retur — sinkronisasi stok real-time via WebSocket dengan modul Inventory, tanpa langkah manual.",
+            "Akses void/retur diatur per role (kasir vs manajer) dengan pencabutan akses dari dashboard.",
+          ],
+        },
+        {
+          id: "hardware-reports",
+          title: "Perangkat & laporan",
+          bullets: [
+            "Struk thermal via Web Bluetooth — driver ESC/POS ditulis sendiri (bukan library jadi), dengan reprint.",
+            "Laporan untuk pemilik: produk terlaris, dead stock, margin, pajak, ringkasan shift — export PDF/Excel.",
+            "Multi-outlet dengan penempatan staf per outlet.",
+          ],
+          screenshots: [
+            {
+              src: "/assets/images/dexova/dexova-pos-reports.webp",
+              alt: "Halaman laporan POS di dashboard Dexova",
+              caption: "dex-fe — laporan penjualan untuk pemilik (data demo)",
+              width: 1440,
+              height: 900,
+            },
+          ],
+        },
+        {
+          id: "outcome",
+          title: "Outcome",
+          bullets: [
+            "Kasir non-teknis bisa langsung bekerja; alur transaksi dirancang untuk kecepatan di jam ramai.",
+            "Kas bisa dipertanggungjawabkan per shift — selisih ketahuan hari itu juga.",
+            "Penjualan, retur, dan stok konsisten karena POS dan Inventory berbagi satu sumber data.",
+          ],
+        },
+      ],
+      lessons: [
+        "Rekonsiliasi bukan fitur laporan, tapi kontrak kepercayaan antara pemilik dan kasir — harus ada sejak transaksi pertama.",
+        "Pengembalian stok otomatis pada retur menghilangkan satu kelas penuh bug 'stok tidak cocok'.",
+        "Integrasi pembayaran (Midtrans) paling aman ditangani sebagai alur status yang eksplisit, bukan asumsi 'pasti berhasil'.",
+      ],
+      related: ["dexova-erp", "dexova-hris"],
+    },
   },
   {
     slug: "helixio",
@@ -131,7 +591,7 @@ export const caseStudies: readonly CaseStudy[] = [
       "Kualitas kode terjaga lewat CI pipeline, laporan coverage (codecov), dan Go Report Card.",
     ],
     repoVisibility: "private",
-    image: "/assets/images/projects/helixio.jpeg",
+    image: "/assets/images/projects/helixio.webp",
   },
   {
     slug: "rahan-mancar",
@@ -176,9 +636,78 @@ export const caseStudies: readonly CaseStudy[] = [
       "Lead-capture + analytics built-in mengubah website dari sekadar tampil menjadi mesin yang menghasilkan prospek.",
     ],
     repoVisibility: "private",
-    image: "/assets/images/projects/rahanmancar-online.jpeg",
+    image: "/assets/images/projects/rahanmancar-online.webp",
   },
 ] as const;
+
+/** Compact archive rows on /projects — deliverables without a full case study. */
+export interface ArchiveProject {
+  readonly title: string;
+  readonly year: number;
+  readonly category: string;
+  readonly description: string;
+}
+
+export const archiveProjects: readonly ArchiveProject[] = [
+  {
+    title: "Mula Property",
+    year: 2026,
+    category: "Web App",
+    description: "Platform listing properti — Nuxt (Vue) dengan UI modern & cepat.",
+  },
+  {
+    title: "chasago",
+    year: 2026,
+    category: "Open Source",
+    description:
+      "CLI generator boilerplate Go REST API: Clean Architecture, Paseto, audit log, i18n — sekali command, project siap production.",
+  },
+  {
+    title: "Seluscraf",
+    year: 2026,
+    category: "E-commerce",
+    description:
+      "Backend e-commerce toko baju muslim — Go/Gin, GORM, Redis, JWT + Google OAuth.",
+  },
+  {
+    title: "Jastip Chasa Store",
+    year: 2026,
+    category: "E-commerce",
+    description:
+      "Platform jastip (titip-beli) — Go REST API (Gin, fx, Paseto, Redis) + storefront.",
+  },
+  {
+    title: "Trading Analytics API",
+    year: 2025,
+    category: "API",
+    description:
+      "Backend analitik trading + generator MT5 .set — Go, Chi, SQLC, PostgreSQL.",
+  },
+  {
+    title: "Dashboard Rahan",
+    year: 2023,
+    category: "Dashboard",
+    description: "Dashboard admin & monitoring Rahan.",
+  },
+  {
+    title: "Trofi Group",
+    year: 2021,
+    category: "Web Profile",
+    description: "Website company profile Trofi Group.",
+  },
+  {
+    title: "Rahan Mancar (v1)",
+    year: 2021,
+    category: "Web App",
+    description: "Aplikasi web untuk manajemen Rahan Mancar.",
+  },
+  {
+    title: "Totabuan",
+    year: 2020,
+    category: "Web Profile",
+    description: "Company profile website untuk Totabuan.",
+  },
+];
 
 const caseStudyBySlug = new Map<string, CaseStudy>(
   caseStudies.map((c) => [c.slug, c]),

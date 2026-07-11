@@ -1,0 +1,204 @@
+/* ---- stage ---- */
+
+.root {
+  position: relative;
+  width: 100%;
+  /* Small on phones so the illustration doesn't dominate the stacked layout; */
+  max-width: 300px;
+  margin-inline: auto;
+  aspect-ratio: 1000 / 750;
+  perspective: 1400px;
+  isolation: isolate;
+}
+
+@media (min-width: 640px) {
+  .root {
+    max-width: 480px;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* capped on desktop so the fluid container doesn't let it grow unbounded. */
+  .root {
+    max-width: 620px;
+  }
+}
+
+.scene {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.float {
+  position: absolute;
+  inset: 0;
+  animation: floatY 8s ease-in-out infinite;
+}
+
+.floatStill {
+  animation: none;
+}
+
+/* ---- node layers ---- */
+
+.node {
+  position: absolute;
+  /* Hover scale lives on the inner image (GPU transform, no drop-shadow
+     re-raster). The enter/leave flicker loop is prevented in JS: hover is
+     hit-tested on pointer move via elementFromPoint, not per-node listeners,
+     so the parallax sliding a node under the cursor no longer thrashes state.
+     pointer-events stay auto so elementFromPoint returns the node. */
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  /* Give each node its own compositing layer so the scene's per-frame 3D
+     tilt just re-transforms a cached texture instead of re-rasterising the
+     drop-shadow every frame (that recompute is what shimmered the shadows). */
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.nodeImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  user-select: none;
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.45));
+  transform: scale(1);
+  transform-origin: center;
+  /* transform-only transition — GPU-composited, no filter re-raster jank. */
+  transition: transform 260ms ease;
+  backface-visibility: hidden;
+}
+
+.nodeActive {
+  z-index: 20 !important;
+}
+
+.nodeActive .nodeImg {
+  transform: scale(1.055);
+}
+
+/* ---- SVG connection overlay (behind the node layers) ---- */
+
+.svgOverlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 1;
+}
+
+.flowBase {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  opacity: 0.5;
+}
+
+.flowActive {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 18 220;
+  stroke-dashoffset: 238;
+  animation: flowDash var(--flow-duration, 3.5s) linear infinite;
+  animation-delay: var(--flow-delay, 0s);
+  filter: drop-shadow(0 0 4px currentColor);
+}
+
+.flowParticle {
+  animation: flowMove var(--flow-duration, 3.5s) linear infinite;
+  animation-delay: var(--particle-delay, 0s);
+  filter: drop-shadow(0 0 3px currentColor);
+}
+
+.flowHighlighted .flowActive {
+  stroke-width: 3.4;
+  animation-duration: calc(var(--flow-duration, 3.5s) * 0.6);
+}
+
+.flowHighlighted .flowBase {
+  opacity: 0.85;
+}
+
+@keyframes flowDash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes flowMove {
+  from {
+    offset-distance: 0%;
+  }
+  to {
+    offset-distance: 100%;
+  }
+}
+
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* ---- tooltip ---- */
+
+.tooltip {
+  position: absolute;
+  z-index: 30;
+  transform: translate(-50%, -150%);
+  padding: 7px 12px;
+  border-radius: 11px;
+  max-width: 200px;
+  font-family: var(--font-figtree), system-ui, sans-serif;
+  font-size: 12px;
+  line-height: 1.35;
+  color: #f2f0ea;
+  background: #151a22;
+  border: 1px solid #2b3442;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.75);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.tooltipVisible {
+  opacity: 1;
+  transform: translate(-50%, -165%);
+}
+
+.tooltipTitle {
+  display: block;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.tooltipBody {
+  color: #9ca3af;
+}
+
+/* ---- reduced motion ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  .float {
+    animation: none;
+  }
+  .flowActive {
+    animation: none;
+    stroke-dashoffset: 0;
+    stroke-dasharray: none;
+    opacity: 0.8;
+  }
+  .flowParticle {
+    animation: none;
+  }
+}

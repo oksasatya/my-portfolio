@@ -1,16 +1,13 @@
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-import { FlatCompat } from '@eslint/eslintrc';
+import nextCoreWebVitals from 'eslint-config-next/core-web-vitals';
 
-const compat = new FlatCompat({
-  baseDirectory: dirname(fileURLToPath(import.meta.url)),
-});
-
+// eslint-config-next 16 ships native flat configs (arrays), so FlatCompat is
+// no longer needed — spread directly. Scope matches the pre-upgrade config
+// (core-web-vitals only; not the stricter typescript ruleset).
 const eslintConfig = [
   {
     ignores: ['.next/**', 'out/**', 'node_modules/**', 'public/**', 'next.config.mjs'],
   },
-  ...compat.extends('next/core-web-vitals'),
+  ...nextCoreWebVitals,
 ];
 
 export default eslintConfig;
